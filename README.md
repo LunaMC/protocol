@@ -7,6 +7,25 @@ Netty handlers for the Minecraft data protocol 1.8+
  * Netty 4.1
  * Java 8
 
+## Usage
+
+Latest Development Version:
+
+```xml
+<repository>
+    <id>ossrh</id>
+    <url>https://oss.sonatype.org/content/groups/public</url>
+</repository>
+```
+
+```xml
+<dependency>
+    <groupId>io.lunamc</groupId>
+    <artifactId>luna-protocol</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+</dependency>
+```
+
 ## Overview
 
  * `io.lunamc.protocol.ProtocolUtils` - Read and write Minecraft-specific data types (VarInt, VarLong, UUID, String
