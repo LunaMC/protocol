@@ -61,6 +61,7 @@ public abstract class PacketInboundHandlerAdapter extends SimpleChannelInboundHa
      * @param ctx The {@link ChannelHandlerContext} on which the packet was received
      * @param packetId The packet id
      * @param content The content of the packet
+     * @throws Exception thrown if an error occurred while handling packet
      */
-    protected abstract void handlePacket(ChannelHandlerContext ctx, int packetId, ByteBuf content);
+    protected abstract void handlePacket(ChannelHandlerContext ctx, int packetId, ByteBuf content) throws Exception;
 }
