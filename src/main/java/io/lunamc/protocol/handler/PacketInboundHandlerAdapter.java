@@ -18,12 +18,18 @@ import org.slf4j.LoggerFactory;
 import org.slf4j.Marker;
 import org.slf4j.MarkerFactory;
 
+/**
+ * An inbound handler for handling incoming packets.
+ */
 public abstract class PacketInboundHandlerAdapter extends SimpleChannelInboundHandler<ByteBuf> {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(PacketInboundHandlerAdapter.class);
     private static final Marker MARKER_PROTOCOL = MarkerFactory.getMarker("PROTOCOL");
     private static final Marker MARKER_CONNECTION = MarkerFactory.getMarker("CONNECTION");
 
+    /**
+     * Constructs a new {@link PacketInboundHandlerAdapter}.
+     */
     public PacketInboundHandlerAdapter() {
         super(ByteBuf.class, true);
     }
@@ -49,5 +55,12 @@ public abstract class PacketInboundHandlerAdapter extends SimpleChannelInboundHa
         ctx.close();
     }
 
+    /**
+     * Handles an incoming packet.
+     *
+     * @param ctx The {@link ChannelHandlerContext} on which the packet was received
+     * @param packetId The packet id
+     * @param content The content of the packet
+     */
     protected abstract void handlePacket(ChannelHandlerContext ctx, int packetId, ByteBuf content);
 }

@@ -20,7 +20,14 @@ import java.util.List;
  */
 public class LengthLimitedFrameDecoder extends ByteToMessageDecoder {
 
+    /**
+     * A name for this handler.
+     */
     public static final String HANDLER_NAME = "frame-decoder";
+
+    /**
+     * The max length of a packet which can be decoded by this decoder.
+     */
     public static final int MAX_LENGTH = 32_767;
 
     // ToDo: Store the length once the same value was read two times?

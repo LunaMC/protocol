@@ -13,12 +13,32 @@ import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.MessageToByteEncoder;
 
+/**
+ * A {@link MessageToByteEncoder} which prepends each outgoing {@link ByteBuf} with its length as a {@code VarInt}.
+ * <p>
+ * This encoder is stateless and can be shared across multiple channels.
+ */
 @ChannelHandler.Sharable
 public class PacketLengthPrepender extends MessageToByteEncoder<ByteBuf> {
 
+    /**
+     * A name for this handler.
+     */
     public static final String HANDLER_NAME = "length-prepender";
+
+    /**
+     * A singleton instance.
+     */
+    @SuppressWarnings("deprecation")
     public static final PacketLengthPrepender INSTANCE = new PacketLengthPrepender();
 
+    /**
+     * Constructs a new {@link PacketLengthPrepender}
+     *
+     * @deprecated Use {@link PacketLengthPrepender#INSTANCE} instead
+     */
+    @SuppressWarnings("DeprecatedIsStillUsed")
+    @Deprecated
     public PacketLengthPrepender() {
         super(ByteBuf.class);
     }

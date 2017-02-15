@@ -17,19 +17,42 @@ import io.netty.handler.codec.compression.DecompressionException;
 
 import java.util.List;
 import java.util.zip.Inflater;
-
+/**
+ * Decompresses incoming {@link ByteBuf}s.
+ * <p>
+ * Until {@code preferReadIntoBuffer} is set to {@code true} this handler will tries to access the incoming buffers
+ * array directly. When {@code preferReadIntoBuffer} is set to {@code true} or {@link ByteBuf#hasArray()} returns
+ * {@code false} the content will be read into a cached buffer baked by {@link DynamicBuffer}.
+ */
 public class PacketDecompressor extends MessageToMessageDecoder<ByteBuf> {
 
+    /**
+     * A name for this handler.
+     */
     public static final String HANDLER_NAME = "decompressor";
 
     private boolean preferReadIntoBuffer;
     private final Inflater inflater;
     private final DynamicBuffer buffer;
 
+    /**
+     * Constructs a new {@link PacketDecompressor} with a default max size which won't force reading an incoming
+     * message into the internal buffer.
+     */
     public PacketDecompressor() {
         this(LengthLimitedFrameDecoder.MAX_LENGTH, false);
     }
 
+    /**
+     * Constructs a new {@link PacketDecompressor} with the specified maximum packet size. Additionally by setting
+     * {@code preferReadIntoBuffer} to {@code true} the handler can be forced to read the incoming data into a buffer
+     * instead of accessing the buffer array by {@link ByteBuf#array()} directly.
+     *
+     * @param maxSize The maximum (compressed) size for an incoming packet
+     * @param preferReadIntoBuffer {@code true} if the incoming {@link ByteBuf}s array should <strong>not</strong> be
+     *                             accessed directly even if it is available. Otherwise the buffers array is used if
+     *                             available
+     */
     public PacketDecompressor(int maxSize, boolean preferReadIntoBuffer) {
         this.inflater = new Inflater();
         this.buffer = new DynamicBuffer(maxSize);

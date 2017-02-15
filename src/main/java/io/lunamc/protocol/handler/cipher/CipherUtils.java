@@ -14,6 +14,7 @@ import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
 import java.security.Key;
 import java.security.NoSuchAlgorithmException;
+import java.security.spec.AlgorithmParameterSpec;
 import java.util.Objects;
 
 /**
@@ -27,6 +28,16 @@ class CipherUtils {
         throw new UnsupportedOperationException(getClass().getSimpleName() + " is a utility class and should not be constructed");
     }
 
+    /**
+     * Creates an {@link Cipher} (AES, CFB8, no padding) and initialize it with the given {@code key}.
+     *
+     * @see #create()
+     * @see Cipher#init(int, Key, AlgorithmParameterSpec)
+     * @see IvParameterSpec#IvParameterSpec(byte[])
+     * @param mode {@link Cipher#DECRYPT_MODE} for decryption or {@link Cipher#ENCRYPT_MODE} for encryption
+     * @param key The {@link Key}
+     * @return The created and initialized {@link Cipher}
+     */
     static Cipher createInitialized(int mode, Key key) {
         Objects.requireNonNull(key, "key must not be null");
 
@@ -39,6 +50,11 @@ class CipherUtils {
         return cipher;
     }
 
+    /**
+     * Creates an {@link Cipher} (AES, CFB8, no padding).
+     *
+     * @return The created {@link Cipher}
+     */
     private static Cipher create() {
         try {
             return Cipher.getInstance(TRANSFORMATION);

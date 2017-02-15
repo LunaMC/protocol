@@ -15,9 +15,21 @@ import io.netty.handler.codec.MessageToByteEncoder;
 
 import java.util.zip.Deflater;
 
+/**
+ * Compresses outgoing {@link ByteBuf}s if the message size reaches a specified {@code threshold} with the specified
+ * {@code compressionLevel} using {@link Deflater}.
+ * <p>
+ * Until {@code preferReadIntoBuffer} is set to {@code true} this handler will tries to access the message buffers
+ * array directly. When {@code preferReadIntoBuffer} is set to {@code true} or {@link ByteBuf#hasArray()} returns
+ * {@code false} the content will be read into a cached buffer baked by {@link DynamicBuffer}.
+ */
 public class PacketCompressor extends MessageToByteEncoder<ByteBuf> {
 
+    /**
+     * A name for this handler.
+     */
     public static final String HANDLER_NAME = "compressor";
+
     // See recommendation of http://www.bolet.org/~pornin/deflate-flush.html > Full Flush:
     // A full flush degrades the compression efficiency since it removes sequence sharing opportunities for the next
     // 32 kB of data; however, this degradation is very slight if full flushes are applied only rarely with regards to
@@ -33,11 +45,31 @@ public class PacketCompressor extends MessageToByteEncoder<ByteBuf> {
     private final Deflater deflater;
     private boolean preferReadIntoBuffer;
 
-    public PacketCompressor(int threshold, int compression) {
-        this(threshold, compression, false);
+    /**
+     * Constructs a new {@link PacketCompressor} with the specified {@code threshold} and {@code compression} which
+     * won't force reading an incoming message into the internal buffer.
+     *
+     * @param threshold The minimum packet size in bytes when a message will be compressed
+     * @param compressionLevel The compression level (allowed values are -1 ({@link Deflater#DEFAULT_COMPRESSION}) and
+     *                         1 ({@link Deflater#BEST_SPEED}) to 9 ({@link Deflater#BEST_COMPRESSION}))
+     */
+    public PacketCompressor(int threshold, int compressionLevel) {
+        this(threshold, compressionLevel, false);
     }
 
-    public PacketCompressor(int threshold, int compression, boolean preferReadIntoBuffer) {
+    /**
+     * Constructs a new {@link PacketCompressor} with the specified {@code threshold} and {@code compression}.
+     * Additionally by setting {@code preferReadIntoBuffer} to {@code true} the handler can be forced to copy incoming
+     * data into a buffer instead of accessing the buffer array by {@link ByteBuf#array()} directly.
+     *
+     * @param threshold The minimum packet size in bytes when a message will be compressed
+     * @param compressionLevel The compression level (allowed values are -1 ({@link Deflater#DEFAULT_COMPRESSION}) and
+     *                         1 ({@link Deflater#BEST_SPEED}) to 9 ({@link Deflater#BEST_COMPRESSION}))
+     * @param preferReadIntoBuffer {@code true} if the {@link ByteBuf}s array should <strong>not</strong> be
+     *                             accessed directly even if it is available. Otherwise the buffers array is used if
+     *                             available
+     */
+    public PacketCompressor(int threshold, int compressionLevel, boolean preferReadIntoBuffer) {
         super(false);
 
         if (threshold < 0)
@@ -45,9 +77,9 @@ public class PacketCompressor extends MessageToByteEncoder<ByteBuf> {
         this.threshold = threshold;
         this.preferReadIntoBuffer = preferReadIntoBuffer;
 
-        if (compression != Deflater.DEFAULT_COMPRESSION && (compression > Deflater.BEST_COMPRESSION || compression < Deflater.BEST_SPEED))
-            throw new IllegalArgumentException("compression must be " + Deflater.DEFAULT_COMPRESSION + " or between " + Deflater.BEST_SPEED + " and " + Deflater.BEST_COMPRESSION);
-        deflater = new Deflater(compression);
+        if (compressionLevel != Deflater.DEFAULT_COMPRESSION && (compressionLevel > Deflater.BEST_COMPRESSION || compressionLevel < Deflater.BEST_SPEED))
+            throw new IllegalArgumentException("compressionLevel must be " + Deflater.DEFAULT_COMPRESSION + " or between " + Deflater.BEST_SPEED + " and " + Deflater.BEST_COMPRESSION);
+        deflater = new Deflater(compressionLevel);
     }
 
     @Override

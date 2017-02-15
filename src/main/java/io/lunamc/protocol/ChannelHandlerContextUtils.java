@@ -11,12 +11,21 @@ import io.netty.channel.ChannelHandlerContext;
 
 import java.util.Objects;
 
+/**
+ * Utilities for dealing with Netty's {@link ChannelHandlerContext}.
+ */
 public class ChannelHandlerContextUtils {
 
-    public ChannelHandlerContextUtils() {
+    private ChannelHandlerContextUtils() {
         throw new UnsupportedOperationException(getClass().getSimpleName() + " is a utility class and should not be constructed");
     }
 
+    /**
+     * Returns printable information about the connected client.
+     *
+     * @param ctx The {@link ChannelHandlerContext}
+     * @return A string represents the connected client
+     */
     public static String client(ChannelHandlerContext ctx) {
         Objects.requireNonNull(ctx, "ctx must not be null");
 

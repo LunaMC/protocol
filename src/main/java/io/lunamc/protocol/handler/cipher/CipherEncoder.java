@@ -15,18 +15,43 @@ import io.netty.handler.codec.MessageToByteEncoder;
 import javax.crypto.Cipher;
 import javax.crypto.SecretKey;
 
+/**
+ * Encrypts outgoing {@link ByteBuf}s with a {@link SecretKey}.
+ * <p>
+ * Until {@code preferReadIntoBuffer} is set to {@code true} this handler will tries to access the message buffers
+ * array directly. When {@code preferReadIntoBuffer} is set to {@code true} or {@link ByteBuf#hasArray()} returns
+ * {@code false} the content will be read into a cached buffer baked by {@link DynamicBuffer}.
+ */
 public class CipherEncoder extends MessageToByteEncoder<ByteBuf> {
 
+    /**
+     * A name for this handler.
+     */
     public static final String HANDLER_NAME = "encryptor";
 
     private final DynamicBuffer buffer = new DynamicBuffer();
     private final Cipher cipher;
     private final boolean preferReadIntoBuffer;
 
+    /**
+     * Constructs a new {@link CipherEncoder} with the specified {@link SecretKey} which won't force reading into the
+     * internal buffer.
+     *
+     * @param key The {@link SecretKey} used for encryption
+     */
     public CipherEncoder(SecretKey key) {
         this(key, false);
     }
 
+    /**
+     * Constructs a new {@link CipherEncoder} with the specified {@link SecretKey}. Additionally by setting
+     * {@code preferReadIntoBuffer} to {@code true} the handler can be forced to read the data into a buffer
+     * instead of accessing the buffer array by {@link ByteBuf#array()} directly.
+     *
+     * @param key The {@link SecretKey} used for encryption
+     * @param preferReadIntoBuffer {@code true} if the {@link ByteBuf}s array should <strong>not</strong> be accessed
+     *                             directly even if it is available. Otherwise the buffers array is used if available
+     */
     public CipherEncoder(SecretKey key, boolean preferReadIntoBuffer) {
         super(false);
 
