@@ -16,6 +16,7 @@ import io.netty.handler.codec.MessageToMessageDecoder;
 import javax.crypto.Cipher;
 import javax.crypto.SecretKey;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Decrypts incoming {@link ByteBuf}s.
@@ -40,6 +41,7 @@ public class CipherDecoder extends MessageToMessageDecoder<ByteBuf> {
      * incoming message into the internal buffer.
      *
      * @param key The {@link SecretKey} used for encryption
+     * @throws NullPointerException Will be thrown if {@code key} is {@code null}
      */
     public CipherDecoder(SecretKey key) {
         this(key, LengthLimitedFrameDecoder.MAX_LENGTH, false);
@@ -54,11 +56,14 @@ public class CipherDecoder extends MessageToMessageDecoder<ByteBuf> {
      * @param preferReadIntoBuffer {@code true} if the incoming {@link ByteBuf}s array should <strong>not</strong> be
      *                             accessed directly even if it is available. Otherwise the buffers array is used if
      *                             available
+     * @throws NullPointerException Will be thrown if {@code key} is {@code null}
      */
     public CipherDecoder(SecretKey key, int maxLength, boolean preferReadIntoBuffer) {
-        cipher = CipherUtils.createInitialized(Cipher.DECRYPT_MODE, key);
+        Objects.requireNonNull(key, "key must not be null");
+
         this.preferReadIntoBuffer = preferReadIntoBuffer;
 
+        cipher = CipherUtils.createInitialized(Cipher.DECRYPT_MODE, key);
         buffer = new DynamicBuffer(maxLength);
     }
 

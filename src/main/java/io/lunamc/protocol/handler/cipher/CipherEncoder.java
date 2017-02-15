@@ -14,6 +14,7 @@ import io.netty.handler.codec.MessageToByteEncoder;
 
 import javax.crypto.Cipher;
 import javax.crypto.SecretKey;
+import java.util.Objects;
 
 /**
  * Encrypts outgoing {@link ByteBuf}s with a {@link SecretKey}.
@@ -38,6 +39,7 @@ public class CipherEncoder extends MessageToByteEncoder<ByteBuf> {
      * internal buffer.
      *
      * @param key The {@link SecretKey} used for encryption
+     * @throws NullPointerException Will be thrown if {@code key} is {@code null}
      */
     public CipherEncoder(SecretKey key) {
         this(key, false);
@@ -51,9 +53,12 @@ public class CipherEncoder extends MessageToByteEncoder<ByteBuf> {
      * @param key The {@link SecretKey} used for encryption
      * @param preferReadIntoBuffer {@code true} if the {@link ByteBuf}s array should <strong>not</strong> be accessed
      *                             directly even if it is available. Otherwise the buffers array is used if available
+     * @throws NullPointerException Will be thrown if {@code key} is {@code null}
      */
     public CipherEncoder(SecretKey key, boolean preferReadIntoBuffer) {
         super(false);
+
+        Objects.requireNonNull(key, "key must not be null");
 
         this.preferReadIntoBuffer = preferReadIntoBuffer;
 
