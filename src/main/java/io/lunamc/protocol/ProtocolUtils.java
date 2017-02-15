@@ -364,6 +364,7 @@ public class ProtocolUtils {
      *                              {@code null}
      * @throws MalformedDataException Will be thrown if an invalid {@code VarInt} was read
      * @throws IndexOutOfBoundsException Will be thrown if the data stream ends before the array was read successfully
+     * @throws IllegalStateException Will be thrown if the constructed array is too small
      * @return The read array
      */
     public static <T> T[] readArray(ByteBuf input, Function<Integer, T[]> arrayConstructor, Function<ByteBuf, T> reader) {
@@ -373,6 +374,8 @@ public class ProtocolUtils {
 
         int length = readVarInt(input);
         T[] data = arrayConstructor.apply(length);
+        if (data.length < length)
+            throw new IllegalStateException("Constructed array is too small (size: " + data.length + ", required: " + length + ")");
         for (int i = 0; i < data.length; i++)
             data[i] = reader.apply(input);
         return data;
