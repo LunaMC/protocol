@@ -29,17 +29,12 @@ public class PacketLengthPrepender extends MessageToByteEncoder<ByteBuf> {
     /**
      * A singleton instance.
      */
-    @SuppressWarnings("deprecation")
     public static final PacketLengthPrepender INSTANCE = new PacketLengthPrepender();
 
     /**
      * Constructs a new {@link PacketLengthPrepender}
-     *
-     * @deprecated Use {@link PacketLengthPrepender#INSTANCE} instead
      */
-    @SuppressWarnings("DeprecatedIsStillUsed")
-    @Deprecated
-    public PacketLengthPrepender() {
+    protected PacketLengthPrepender() {
         super(ByteBuf.class);
     }
 

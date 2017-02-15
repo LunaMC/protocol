@@ -37,8 +37,8 @@ public class CipherDecoder extends MessageToMessageDecoder<ByteBuf> {
     private final DynamicBuffer buffer;
 
     /**
-     * Constructs a new {@link CipherDecoder} with the specified {@link SecretKey} which won't force reading an
-     * incoming message into the internal buffer.
+     * Constructs a new {@link CipherDecoder} with the specified {@link SecretKey} and a default maximum size which
+     * won't force reading an incoming message into the internal buffer.
      *
      * @param key The {@link SecretKey} used for encryption
      * @throws NullPointerException Will be thrown if {@code key} is {@code null}
@@ -53,18 +53,19 @@ public class CipherDecoder extends MessageToMessageDecoder<ByteBuf> {
      * instead of accessing the buffer array by {@link ByteBuf#array()} directly.
      *
      * @param key The {@link SecretKey} used for encryption
+     * @param maxSize The maximum (compressed) size for an incoming packet
      * @param preferReadIntoBuffer {@code true} if the incoming {@link ByteBuf}s array should <strong>not</strong> be
      *                             accessed directly even if it is available. Otherwise the buffers array is used if
      *                             available
      * @throws NullPointerException Will be thrown if {@code key} is {@code null}
      */
-    public CipherDecoder(SecretKey key, int maxLength, boolean preferReadIntoBuffer) {
+    public CipherDecoder(SecretKey key, int maxSize, boolean preferReadIntoBuffer) {
         Objects.requireNonNull(key, "key must not be null");
 
         this.preferReadIntoBuffer = preferReadIntoBuffer;
 
         cipher = CipherUtils.createInitialized(Cipher.DECRYPT_MODE, key);
-        buffer = new DynamicBuffer(maxLength);
+        buffer = new DynamicBuffer(maxSize);
     }
 
     @Override
