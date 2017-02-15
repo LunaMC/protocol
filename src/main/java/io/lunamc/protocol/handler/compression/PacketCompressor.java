@@ -91,7 +91,12 @@ public class PacketCompressor extends MessageToByteEncoder<ByteBuf> {
             deflater.finish();
 
             while (!deflater.finished()) {
-                int bytesWritten = deflater.deflate(out.array(), out.arrayOffset() + out.writerIndex(), MAX_FLUSH_LENGTH, Deflater.FULL_FLUSH);
+                int bytesWritten = deflater.deflate(
+                        out.array(),
+                        out.arrayOffset() + out.writerIndex(),
+                        Math.min(out.writableBytes(), MAX_FLUSH_LENGTH),
+                        Deflater.FULL_FLUSH
+                );
                 out.writerIndex(out.writerIndex() + bytesWritten);
             }
         } finally {
