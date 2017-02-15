@@ -78,11 +78,11 @@ public class ProtocolUtils {
         byte b;
         do {
             if (!input.isReadable())
-                throw new RuntimeException("Malformed VarInt");
+                throw new MalformedDataException("Malformed VarInt");
             b = input.readByte();
             result |= (b & 0b01111111) << (7 * bytes++);
             if (bytes > 5)
-                throw new RuntimeException("VarInt is too big");
+                throw new MalformedDataException("VarInt is too big");
         } while ((b & 0b10000000) != 0);
         return result;
     }
@@ -126,11 +126,11 @@ public class ProtocolUtils {
         byte b;
         do {
             if (!input.isReadable())
-                throw new RuntimeException("Malformed VarLong");
+                throw new MalformedDataException("Malformed VarLong");
             b = input.readByte();
             result |= (b & 0b01111111L) << (7 * bytes++);
             if (bytes > 10)
-                throw new RuntimeException("VarLong is too big");
+                throw new MalformedDataException("VarLong is too big");
         } while ((b & 0b10000000) != 0);
         return result;
     }
