@@ -33,6 +33,10 @@ Latest Version from Maven Central:
  * `io.lunamc.protocol.handler.compression.PacketCompressor` - Compresses outgoing `ByteBuf`s.
  * `io.lunamc.protocol.handler.compression.PacketDecompressor` - Decompress incoming `ByteBuf`s.
 
+## Documentation
+
+ * [JavaDoc 0.1.0](https://javadoc.io/doc/io.lunamc/luna-protocol/0.1.0)
+
 ## Special Thanks
 
  * [The Minecraft Coalition](http://wiki.vg/) for reverse engineering the Minecraft protocol.
