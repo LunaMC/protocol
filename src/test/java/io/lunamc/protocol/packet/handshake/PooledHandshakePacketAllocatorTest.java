@@ -8,13 +8,20 @@
 package io.lunamc.protocol.packet.handshake;
 
 import io.lunamc.protocol.testutils.PoolTestUtility;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class PooledHandshakePacketAllocatorTest {
 
+    private static PooledHandshakePacketAllocator alloc;
+
+    @BeforeClass
+    public static void prepare() {
+        alloc = new PooledHandshakePacketAllocator();
+    }
+
     @Test
     public void testPooledHandshakeRequestV47() {
-        PooledHandshakePacketAllocator alloc = new PooledHandshakePacketAllocator();
         PoolTestUtility.testPoolCapability(alloc::getHandshakeServerboundV47);
     }
 }

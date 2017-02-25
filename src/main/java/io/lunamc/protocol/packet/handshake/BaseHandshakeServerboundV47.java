@@ -19,6 +19,9 @@ class BaseHandshakeServerboundV47 implements HandshakeServerboundV47 {
     private int serverPort;
     private NextProtocolState nextState;
 
+    BaseHandshakeServerboundV47() {
+    }
+
     @Override
     public int getProtocolVersion() {
         return protocolVersion;
@@ -87,9 +90,9 @@ class BaseHandshakeServerboundV47 implements HandshakeServerboundV47 {
     public boolean equals(Object o) {
         if (this == o)
             return true;
-        if (!(o instanceof BaseHandshakeServerboundV47))
+        if (!(o instanceof HandshakeServerboundV47))
             return false;
-        BaseHandshakeServerboundV47 that = (BaseHandshakeServerboundV47) o;
+        HandshakeServerboundV47 that = (HandshakeServerboundV47) o;
         return getProtocolVersion() == that.getProtocolVersion() &&
                 getServerPort() == that.getServerPort() &&
                 Objects.equals(getServerAddress(), that.getServerAddress()) &&
@@ -103,7 +106,7 @@ class BaseHandshakeServerboundV47 implements HandshakeServerboundV47 {
 
     @Override
     public String toString() {
-        return getClass().getName() + "{" + "protocolVersion=" + getProtocolVersion() +
+        return getClass().getName() + "{protocolVersion=" + getProtocolVersion() +
                 ", serverAddress=\"" + getServerAddress() + '"' +
                 ", serverPort=" + getServerPort() +
                 ", nextState=" + getNextState() +

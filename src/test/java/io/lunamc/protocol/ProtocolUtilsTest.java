@@ -97,6 +97,14 @@ public class ProtocolUtilsTest {
     }
 
     @Test
+    public void testWriteReadByteArray() {
+        ByteBuf buffer = Unpooled.buffer();
+        byte[] values = new byte[] { 0, 1, 2, Byte.MAX_VALUE, -1, Byte.MIN_VALUE };
+        ProtocolUtils.writeByteArray(buffer, values);
+        Assert.assertArrayEquals(values, ProtocolUtils.readByteArray(buffer));
+    }
+
+    @Test
     public void testWriteVarLong() {
         // Test against raw reference VarLongs of wiki.vg to ensure compatibility with Minecraft
         Assert.assertArrayEquals(new byte[] { 0x00 }, createVarLong(0));

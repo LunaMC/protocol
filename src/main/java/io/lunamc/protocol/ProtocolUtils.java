@@ -163,6 +163,46 @@ public class ProtocolUtils {
     }
 
     /**
+     * Writes an array of {@code byte}s to the specified {@link ByteBuf}. An array is written by writing the length
+     * of it as a {@code VarInt} followed by the elements.
+     *
+     * @see #writeVarInt(ByteBuf, int)
+     * @see ByteBuf#writeByte(int)
+     * @param output The {@link ByteBuf} to which the {@code VarInt} array will be written
+     * @param values The values which should be written
+     * @throws NullPointerException Will be thrown if {@code output} or {@code values} is {@code null}
+     * @throws IndexOutOfBoundsException Will be thrown if {@code output} is not able to handle a write call
+     */
+    public static void writeByteArray(ByteBuf output, byte[] values) {
+        Objects.requireNonNull(output, "output must not be null");
+        Objects.requireNonNull(values, "values must not be null");
+
+        writeVarInt(output, values.length);
+        for (byte value : values)
+            output.writeByte(value);
+    }
+
+    /**
+     * Reads an array of {@code byte}s from the specified {@link ByteBuf}. An array is read by reading its length as
+     * a {@code VarInt} followed by the elements.
+     *
+     * @see #readVarInt(ByteBuf)
+     * @see ByteBuf#readByte()
+     * @param input The {@link ByteBuf} from which the {@code VarInt} array will be read
+     * @throws NullPointerException Will be thrown if {@code input} is {@code null}
+     * @throws MalformedDataException Will be thrown if an invalid {@code VarInt} was read
+     * @return The read {@code VarInt} array
+     */
+    public static byte[] readByteArray(ByteBuf input) {
+        Objects.requireNonNull(input, "input must not be null");
+
+        byte[] values = new byte[readVarInt(input)];
+        for (int i = 0; i < values.length; i++)
+            values[i] = input.readByte();
+        return values;
+    }
+
+    /**
      * Writes a {@code VarLong} to the specified {@link ByteBuf}. A {@code VarLong} uses the most significant bit of a
      * byte to indicate if this is the last data byte of the {@code VarLong} and the remaining 7 bits for the data. A
      * {@code VarLong} can be up to 9 bytes long.

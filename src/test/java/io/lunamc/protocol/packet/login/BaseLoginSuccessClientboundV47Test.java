@@ -5,21 +5,23 @@
  * of the MIT license. See the LICENSE file for details.
  */
 
-package io.lunamc.protocol.packet.handshake;
+package io.lunamc.protocol.packet.login;
 
 import io.lunamc.protocol.packet.AbstractPacketTest;
 import io.lunamc.protocol.packet.Packet;
 
-public class BaseHandshakeServerboundV47Test extends AbstractPacketTest {
+import java.util.UUID;
+
+public class BaseLoginSuccessClientboundV47Test extends AbstractPacketTest {
+
+    private static final String UUID = java.util.UUID.randomUUID().toString();
 
     @Override
     protected Packet createPacket(boolean content) {
-        BaseHandshakeServerboundV47 packet = new BaseHandshakeServerboundV47();
+        BaseLoginSuccessClientboundV47 packet = new BaseLoginSuccessClientboundV47();
         if (content) {
-            packet.setProtocolVersion(47);
-            packet.setServerAddress("localhost");
-            packet.setServerPort(25565);
-            packet.setNextState(NextProtocolState.STATUS);
+            packet.setUuid(UUID);
+            packet.setUsername("a_sample_player");
         }
         return packet;
     }
