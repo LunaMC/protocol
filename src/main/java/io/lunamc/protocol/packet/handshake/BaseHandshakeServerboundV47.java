@@ -76,6 +76,14 @@ class BaseHandshakeServerboundV47 implements HandshakeServerboundV47 {
     }
 
     @Override
+    public void reset() {
+        setProtocolVersion(0);
+        setServerAddress(null);
+        setServerPort(0);
+        setNextState(null);
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o)
             return true;

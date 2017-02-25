@@ -85,11 +85,4 @@ class ReferenceCountedHandshakeServerboundV47 extends BaseHandshakeServerboundV4
     public boolean release(int decrement) {
         return refCnt.release(decrement);
     }
-
-    private void reset() {
-        setProtocolVersion(0);
-        setServerAddress(null);
-        setServerPort(0);
-        setNextState(null);
-    }
 }

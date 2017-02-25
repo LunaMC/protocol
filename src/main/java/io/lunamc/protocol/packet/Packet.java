@@ -14,4 +14,6 @@ public interface Packet {
     void write(ByteBuf output);
 
     void read(ByteBuf input);
+
+    void reset();
 }
