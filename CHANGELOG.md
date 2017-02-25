@@ -21,6 +21,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
  * An allocator for getting unpooled login protocol models
  * An allocator for getting pooled login protocol models
 
+### Changed
+
+ * Re-Licensed under Apache 2.0 license
+
 ## 0.1.0 - 2017-02-16
 
 ### Added
