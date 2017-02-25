@@ -36,6 +36,7 @@ Latest Version from Maven Central:
 ## Documentation
 
  * [JavaDoc 0.1.0](https://javadoc.io/doc/io.lunamc/luna-protocol/0.1.0)
+ * [Changelog](./CHANGELOG.md)
 
 ## Special Thanks
 
