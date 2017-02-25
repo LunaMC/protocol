@@ -12,7 +12,7 @@ import io.netty.buffer.ByteBuf;
 
 import java.util.Objects;
 
-class BaseHandshakeRequestV47 implements HandshakeRequestV47 {
+class BaseHandshakeServerboundV47 implements HandshakeServerboundV47 {
 
     private int protocolVersion;
     private String serverAddress;
@@ -79,9 +79,9 @@ class BaseHandshakeRequestV47 implements HandshakeRequestV47 {
     public boolean equals(Object o) {
         if (this == o)
             return true;
-        if (!(o instanceof BaseHandshakeRequestV47))
+        if (!(o instanceof BaseHandshakeServerboundV47))
             return false;
-        BaseHandshakeRequestV47 that = (BaseHandshakeRequestV47) o;
+        BaseHandshakeServerboundV47 that = (BaseHandshakeServerboundV47) o;
         return getProtocolVersion() == that.getProtocolVersion() &&
                 getServerPort() == that.getServerPort() &&
                 Objects.equals(getServerAddress(), that.getServerAddress()) &&

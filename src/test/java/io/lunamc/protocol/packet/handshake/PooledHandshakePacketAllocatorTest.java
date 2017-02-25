@@ -15,6 +15,6 @@ public class PooledHandshakePacketAllocatorTest {
     @Test
     public void testPooledHandshakeRequestV47() {
         PooledHandshakePacketAllocator alloc = new PooledHandshakePacketAllocator();
-        PoolTestUtility.testPoolCapability(alloc::handshakeRequestV47);
+        PoolTestUtility.testPoolCapability(alloc::handshakeServerboundV47);
     }
 }

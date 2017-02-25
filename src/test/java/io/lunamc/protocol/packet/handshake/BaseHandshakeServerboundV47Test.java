@@ -12,15 +12,15 @@ import io.netty.buffer.Unpooled;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class BaseHandshakeRequestV47Test {
+public class BaseHandshakeServerboundV47Test {
 
     @Test
     public void testWriteRead() {
         ByteBuf buf = Unpooled.buffer();
-        BaseHandshakeRequestV47 packet = createHandshakeRequest();
+        BaseHandshakeServerboundV47 packet = createHandshakeRequest();
         packet.write(buf);
 
-        BaseHandshakeRequestV47 other = new BaseHandshakeRequestV47();
+        BaseHandshakeServerboundV47 other = new BaseHandshakeServerboundV47();
         other.read(buf);
 
         Assert.assertEquals(packet, other);
@@ -36,8 +36,8 @@ public class BaseHandshakeRequestV47Test {
         Assert.assertEquals(createHandshakeRequest().hashCode(), createHandshakeRequest().hashCode());
     }
 
-    private static BaseHandshakeRequestV47 createHandshakeRequest() {
-        BaseHandshakeRequestV47 packet = new BaseHandshakeRequestV47();
+    private static BaseHandshakeServerboundV47 createHandshakeRequest() {
+        BaseHandshakeServerboundV47 packet = new BaseHandshakeServerboundV47();
         packet.setProtocolVersion(47);
         packet.setServerAddress("localhost");
         packet.setServerPort(25565);

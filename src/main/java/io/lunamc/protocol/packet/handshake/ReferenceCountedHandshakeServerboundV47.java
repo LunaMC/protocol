@@ -16,36 +16,36 @@ import io.netty.util.ResourceLeakTracker;
 
 import java.util.Objects;
 
-class ReferenceCountedHandshakeRequestV47 extends BaseHandshakeRequestV47 implements ReferenceCounted {
+class ReferenceCountedHandshakeServerboundV47 extends BaseHandshakeServerboundV47 implements ReferenceCounted {
 
-    private static final ResourceLeakDetector<ReferenceCountedHandshakeRequestV47> LEAK_DETECTOR =
-            ResourceLeakDetectorFactory.instance().newResourceLeakDetector(ReferenceCountedHandshakeRequestV47.class);
+    private static final ResourceLeakDetector<ReferenceCountedHandshakeServerboundV47> LEAK_DETECTOR =
+            ResourceLeakDetectorFactory.instance().newResourceLeakDetector(ReferenceCountedHandshakeServerboundV47.class);
 
     private final AbstractReferenceCounted refCnt = new AbstractReferenceCounted() {
         @Override
         protected void deallocate() {
             if (leakTracker != null)
-                assert leakTracker.close(ReferenceCountedHandshakeRequestV47.this);
+                assert leakTracker.close(ReferenceCountedHandshakeServerboundV47.this);
             reset();
-            handle.recycle(ReferenceCountedHandshakeRequestV47.this);
+            handle.recycle(ReferenceCountedHandshakeServerboundV47.this);
         }
 
         @Override
         public ReferenceCounted touch(Object hint) {
             if (leakTracker != null)
                 leakTracker.record(hint);
-            return ReferenceCountedHandshakeRequestV47.this;
+            return ReferenceCountedHandshakeServerboundV47.this;
         }
     };
-    private final Recycler.Handle<ReferenceCountedHandshakeRequestV47> handle;
-    private final ResourceLeakTracker<ReferenceCountedHandshakeRequestV47> leakTracker;
+    private final Recycler.Handle<ReferenceCountedHandshakeServerboundV47> handle;
+    private final ResourceLeakTracker<ReferenceCountedHandshakeServerboundV47> leakTracker;
 
-    ReferenceCountedHandshakeRequestV47(Recycler.Handle<ReferenceCountedHandshakeRequestV47> handle) {
+    ReferenceCountedHandshakeServerboundV47(Recycler.Handle<ReferenceCountedHandshakeServerboundV47> handle) {
         this(handle, ResourceLeakDetector.isEnabled());
     }
 
-    ReferenceCountedHandshakeRequestV47(Recycler.Handle<ReferenceCountedHandshakeRequestV47> handle,
-                                               boolean leakDetection) {
+    ReferenceCountedHandshakeServerboundV47(Recycler.Handle<ReferenceCountedHandshakeServerboundV47> handle,
+                                            boolean leakDetection) {
         this.handle = Objects.requireNonNull(handle, "handle must not be null");
 
         leakTracker = leakDetection ? LEAK_DETECTOR.track(this) : null;

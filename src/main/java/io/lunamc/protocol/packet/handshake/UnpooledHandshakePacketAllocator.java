@@ -15,7 +15,7 @@ public class UnpooledHandshakePacketAllocator implements HandshakePacketAllocato
     }
 
     @Override
-    public HandshakeRequestV47 handshakeRequestV47() {
-        return new BaseHandshakeRequestV47();
+    public HandshakeServerboundV47 handshakeServerboundV47() {
+        return new BaseHandshakeServerboundV47();
     }
 }

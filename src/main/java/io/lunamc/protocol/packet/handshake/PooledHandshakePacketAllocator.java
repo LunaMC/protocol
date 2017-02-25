@@ -13,23 +13,23 @@ public class PooledHandshakePacketAllocator implements HandshakePacketAllocator 
 
     public static final PooledHandshakePacketAllocator INSTANCE = new PooledHandshakePacketAllocator();
 
-    private final Recycler<ReferenceCountedHandshakeRequestV47> handshakeRequestV47Recycler;
+    private final Recycler<ReferenceCountedHandshakeServerboundV47> handshakeRequestV47Recycler;
 
     protected PooledHandshakePacketAllocator() {
-        this(new Recycler<ReferenceCountedHandshakeRequestV47>() {
+        this(new Recycler<ReferenceCountedHandshakeServerboundV47>() {
             @Override
-            protected ReferenceCountedHandshakeRequestV47 newObject(Handle<ReferenceCountedHandshakeRequestV47> handle) {
-                return new ReferenceCountedHandshakeRequestV47(handle);
+            protected ReferenceCountedHandshakeServerboundV47 newObject(Handle<ReferenceCountedHandshakeServerboundV47> handle) {
+                return new ReferenceCountedHandshakeServerboundV47(handle);
             }
         });
     }
 
-    protected PooledHandshakePacketAllocator(Recycler<ReferenceCountedHandshakeRequestV47> handshakeRequestV47Recycler) {
+    protected PooledHandshakePacketAllocator(Recycler<ReferenceCountedHandshakeServerboundV47> handshakeRequestV47Recycler) {
         this.handshakeRequestV47Recycler = handshakeRequestV47Recycler;
     }
 
     @Override
-    public HandshakeRequestV47 handshakeRequestV47() {
+    public HandshakeServerboundV47 handshakeServerboundV47() {
         return handshakeRequestV47Recycler.get();
     }
 }

@@ -9,7 +9,7 @@ package io.lunamc.protocol.packet.handshake;
 
 import io.lunamc.protocol.packet.Packet;
 
-public interface HandshakeRequestV47 extends Packet {
+public interface HandshakeServerboundV47 extends Packet {
 
     int getProtocolVersion();
 
