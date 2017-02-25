@@ -9,5 +9,5 @@ package io.lunamc.protocol.packet.handshake;
 
 public interface HandshakePacketAllocator {
 
-    HandshakeServerboundV47 handshakeServerboundV47();
+    HandshakeServerboundV47 getHandshakeServerboundV47();
 }
