@@ -8,7 +8,16 @@
 package io.lunamc.protocol.packet.handshake;
 
 import io.lunamc.protocol.packet.Packet;
+import io.lunamc.protocol.packet.ProtocolBound;
+import io.lunamc.protocol.packet.PacketMeta;
+import io.lunamc.protocol.packet.ProtocolState;
 
+@PacketMeta(
+        packetId = 0x00,
+        minProtocolVersion = 47,
+        protocolBound = ProtocolBound.SERVERBOUND,
+        protocolState = ProtocolState.HANDSHAKE
+)
 public interface HandshakeServerboundV47 extends Packet {
 
     int getProtocolVersion();
