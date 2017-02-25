@@ -9,13 +9,30 @@ Netty handlers for the Minecraft data protocol 1.8+
 
 ## Usage
 
-Latest Version from Maven Central:
+Latest release from Maven Central:
 
 ```xml
 <dependency>
     <groupId>io.lunamc</groupId>
     <artifactId>luna-protocol</artifactId>
     <version>0.1.0</version>
+</dependency>
+```
+
+Latest development snapshot from OSSRH:
+
+```xml
+<repository>
+    <id>ossrh</id>
+    <url>https://oss.sonatype.org/content/groups/public/</url>
+</repository>
+```
+
+```xml
+<dependency>
+    <groupId>io.lunamc</groupId>
+    <artifactId>luna-protocol</artifactId>
+    <version>0.2.0-SNAPSHOT</version>
 </dependency>
 ```
 
