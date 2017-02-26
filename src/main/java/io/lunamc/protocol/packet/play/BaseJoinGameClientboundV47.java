@@ -19,6 +19,8 @@ package io.lunamc.protocol.packet.play;
 import io.lunamc.protocol.ProtocolUtils;
 import io.netty.buffer.ByteBuf;
 
+import java.util.Objects;
+
 class BaseJoinGameClientboundV47 implements JoinGameClientboundV47 {
 
     private int entityId;
@@ -133,5 +135,47 @@ class BaseJoinGameClientboundV47 implements JoinGameClientboundV47 {
         setMaxPlayers((short) 0);
         setLevelType(null);
         setReducedDebugInfo(false);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o)
+            return true;
+        if (!(o instanceof JoinGameClientboundV47))
+            return false;
+        JoinGameClientboundV47 that = (JoinGameClientboundV47) o;
+        return getEntityId() == that.getEntityId() &&
+                getGamemode() == that.getGamemode() &&
+                getDimension() == that.getDimension() &&
+                getDifficulty() == that.getDifficulty() &&
+                getMaxPlayers() == that.getMaxPlayers() &&
+                isReducedDebugInfo() == that.isReducedDebugInfo() &&
+                Objects.equals(getLevelType(), that.getLevelType());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(
+                getEntityId(),
+                getGamemode(),
+                getDimension(),
+                getDifficulty(),
+                getMaxPlayers(),
+                getLevelType(),
+                isReducedDebugInfo()
+        );
+    }
+
+    @Override
+    public String toString() {
+        return getClass().getName() +
+                "{entityId=" + getEntityId() +
+                ", gamemode=" + getGamemode() +
+                ", dimension=" + getDimension() +
+                ", difficulty=" + getDifficulty() +
+                ", maxPlayers=" + getMaxPlayers() +
+                ", levelType=\"" + getLevelType() +
+                "\", reducedDebugInfo=" + isReducedDebugInfo() +
+                '}';
     }
 }

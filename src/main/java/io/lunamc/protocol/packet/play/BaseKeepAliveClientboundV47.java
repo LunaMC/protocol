@@ -19,6 +19,8 @@ package io.lunamc.protocol.packet.play;
 import io.lunamc.protocol.ProtocolUtils;
 import io.netty.buffer.ByteBuf;
 
+import java.util.Objects;
+
 class BaseKeepAliveClientboundV47 implements KeepAliveClientboundV47 {
 
     private int keepAliveId;
@@ -49,5 +51,21 @@ class BaseKeepAliveClientboundV47 implements KeepAliveClientboundV47 {
     @Override
     public void reset() {
         setKeepAliveId(0);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        return this == o ||
+                (o instanceof KeepAliveClientboundV47 && getKeepAliveId() == ((KeepAliveClientboundV47) o).getKeepAliveId());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getKeepAliveId());
+    }
+
+    @Override
+    public String toString() {
+        return getClass().getName() + "{keepAliveId=" + getKeepAliveId() + '}';
     }
 }

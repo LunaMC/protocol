@@ -18,6 +18,8 @@ package io.lunamc.protocol.packet.play;
 
 import io.netty.buffer.ByteBuf;
 
+import java.util.Objects;
+
 class BaseTimeUpdateClientboundV47 implements TimeUpdateClientboundV47 {
 
     private long worldAge;
@@ -62,5 +64,26 @@ class BaseTimeUpdateClientboundV47 implements TimeUpdateClientboundV47 {
     public void reset() {
         setWorldAge(0);
         setTimeOfDay(0);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o)
+            return true;
+        if (!(o instanceof TimeUpdateClientboundV47))
+            return false;
+        TimeUpdateClientboundV47 that = (TimeUpdateClientboundV47) o;
+        return getWorldAge() == that.getWorldAge() &&
+                getTimeOfDay() == that.getTimeOfDay();
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getWorldAge(), getTimeOfDay());
+    }
+
+    @Override
+    public String toString() {
+        return getClass().getName() + "{worldAge=" + getWorldAge() + ", timeOfDay=" + getTimeOfDay() + '}';
     }
 }

@@ -19,6 +19,8 @@ package io.lunamc.protocol.packet.play;
 import io.lunamc.protocol.ProtocolUtils;
 import io.netty.buffer.ByteBuf;
 
+import java.util.Objects;
+
 class BaseChatMessageClientboundV47 implements ChatMessageClientboundV47 {
 
     private String jsonData;
@@ -63,5 +65,26 @@ class BaseChatMessageClientboundV47 implements ChatMessageClientboundV47 {
     public void reset() {
         setJsonData(null);
         setPosition((byte) 0);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o)
+            return true;
+        if (!(o instanceof ChatMessageClientboundV47))
+            return false;
+        ChatMessageClientboundV47 that = (ChatMessageClientboundV47) o;
+        return getPosition() == that.getPosition() &&
+                Objects.equals(getJsonData(), that.getJsonData());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getJsonData(), getPosition());
+    }
+
+    @Override
+    public String toString() {
+        return getClass().getName() + "{jsonData=\"" + getJsonData() + "\", position=" + getPosition() + '}';
     }
 }
