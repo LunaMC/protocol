@@ -17,16 +17,7 @@
 package io.lunamc.protocol.packet.login;
 
 import io.lunamc.protocol.packet.Packet;
-import io.lunamc.protocol.packet.PacketMeta;
-import io.lunamc.protocol.packet.ProtocolBound;
-import io.lunamc.protocol.packet.ProtocolState;
 
-@PacketMeta(
-        packetId = 0x01,
-        minProtocolVersion = 47,
-        protocolBound = ProtocolBound.SERVERBOUND,
-        protocolState = ProtocolState.LOGIN
-)
 public interface EncryptionResponseServerboundV47 extends Packet {
 
     byte[] getSharedSecret();
@@ -36,4 +27,9 @@ public interface EncryptionResponseServerboundV47 extends Packet {
     byte[] getVerifyToken();
 
     void setVerifyToken(byte[] verifyToken);
+
+    @Override
+    default int getPacketId() {
+        return 0x01;
+    }
 }

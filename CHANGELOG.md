@@ -13,6 +13,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
  * An protocol model for serverbound handshake requests (`HandshakeServerboundV47`)
  * An allocator for getting unpooled handshake protocol models
  * An allocator for getting pooled handshake protocol models
+ * An utility for creating handshake packets from direction, packet id and protocol version
  * An protocol model for clientbound disconnects (`DisconnectClientboundV47`)
  * An protocol model for clientbound encryption requests (`EncryptionRequestClientboundV47`)
  * An protocol model for clientbound login success (`LoginSuccessClientboundV47`)
@@ -20,6 +21,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
  * An protocol model for serverbound login starts (`LoginStartServerboundV47`)
  * An allocator for getting unpooled login protocol models
  * An allocator for getting pooled login protocol models
+ * An utility for creating login packets from direction, packet id and protocol version
 
 ### Changed
 

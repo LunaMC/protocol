@@ -20,6 +20,8 @@ import io.netty.buffer.ByteBuf;
 
 public interface Packet {
 
+    int getPacketId();
+
     void write(ByteBuf output);
 
     void read(ByteBuf input);
