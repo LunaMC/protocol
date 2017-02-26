@@ -16,16 +16,19 @@
 
 package io.lunamc.protocol.packet.handshake;
 
+import io.lunamc.protocol.internal.utils.ThreadSafeHolder;
 import io.netty.util.Recycler;
+
+import java.util.function.Supplier;
 
 public class PooledHandshakePacketAllocator implements HandshakePacketAllocator {
 
     public static final PooledHandshakePacketAllocator INSTANCE = new PooledHandshakePacketAllocator();
 
-    private final Recycler<ReferenceCountedHandshakeServerboundV47> handshakeServerboundV47Recycler;
+    private ThreadSafeHolder<Recycler<ReferenceCountedHandshakeServerboundV47>> handshakeServerboundV47Recycler;
 
     protected PooledHandshakePacketAllocator() {
-        this(new Recycler<ReferenceCountedHandshakeServerboundV47>() {
+        this(() -> new Recycler<ReferenceCountedHandshakeServerboundV47>() {
             @Override
             protected ReferenceCountedHandshakeServerboundV47 newObject(Handle<ReferenceCountedHandshakeServerboundV47> handle) {
                 return new ReferenceCountedHandshakeServerboundV47(handle);
@@ -33,12 +36,12 @@ public class PooledHandshakePacketAllocator implements HandshakePacketAllocator 
         });
     }
 
-    protected PooledHandshakePacketAllocator(Recycler<ReferenceCountedHandshakeServerboundV47> handshakeServerboundV47Recycler) {
-        this.handshakeServerboundV47Recycler = handshakeServerboundV47Recycler;
+    protected PooledHandshakePacketAllocator(Supplier<Recycler<ReferenceCountedHandshakeServerboundV47>> handshakeServerboundV47RecyclerSupplier) {
+        handshakeServerboundV47Recycler = new ThreadSafeHolder<>(handshakeServerboundV47RecyclerSupplier);
     }
 
     @Override
     public HandshakeServerboundV47 getHandshakeServerboundV47() {
-        return handshakeServerboundV47Recycler.get();
+        return handshakeServerboundV47Recycler.get().get();
     }
 }
