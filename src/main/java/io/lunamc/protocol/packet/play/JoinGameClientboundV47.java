@@ -22,7 +22,7 @@ public interface JoinGameClientboundV47 extends Packet {
 
     int getEntityId();
 
-    void setEntityId();
+    void setEntityId(int entityId);
 
     short getGamemode();
 
