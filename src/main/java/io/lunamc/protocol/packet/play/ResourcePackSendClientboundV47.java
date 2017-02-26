@@ -29,7 +29,7 @@ public interface ResourcePackSendClientboundV47 extends Packet {
     void setHash(String has);
 
     @Override
-    default int getPacketId() {
-        return 0x48;
+    default Class<? extends Packet> getModelClass() {
+        return ResourcePackSendClientboundV47.class;
     }
 }

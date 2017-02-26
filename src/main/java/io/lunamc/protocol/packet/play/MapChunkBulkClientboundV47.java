@@ -36,7 +36,7 @@ public interface MapChunkBulkClientboundV47 extends Packet {
     void setChunkData(Chunk[] chunkData);
 
     @Override
-    default int getPacketId() {
-        return 0x26;
+    default Class<? extends Packet> getModelClass() {
+        return MapChunkBulkClientboundV47.class;
     }
 }

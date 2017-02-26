@@ -33,7 +33,7 @@ public interface ConfirmTransactionClientboundV47 extends Packet {
     void setAccepted(boolean accepted);
 
     @Override
-    default int getPacketId() {
-        return 0x32;
+    default Class<? extends Packet> getModelClass() {
+        return ConfirmTransactionClientboundV47.class;
     }
 }

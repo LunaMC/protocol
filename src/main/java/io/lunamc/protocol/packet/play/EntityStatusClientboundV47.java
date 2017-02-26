@@ -29,7 +29,7 @@ public interface EntityStatusClientboundV47 extends Packet {
     void setEntityStatus(byte entityStatus);
 
     @Override
-    default int getPacketId() {
-        return 0x1a;
+    default Class<? extends Packet> getModelClass() {
+        return EntityStatusClientboundV47.class;
     }
 }

@@ -60,7 +60,7 @@ public interface SpawnPlayerClientboundV47 extends Packet {
     void setMetadata();
 
     @Override
-    default int getPacketId() {
-        return 0x0c;
+    default Class<? extends Packet> getModelClass() {
+        return SpawnPlayerClientboundV47.class;
     }
 }

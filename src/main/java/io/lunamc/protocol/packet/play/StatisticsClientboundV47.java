@@ -26,7 +26,7 @@ public interface StatisticsClientboundV47 extends Packet {
     void setStatistics(Statistic[] statistics);
 
     @Override
-    default int getPacketId() {
-        return 0x37;
+    default Class<? extends Packet> getModelClass() {
+        return StatisticsClientboundV47.class;
     }
 }

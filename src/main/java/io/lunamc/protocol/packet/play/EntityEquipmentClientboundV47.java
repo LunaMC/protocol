@@ -34,7 +34,7 @@ public interface EntityEquipmentClientboundV47 extends Packet {
     void setItem(SlotData item);
 
     @Override
-    default int getPacketId() {
-        return 0x04;
+    default Class<? extends Packet> getModelClass() {
+        return EntityEquipmentClientboundV47.class;
     }
 }

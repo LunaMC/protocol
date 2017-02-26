@@ -37,7 +37,7 @@ public interface EntityLookClientboundV47 extends Packet {
     void setOnGround(boolean onGround);
 
     @Override
-    default int getPacketId() {
-        return 0x16;
+    default Class<? extends Packet> getModelClass() {
+        return EntityLookClientboundV47.class;
     }
 }

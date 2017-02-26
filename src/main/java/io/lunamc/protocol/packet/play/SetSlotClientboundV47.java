@@ -34,7 +34,7 @@ public interface SetSlotClientboundV47 extends Packet {
     void setSlotData(SlotData slotData);
 
     @Override
-    default int getPacketId() {
-        return 0x2f;
+    default Class<? extends Packet> getModelClass() {
+        return SetSlotClientboundV47.class;
     }
 }

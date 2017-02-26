@@ -26,7 +26,7 @@ public interface OpenSignEditorClientboundV47 extends Packet {
     void setLocation(Position position);
 
     @Override
-    default int getPacketId() {
-        return 0x36;
+    default Class<? extends Packet> getModelClass() {
+        return OpenSignEditorClientboundV47.class;
     }
 }

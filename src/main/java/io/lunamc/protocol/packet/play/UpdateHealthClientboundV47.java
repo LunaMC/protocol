@@ -33,7 +33,7 @@ public interface UpdateHealthClientboundV47 extends Packet {
     void setFoodSaturation(float foodSaturation);
 
     @Override
-    default int getPacketId() {
-        return 0x06;
+    default Class<? extends Packet> getModelClass() {
+        return UpdateHealthClientboundV47.class;
     }
 }

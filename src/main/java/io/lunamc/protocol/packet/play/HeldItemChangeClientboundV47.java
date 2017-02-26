@@ -25,7 +25,7 @@ public interface HeldItemChangeClientboundV47 extends Packet {
     void setSlot(byte slot);
 
     @Override
-    default int getPacketId() {
-        return 0x09;
+    default Class<? extends Packet> getModelClass() {
+        return HeldItemChangeClientboundV47.class;
     }
 }

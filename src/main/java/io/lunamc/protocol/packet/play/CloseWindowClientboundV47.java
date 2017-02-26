@@ -25,7 +25,7 @@ public interface CloseWindowClientboundV47 extends Packet {
     void setWindowId(short windowId);
 
     @Override
-    default int getPacketId() {
-        return 0x2e;
+    default Class<? extends Packet> getModelClass() {
+        return CloseWindowClientboundV47.class;
     }
 }

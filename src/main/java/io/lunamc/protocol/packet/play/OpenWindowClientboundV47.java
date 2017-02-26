@@ -41,7 +41,7 @@ public interface OpenWindowClientboundV47 extends Packet {
     void setEntityId();
 
     @Override
-    default int getPacketId() {
-        return 0x2d;
+    default Class<? extends Packet> getModelClass() {
+        return OpenWindowClientboundV47.class;
     }
 }

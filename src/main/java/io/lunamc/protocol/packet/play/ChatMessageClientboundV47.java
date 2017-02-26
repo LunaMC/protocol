@@ -29,7 +29,7 @@ public interface ChatMessageClientboundV47 extends Packet {
     void setPosition(byte position);
 
     @Override
-    default int getPacketId() {
-        return 0x02;
+    default Class<? extends Packet> getModelClass() {
+        return ChatMessageClientboundV47.class;
     }
 }

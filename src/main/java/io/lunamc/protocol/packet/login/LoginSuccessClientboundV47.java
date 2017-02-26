@@ -29,7 +29,7 @@ public interface LoginSuccessClientboundV47 extends Packet {
     void setUsername(String username);
 
     @Override
-    default int getPacketId() {
-        return 0x02;
+    default Class<? extends Packet> getModelClass() {
+        return LoginSuccessClientboundV47.class;
     }
 }

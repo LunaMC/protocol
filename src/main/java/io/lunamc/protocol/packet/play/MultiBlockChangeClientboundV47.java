@@ -34,7 +34,7 @@ public interface MultiBlockChangeClientboundV47 extends Packet {
     void setRecords(BlockChangeRecord[] records);
 
     @Override
-    default int getPacketId() {
-        return 0x22;
+    default Class<? extends Packet> getModelClass() {
+        return MultiBlockChangeClientboundV47.class;
     }
 }

@@ -37,7 +37,7 @@ public interface ScoreboardObjectiveClientboundV47 extends Packet {
     void setType(String type);
 
     @Override
-    default int getPacketId() {
-        return 0x3b;
+    default Class<? extends Packet> getModelClass() {
+        return ScoreboardObjectiveClientboundV47.class;
     }
 }

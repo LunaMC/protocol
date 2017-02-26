@@ -30,7 +30,7 @@ public interface PlayerListItemClientboundV47 extends Packet {
     void setPlayerListUpdates(PlayerListUpdate[] playerListUpdates);
 
     @Override
-    default int getPacketId() {
-        return 0x38;
+    default Class<? extends Packet> getModelClass() {
+        return PlayerListItemClientboundV47.class;
     }
 }

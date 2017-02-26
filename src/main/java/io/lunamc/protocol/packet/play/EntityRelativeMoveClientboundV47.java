@@ -41,7 +41,7 @@ public interface EntityRelativeMoveClientboundV47 extends Packet {
     void setOnGround(boolean onGround);
 
     @Override
-    default int getPacketId() {
-        return 0x15;
+    default Class<? extends Packet> getModelClass() {
+        return EntityRelativeMoveClientboundV47.class;
     }
 }

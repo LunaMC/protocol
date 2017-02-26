@@ -45,7 +45,7 @@ public interface PlayerPositionAndLookClientboundV47 extends Packet {
     void setFlags(byte flags);
 
     @Override
-    default int getPacketId() {
-        return 0x08;
+    default Class<? extends Packet> getModelClass() {
+        return PlayerPositionAndLookClientboundV47.class;
     }
 }

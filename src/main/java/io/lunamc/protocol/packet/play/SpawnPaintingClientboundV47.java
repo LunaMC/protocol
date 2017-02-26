@@ -43,7 +43,7 @@ public interface SpawnPaintingClientboundV47 extends Packet {
     void setDirection(short direction);
 
     @Override
-    default int getPacketId() {
-        return 0x10;
+    default Class<? extends Packet> getModelClass() {
+        return SpawnPaintingClientboundV47.class;
     }
 }

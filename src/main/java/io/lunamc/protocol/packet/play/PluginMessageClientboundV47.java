@@ -30,7 +30,7 @@ public interface PluginMessageClientboundV47 extends Packet {
     void setData(ByteBuf data);
 
     @Override
-    default int getPacketId() {
-        return 0x3f;
+    default Class<? extends Packet> getModelClass() {
+        return PluginMessageClientboundV47.class;
     }
 }

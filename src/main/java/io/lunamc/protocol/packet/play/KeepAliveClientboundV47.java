@@ -25,7 +25,7 @@ public interface KeepAliveClientboundV47 extends Packet {
     void setKeepAliveId(int keepAliveId);
 
     @Override
-    default int getPacketId() {
-        return 0x00;
+    default Class<? extends Packet> getModelClass() {
+        return KeepAliveClientboundV47.class;
     }
 }

@@ -30,7 +30,7 @@ public interface UseBedClientboundV47 extends Packet {
     void setLocation(Position location);
 
     @Override
-    default int getPacketId() {
-        return 0x0a;
+    default Class<? extends Packet> getModelClass() {
+        return UseBedClientboundV47.class;
     }
 }

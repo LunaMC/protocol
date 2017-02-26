@@ -54,7 +54,7 @@ public interface ExplosionClientboundV47 extends Packet {
     void setPlayerMotionZ(float playerMotionZ);
 
     @Override
-    default int getPacketId() {
-        return 0x27;
+    default Class<? extends Packet> getModelClass() {
+        return ExplosionClientboundV47.class;
     }
 }

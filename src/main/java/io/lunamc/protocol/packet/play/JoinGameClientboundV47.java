@@ -49,7 +49,7 @@ public interface JoinGameClientboundV47 extends Packet {
     void setReducedDebugInfo(boolean reducedDebugInfo);
 
     @Override
-    default int getPacketId() {
-        return 0x01;
+    default Class<? extends Packet> getModelClass() {
+        return JoinGameClientboundV47.class;
     }
 }

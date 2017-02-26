@@ -37,7 +37,7 @@ public interface HandshakeServerboundV47 extends Packet {
     void setNextState(NextProtocolState nextState);
 
     @Override
-    default int getPacketId() {
-        return 0x00;
+    default Class<? extends Packet> getModelClass() {
+        return HandshakeServerboundV47.class;
     }
 }

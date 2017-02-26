@@ -23,4 +23,9 @@ public interface DisconnectClientboundV47 extends Packet {
     String getReason();
 
     void setReason(String reason);
+
+    @Override
+    default Class<? extends Packet> getModelClass() {
+        return DisconnectClientboundV47.class;
+    }
 }

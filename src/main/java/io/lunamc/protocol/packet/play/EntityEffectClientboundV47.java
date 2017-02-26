@@ -41,7 +41,7 @@ public interface EntityEffectClientboundV47 extends Packet {
     void setHideParticles(boolean hideParticles);
 
     @Override
-    default int getPacketId() {
-        return 0x1d;
+    default Class<? extends Packet> getModelClass() {
+        return EntityEffectClientboundV47.class;
     }
 }

@@ -70,7 +70,7 @@ public interface SpawnMobClientboundV47 extends Packet {
     void setMetadata(EntityMetadata metadata);
 
     @Override
-    default int getPacketId() {
-        return 0x0f;
+    default Class<? extends Packet> getModelClass() {
+        return SpawnMobClientboundV47.class;
     }
 }

@@ -34,7 +34,7 @@ public interface BlockBreakAnimationClientboundV47 extends Packet {
     void setDestroyStage(byte destroyStage);
 
     @Override
-    default int getPacketId() {
-        return 0x25;
+    default Class<? extends Packet> getModelClass() {
+        return BlockBreakAnimationClientboundV47.class;
     }
 }

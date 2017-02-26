@@ -30,7 +30,7 @@ public interface WindowItemsClientboundV47 extends Packet {
     void setSlotData(SlotData[] slotData);
 
     @Override
-    default int getPacketId() {
-        return 0x30;
+    default Class<? extends Packet> getModelClass() {
+        return WindowItemsClientboundV47.class;
     }
 }

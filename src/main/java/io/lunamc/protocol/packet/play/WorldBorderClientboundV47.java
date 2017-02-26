@@ -26,7 +26,7 @@ public interface WorldBorderClientboundV47 extends Packet {
     void setAction(WorldBorderAction action);
 
     @Override
-    default int getPacketId() {
-        return 0x44;
+    default Class<? extends Packet> getModelClass() {
+        return WorldBorderClientboundV47.class;
     }
 }

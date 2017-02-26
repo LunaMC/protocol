@@ -25,7 +25,7 @@ public interface TabCompleteClientboundV47 extends Packet {
     void setMatches(String[] matches);
 
     @Override
-    default int getPacketId() {
-        return 0x3a;
+    default Class<? extends Packet> getModelClass() {
+        return TabCompleteClientboundV47.class;
     }
 }

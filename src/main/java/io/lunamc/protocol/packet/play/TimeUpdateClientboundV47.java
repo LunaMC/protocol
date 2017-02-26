@@ -29,7 +29,7 @@ public interface TimeUpdateClientboundV47 extends Packet {
     void setTimeOfDay(long timeOfDay);
 
     @Override
-    default int getPacketId() {
-        return 0x03;
+    default Class<? extends Packet> getModelClass() {
+        return TimeUpdateClientboundV47.class;
     }
 }

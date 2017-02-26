@@ -65,7 +65,7 @@ public interface SpawnObjectClientboundV47 extends Packet {
     void setVelocityZ(short velocityZ);
 
     @Override
-    default int getPacketId() {
-        return 0x0e;
+    default Class<? extends Packet> getModelClass() {
+        return SpawnObjectClientboundV47.class;
     }
 }

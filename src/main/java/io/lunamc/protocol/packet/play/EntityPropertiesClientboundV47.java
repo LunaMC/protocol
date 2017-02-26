@@ -30,7 +30,7 @@ public interface EntityPropertiesClientboundV47 extends Packet {
     void setProperties(EntityProperty[] properties);
 
     @Override
-    default int getPacketId() {
-        return 0x20;
+    default Class<? extends Packet> getModelClass() {
+        return EntityPropertiesClientboundV47.class;
     }
 }

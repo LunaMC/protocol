@@ -37,7 +37,7 @@ public interface UpdateScoreClientboundV47 extends Packet {
     void setValue(int value);
 
     @Override
-    default int getPacketId() {
-        return 0x3c;
+    default Class<? extends Packet> getModelClass() {
+        return UpdateScoreClientboundV47.class;
     }
 }

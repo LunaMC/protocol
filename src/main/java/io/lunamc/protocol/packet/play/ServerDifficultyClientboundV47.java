@@ -25,7 +25,7 @@ public interface ServerDifficultyClientboundV47 extends Packet {
     void setDifficulty(short difficulty);
 
     @Override
-    default int getPacketId() {
-        return 0x41;
+    default Class<? extends Packet> getModelClass() {
+        return ServerDifficultyClientboundV47.class;
     }
 }

@@ -37,7 +37,7 @@ public interface RespawnClientboundV47 extends Packet {
     void setLevelType(String levelType);
 
     @Override
-    default int getPacketId() {
-        return 0x07;
+    default Class<? extends Packet> getModelClass() {
+        return RespawnClientboundV47.class;
     }
 }

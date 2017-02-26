@@ -41,7 +41,7 @@ public interface SpawnGlobalEntityClientboundV47 extends Packet {
     void setZ(int z);
 
     @Override
-    default int getPacketId() {
-        return 0x2c;
+    default Class<? extends Packet> getModelClass() {
+        return SpawnGlobalEntityClientboundV47.class;
     }
 }

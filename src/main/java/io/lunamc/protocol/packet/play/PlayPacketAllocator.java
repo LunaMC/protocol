@@ -17,4 +17,150 @@
 package io.lunamc.protocol.packet.play;
 
 public interface PlayPacketAllocator {
+
+    KeepAliveClientboundV47 getKeepAliveClientboundV47();
+
+    JoinGameClientboundV47 getJoinGameClientboundV47();
+
+    ChatMessageClientboundV47 getChatMessageClientboundV47();
+
+    TimeUpdateClientboundV47 getTimeUpdateClientboundV47();
+
+    EntityEquipmentClientboundV47 getEntityEquipmentClientboundV47();
+
+    SpawnPositionClientboundV47 getSpawnPositionClientboundV47();
+
+    UpdateHealthClientboundV47 getUpdateHealthClientboundV47();
+
+    RespawnClientboundV47 getRespawnClientboundV47();
+
+    PlayerPositionAndLookClientboundV47 getPlayerPositionAndLookClientboundV47();
+
+    HeldItemChangeClientboundV47 getHeldItemChangeClientboundV47();
+
+    UseBedClientboundV47 getUseBedClientboundV47();
+
+    AnimationClientboundV47 getAnimationClientboundV47();
+
+    SpawnPlayerClientboundV47 getSpawnPlayerClientboundV47();
+
+    CollectItemClientboundV47 getCollectItemClientboundV47();
+
+    SpawnObjectClientboundV47 getSpawnObjectClientboundV47();
+
+    SpawnMobClientboundV47 getSpawnMobClientboundV47();
+
+    SpawnPaintingClientboundV47 getSpawnPaintingClientboundV47();
+
+    SpawnExperienceOrbClientboundV47 getSpawnExperienceOrbClientboundV47();
+
+    EntityVelocityClientboundV47 getEntityVelocityClientboundV47();
+
+    DestroyEntitiesClientboundV47 getDestroyEntitiesClientboundV47();
+
+    EntityClientboundV47 getEntityClientboundV47();
+
+    EntityRelativeMoveClientboundV47 getEntityRelativeMoveClientboundV47();
+
+    EntityLookClientboundV47 getEntityLookClientboundV47();
+
+    EntityLookAndRelativeMoveClientboundV47 getEntityLookAndRelativeMoveClientboundV47();
+
+    EntityTeleportClientboundV47 getEntityTeleportClientboundV47();
+
+    EntityHeadLookClientboundV47 getEntityHeadLookClientboundV47();
+
+    EntityStatusClientboundV47 getEntityStatusClientboundV47();
+
+    AttachEntityClientboundV47 getAttachEntityClientboundV47();
+
+    EntityMetadataClientboundV47 getEntityMetadataClientboundV47();
+
+    EntityEffectClientboundV47 getEntityEffectClientboundV47();
+
+    RemoveEntityEffectClientboundV47 getRemoveEntityEffectClientboundV47();
+
+    SetExperienceClientboundV47 getSetExperienceClientboundV47();
+
+    EntityPropertiesClientboundV47 getEntityPropertiesClientboundV47();
+
+    ChunkDataClientboundV47 getChunkDataClientboundV47();
+
+    MultiBlockChangeClientboundV47 getMultiBlockChangeClientboundV47();
+
+    BlockChangeClientboundV47 getBlockChangeClientboundV47();
+
+    BlockActionClientboundV47 getBlockActionClientboundV47();
+
+    BlockBreakAnimationClientboundV47 getBlockBreakAnimationClientboundV47();
+
+    MapChunkBulkClientboundV47 getMapChunkBulkClientboundV47();
+
+    ExplosionClientboundV47 getExplosionClientboundV47();
+
+    EffectClientboundV47 getEffectClientboundV47();
+
+    SoundEffectClientboundV47 getSoundEffectClientboundV47();
+
+    ParticleClientboundV47 getParticleClientboundV47();
+
+    ChangeGameStateClientboundV47 getChangeGameStateClientboundV47();
+
+    SpawnGlobalEntityClientboundV47 getSpawnGlobalEntityClientboundV47();
+
+    OpenWindowClientboundV47 getOpenWindowClientboundV47();
+
+    CloseWindowClientboundV47 getCloseWindowClientboundV47();
+
+    SetSlotClientboundV47 getSetSlotClientboundV47();
+
+    WindowItemsClientboundV47 getWindowItemsClientboundV47();
+
+    WindowPropertyClientboundV47 getWindowPropertyClientboundV47();
+
+    ConfirmTransactionClientboundV47 getConfirmTransactionClientboundV47();
+
+    UpdateSignClientboundV47 getUpdateSignClientboundV47();
+
+    MapClientboundV47 getMapClientboundV47();
+
+    UpdateBlockEntityClientboundV47 getUpdateBlockEntityClientboundV47();
+
+    OpenSignEditorClientboundV47 getOpenSignEditorClientboundV47();
+
+    StatisticsClientboundV47 getStatisticsClientboundV47();
+
+    PlayerListItemClientboundV47 getPlayerListItemClientboundV47();
+
+    PlayerAbilitiesClientboundV47 getPlayerAbilitiesClientboundV47();
+
+    TabCompleteClientboundV47 getTabCompleteClientboundV47();
+
+    ScoreboardObjectiveClientboundV47 getScoreboardObjectiveClientboundV47();
+
+    UpdateScoreClientboundV47 getUpdateScoreClientboundV47();
+
+    DisplayScoreboardClientboundV47 getDisplayScoreboardClientboundV47();
+
+    TeamsClientboundV47 getTeamsClientboundV47();
+
+    PluginMessageClientboundV47 getPluginMessageClientboundV47();
+
+    DisconnectClientboundV47 getDisconnectClientboundV47();
+
+    ServerDifficultyClientboundV47 getServerDifficultyClientboundV47();
+
+    CombatEventClientboundV47 getCombatEventClientboundV47();
+
+    CameraClientboundV47 getCameraClientboundV47();
+
+    WorldBorderClientboundV47 getWorldBorderClientboundV47();
+
+    TitleClientboundV47 getTitleClientboundV47();
+
+    PlayerListHeaderAndFooterClientboundV47 getPlayerListHeaderAndFooterClientboundV47();
+
+    ResourcePackSendClientboundV47 getResourcePackSendClientboundV47();
+
+    UpdateEntityNbtClientboundV47 getUpdateEntityNbtClientboundV47();
 }

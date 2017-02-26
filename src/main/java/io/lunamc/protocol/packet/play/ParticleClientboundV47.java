@@ -66,7 +66,7 @@ public interface ParticleClientboundV47 extends Packet {
     void setData(int[] data);
 
     @Override
-    default int getPacketId() {
-        return 0x2a;
+    default Class<? extends Packet> getModelClass() {
+        return ParticleClientboundV47.class;
     }
 }

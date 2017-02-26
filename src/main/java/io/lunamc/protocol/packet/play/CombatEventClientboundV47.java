@@ -41,7 +41,7 @@ public interface CombatEventClientboundV47 extends Packet {
     void setMessage(String message);
 
     @Override
-    default int getPacketId() {
-        return 0x42;
+    default Class<? extends Packet> getModelClass() {
+        return CombatEventClientboundV47.class;
     }
 }

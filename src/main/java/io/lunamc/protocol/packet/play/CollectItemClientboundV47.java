@@ -29,7 +29,7 @@ public interface CollectItemClientboundV47 extends Packet {
     void setCollectorEntityId(int collectorEntityId);
 
     @Override
-    default int getPacketId() {
-        return 0x0d;
+    default Class<? extends Packet> getModelClass() {
+        return CollectItemClientboundV47.class;
     }
 }

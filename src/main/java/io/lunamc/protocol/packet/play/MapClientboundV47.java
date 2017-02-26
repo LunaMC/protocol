@@ -54,7 +54,7 @@ public interface MapClientboundV47 extends Packet {
     void setData(short[] data);
 
     @Override
-    default int getPacketId() {
-        return 0x24;
+    default Class<? extends Packet> getModelClass() {
+        return MapClientboundV47.class;
     }
 }

@@ -26,7 +26,7 @@ public interface SpawnPositionClientboundV47 extends Packet {
     void setLocation(Position position);
 
     @Override
-    default int getPacketId() {
-        return 0x05;
+    default Class<? extends Packet> getModelClass() {
+        return SpawnPositionClientboundV47.class;
     }
 }

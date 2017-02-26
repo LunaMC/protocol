@@ -29,7 +29,7 @@ public interface DisplayScoreboardClientboundV47 extends Packet {
     void setScoreName(String scoreName);
 
     @Override
-    default int getPacketId() {
-        return 0x3d;
+    default Class<? extends Packet> getModelClass() {
+        return DisplayScoreboardClientboundV47.class;
     }
 }

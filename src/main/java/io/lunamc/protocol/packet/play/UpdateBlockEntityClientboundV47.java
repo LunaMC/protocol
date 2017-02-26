@@ -35,7 +35,7 @@ public interface UpdateBlockEntityClientboundV47 extends Packet {
     void setNbtData(Tag<?> nbtData);
 
     @Override
-    default int getPacketId() {
-        return 0x35;
+    default Class<? extends Packet> getModelClass() {
+        return UpdateBlockEntityClientboundV47.class;
     }
 }

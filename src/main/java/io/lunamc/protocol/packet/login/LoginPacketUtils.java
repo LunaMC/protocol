@@ -26,6 +26,26 @@ public class LoginPacketUtils {
         throw new UnsupportedOperationException(getClass().getSimpleName() + " is a utility class and should not be constructed");
     }
 
+    public static int getServerboundPacketId(Class<? extends Packet> aClass, int protocolVersion) {
+        if (LoginStartServerboundV47.class.isAssignableFrom(aClass) && protocolVersion >= 47)
+            return 0x00;
+        else if (EncryptionResponseServerboundV47.class.isAssignableFrom(aClass) && protocolVersion >= 47)
+            return 0x01;
+        throw new NoSuchElementException("Cannot find packet id for " + aClass.getName() + " for protocol version " + protocolVersion);
+    }
+
+    public static int getClientboundPacketId(Class<? extends Packet> aClass, int protocolVersion) {
+        if (DisconnectClientboundV47.class.isAssignableFrom(aClass) && protocolVersion >= 47)
+            return 0x00;
+        else if (EncryptionRequestClientboundV47.class.isAssignableFrom(aClass) && protocolVersion >= 47)
+            return 0x01;
+        else if (LoginSuccessClientboundV47.class.isAssignableFrom(aClass) && protocolVersion >= 47)
+            return 0x02;
+        else if (SetCompressionClientboundV47.class.isAssignableFrom(aClass) && protocolVersion >= 47)
+            return 0x03;
+        throw new NoSuchElementException("Cannot find packet id for " + aClass.getName() + " for protocol version " + protocolVersion);
+    }
+
     public static Packet allocateServerboundPacket(LoginPacketAllocator allocator, int packetId, int protocolVersion) {
         switch (packetId) {
             case 0x00:

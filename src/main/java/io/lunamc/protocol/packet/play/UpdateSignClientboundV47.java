@@ -42,7 +42,7 @@ public interface UpdateSignClientboundV47 extends Packet {
     void setLine4(String line4);
 
     @Override
-    default int getPacketId() {
-        return 0x33;
+    default Class<? extends Packet> getModelClass() {
+        return UpdateSignClientboundV47.class;
     }
 }

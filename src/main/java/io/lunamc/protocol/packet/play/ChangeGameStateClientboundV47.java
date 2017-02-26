@@ -29,7 +29,7 @@ public interface ChangeGameStateClientboundV47 extends Packet {
     void setValue(float value);
 
     @Override
-    default int getPacketId() {
-        return 0x2b;
+    default Class<? extends Packet> getModelClass() {
+        return ChangeGameStateClientboundV47.class;
     }
 }

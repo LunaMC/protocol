@@ -49,7 +49,7 @@ public interface EntityTeleportClientboundV47 extends Packet {
     void setOnGround(boolean onGround);
 
     @Override
-    default int getPacketId() {
-        return 0x18;
+    default Class<? extends Packet> getModelClass() {
+        return EntityTeleportClientboundV47.class;
     }
 }

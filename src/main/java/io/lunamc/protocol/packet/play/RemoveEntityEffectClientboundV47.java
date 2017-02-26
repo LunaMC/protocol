@@ -29,7 +29,7 @@ public interface RemoveEntityEffectClientboundV47 extends Packet {
     void setEffectId(byte effectId);
 
     @Override
-    default int getPacketId() {
-        return 0x1e;
+    default Class<? extends Packet> getModelClass() {
+        return RemoveEntityEffectClientboundV47.class;
     }
 }

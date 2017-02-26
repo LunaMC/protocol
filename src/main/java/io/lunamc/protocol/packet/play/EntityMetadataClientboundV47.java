@@ -30,7 +30,7 @@ public interface EntityMetadataClientboundV47 extends Packet {
     void setMetadata(EntityMetadata metadata);
 
     @Override
-    default int getPacketId() {
-        return 0x1c;
+    default Class<? extends Packet> getModelClass() {
+        return EntityMetadataClientboundV47.class;
     }
 }

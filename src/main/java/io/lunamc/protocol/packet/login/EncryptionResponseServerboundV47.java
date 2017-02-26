@@ -29,7 +29,7 @@ public interface EncryptionResponseServerboundV47 extends Packet {
     void setVerifyToken(byte[] verifyToken);
 
     @Override
-    default int getPacketId() {
-        return 0x01;
+    default Class<? extends Packet> getModelClass() {
+        return EncryptionResponseServerboundV47.class;
     }
 }

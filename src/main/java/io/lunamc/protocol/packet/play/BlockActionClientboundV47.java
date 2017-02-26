@@ -38,7 +38,7 @@ public interface BlockActionClientboundV47 extends Packet {
     void setBlockType(int blockType);
 
     @Override
-    default int getPacketId() {
-        return 0x24;
+    default Class<? extends Packet> getModelClass() {
+        return BlockActionClientboundV47.class;
     }
 }

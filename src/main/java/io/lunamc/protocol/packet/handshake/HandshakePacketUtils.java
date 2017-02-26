@@ -26,6 +26,16 @@ public class HandshakePacketUtils {
         throw new UnsupportedOperationException(getClass().getSimpleName() + " is a utility class and should not be constructed");
     }
 
+    public static int getServerboundPacketId(Class<? extends Packet> aClass, int protocolVersion) {
+        if (HandshakeServerboundV47.class.isAssignableFrom(aClass) && protocolVersion >= 47)
+            return 0x00;
+        throw new NoSuchElementException("Cannot find packet id for " + aClass.getName() + " for protocol version " + protocolVersion);
+    }
+
+    public static int getClientboundPacketId(Class<? extends Packet> aClass, int protocolVersion) {
+        throw new NoSuchElementException("Cannot find packet id for " + aClass.getName() + " for protocol version " + protocolVersion);
+    }
+
     public static Packet allocateServerboundPacket(HandshakePacketAllocator allocator, int packetId, int protocolVersion) {
         switch (packetId) {
             case 0x00:

@@ -53,7 +53,7 @@ public interface TeamsClientboundV47 extends Packet {
     void setPlayers(String[] players);
 
     @Override
-    default int getPacketId() {
-        return 0x3e;
+    default Class<? extends Packet> getModelClass() {
+        return TeamsClientboundV47.class;
     }
 }

@@ -42,7 +42,7 @@ public interface ChunkDataClientboundV47 extends Packet {
     void setData(Chunk data);
 
     @Override
-    default int getPacketId() {
-        return 0x21;
+    default Class<? extends Packet> getModelClass() {
+        return ChunkDataClientboundV47.class;
     }
 }

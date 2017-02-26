@@ -26,7 +26,7 @@ public interface TitleClientboundV47 extends Packet {
     void setAction(TitleAction action);
 
     @Override
-    default int getPacketId() {
-        return 0x45;
+    default Class<? extends Packet> getModelClass() {
+        return TitleClientboundV47.class;
     }
 }
