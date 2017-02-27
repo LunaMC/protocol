@@ -20,6 +20,12 @@ import io.lunamc.protocol.packet.Packet;
 
 public interface PlayerPositionAndLookClientboundV47 extends Packet {
 
+    int X_RELATIVE = 0b00000001;
+    int Y_RELATIVE = 0b00000010;
+    int Z_RELATIVE = 0b00000100;
+    int Y_ROT_RELATIVE = 0b00001000;
+    int X_ROT_RELATIVE = 0b00010000;
+
     double getX();
 
     void setX(double x);

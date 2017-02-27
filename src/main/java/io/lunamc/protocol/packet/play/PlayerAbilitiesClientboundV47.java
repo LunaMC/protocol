@@ -20,6 +20,12 @@ import io.lunamc.protocol.packet.Packet;
 
 public interface PlayerAbilitiesClientboundV47 extends Packet {
 
+    // Protocol version 47+
+    byte FLAG_INVULNERABLE = 0b00000001;
+    byte FLAG_FLYING = 0b00000010;
+    byte FLAG_ALLOW_FLYING = 0b00000100;
+    byte FLAG_CREATIVE_MODE = 0b00001000;
+
     byte getFlags();
 
     void setFlags(byte flags);

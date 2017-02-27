@@ -20,6 +20,18 @@ import io.lunamc.protocol.packet.Packet;
 
 public interface ChangeGameStateClientboundV47 extends Packet {
 
+    // Protocol version 47+
+    short REASON_INVALID_BED = 0;
+    short REASON_END_RAINING = 1;
+    short REASON_BEGIN_RAINING = 2;
+    short REASON_CHANGE_GAME_MODE = 3;
+    short REASON_ENTER_CREDITS = 4;
+    short REASON_DEMO_MESSAGE = 5;
+    short REASON_ARROW_HITTING_PLAYER = 6;
+    short REASON_FADE_VALUE = 7;
+    short REASON_FADE_TIME = 8;
+    short REASON_PLAYER_MOB_APPEARANCE = 10;
+
     short getReason();
 
     void setReason(short reason);
