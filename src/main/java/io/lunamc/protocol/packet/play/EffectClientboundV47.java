@@ -17,7 +17,6 @@
 package io.lunamc.protocol.packet.play;
 
 import io.lunamc.protocol.packet.Packet;
-import io.lunamc.protocol.packet.data.Position;
 
 public interface EffectClientboundV47 extends Packet {
 
@@ -25,9 +24,9 @@ public interface EffectClientboundV47 extends Packet {
 
     void setEffectId(int effectId);
 
-    Position getLocation();
+    long getLocation();
 
-    void setLocation(Position location);
+    void setLocation(long location);
 
     int getData();
 

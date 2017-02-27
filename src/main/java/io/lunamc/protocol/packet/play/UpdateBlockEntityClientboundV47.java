@@ -18,13 +18,12 @@ package io.lunamc.protocol.packet.play;
 
 import com.flowpowered.nbt.Tag;
 import io.lunamc.protocol.packet.Packet;
-import io.lunamc.protocol.packet.data.Position;
 
 public interface UpdateBlockEntityClientboundV47 extends Packet {
 
-    Position getLocation();
+    long getLocation();
 
-    void setLocation(Position location);
+    void setLocation(long location);
 
     short getAction();
 

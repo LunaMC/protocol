@@ -16,5 +16,35 @@
 
 package io.lunamc.protocol.packet.data;
 
+import java.util.List;
+import java.util.UUID;
+
 public interface EntityProperty {
+
+    String getKey();
+
+    void setKey(String key);
+
+    double getValue();
+
+    void setValue(double value);
+
+    List<? extends EntityPropertyModifier> getModifiers();
+
+    void setModifiers(List<? extends EntityPropertyModifier> modifiers);
+
+    interface EntityPropertyModifier {
+
+        UUID getUuid();
+
+        void setUuid(UUID uuid);
+
+        double getAmount();
+
+        void setAmount(double amount);
+
+        byte getOperation();
+
+        void setOperation(byte operation);
+    }
 }

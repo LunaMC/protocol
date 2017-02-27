@@ -17,4 +17,16 @@
 package io.lunamc.protocol.packet.data;
 
 public interface MapIcon {
+
+    byte getDirectionAndType();
+
+    void setDirectionAndType(byte directionAndType);
+
+    byte getX();
+
+    void setX(byte x);
+
+    byte getZ();
+
+    void setZ(byte z);
 }

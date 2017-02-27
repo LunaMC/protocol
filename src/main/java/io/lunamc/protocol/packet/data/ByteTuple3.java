@@ -17,4 +17,16 @@
 package io.lunamc.protocol.packet.data;
 
 public interface ByteTuple3 {
+
+    byte getByte1();
+
+    void setByte1(byte byte1);
+
+    byte getByte2();
+
+    void setByte2(byte byte2);
+
+    byte getByte3();
+
+    void setByte3(byte byte3);
 }

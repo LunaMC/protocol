@@ -19,15 +19,17 @@ package io.lunamc.protocol.packet.play;
 import io.lunamc.protocol.packet.Packet;
 import io.lunamc.protocol.packet.data.EntityProperty;
 
+import java.util.List;
+
 public interface EntityPropertiesClientboundV47 extends Packet {
 
     int getEntityId();
 
     void setEntityId(int entityId);
 
-    EntityProperty[] getProperties();
+    List<EntityProperty> getProperties();
 
-    void setProperties(EntityProperty[] properties);
+    void setProperties(List<EntityProperty> properties);
 
     @Override
     default Class<? extends Packet> getModelClass() {

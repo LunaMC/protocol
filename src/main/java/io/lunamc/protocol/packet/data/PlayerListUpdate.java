@@ -16,5 +16,77 @@
 
 package io.lunamc.protocol.packet.data;
 
+import java.util.List;
+import java.util.UUID;
+
 public interface PlayerListUpdate {
+
+    UUID getUuid();
+
+    void setUuid(UUID uuid);
+
+    List<Object> getPlayers();
+
+    void setPlayers(List<Object> players);
+
+    interface PlayerListAddPlayerAction {
+
+        String getName();
+
+        void setName(String name);
+
+        List<? extends PlayerListAddPlayerActionPlayerProperty> getProperties();
+
+        void setProperties(List<? extends PlayerListAddPlayerActionPlayerProperty> properties);
+
+        int getGamemode();
+
+        void setGamemode(int gamemode);
+
+        int getPing();
+
+        void setPing(int ping);
+
+        String getDisplayName();
+
+        void setDisplayName(String displayName);
+
+        interface PlayerListAddPlayerActionPlayerProperty {
+
+            String getName();
+
+            void setName(String name);
+
+            String getValue();
+
+            void setValue(String value);
+
+            String getSignature();
+
+            void setSignature(String signature);
+        }
+    }
+
+    interface PlayerListUpdateGamemodeAction {
+
+        int getGamemode();
+
+        void setGamemode(int gamemode);
+    }
+
+    interface PlayerListUpdateLatencyAction {
+
+        int getPing();
+
+        void setPing(int ping);
+    }
+
+    interface PlayerListUpdateDisplayNameAction {
+
+        String getDisplayName();
+
+        void setDisplayName(String displayName);
+    }
+
+    interface PlayerListRemovePlayerAction {}
 }

@@ -16,5 +16,23 @@
 
 package io.lunamc.protocol.packet.data;
 
+import com.flowpowered.nbt.Tag;
+
 public interface SlotData {
+
+    short getBlockId();
+
+    void setBlockId(short blockId);
+
+    byte getItemCount();
+
+    void setItemCount(byte itemCount);
+
+    short getItemDamage();
+
+    void setItemDamage(short itemDamage);
+
+    Tag<?> getNbt();
+
+    void setNbt(Tag<?> nbt);
 }

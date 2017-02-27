@@ -16,5 +16,26 @@
 
 package io.lunamc.protocol.packet.data;
 
+import java.util.List;
+
 public interface EntityMetadata {
+
+    List<? extends EntityMetadataEntry> getMetadata();
+
+    void setMetadata(List<? extends EntityMetadataEntry> entries);
+
+    interface EntityMetadataEntry {
+
+        short getIndex();
+
+        void setIndex(short index);
+
+        byte getType();
+
+        void setType(byte type);
+
+        Object getValue();
+
+        void setValue(Object value);
+    }
 }

@@ -19,11 +19,13 @@ package io.lunamc.protocol.packet.play;
 import io.lunamc.protocol.packet.Packet;
 import io.lunamc.protocol.packet.data.Statistic;
 
+import java.util.List;
+
 public interface StatisticsClientboundV47 extends Packet {
 
-    Statistic[] getStatistics();
+    List<? extends Statistic> getStatistics();
 
-    void setStatistics(Statistic[] statistics);
+    void setStatistics(List<? extends Statistic> statistics);
 
     @Override
     default Class<? extends Packet> getModelClass() {

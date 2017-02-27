@@ -16,5 +16,26 @@
 
 package io.lunamc.protocol.packet.data;
 
+// See http://wiki.vg/index.php?title=SMP_Map_Format&oldid=7411#Data
 public interface Chunk {
+
+    int[] getBlockTypes();
+
+    void setBlockTypes(int[] blockTypes);
+
+    int getBitsOfDataPerBlock();
+
+    void setBitsOfDataPerBlock(int bitsOfDataPerBlock);
+
+    byte[] getBlockLightData();
+
+    void setBlockLightData(byte[] blockLightData);
+
+    byte[] getSkylightData();
+
+    void setSkylightData(byte[] skylightData);
+
+    byte[] getBiomes();
+
+    void setBiomes(byte[] biomes);
 }

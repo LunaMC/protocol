@@ -17,4 +17,16 @@
 package io.lunamc.protocol.packet.data;
 
 public interface BlockChangeRecord {
+
+    short getHorizontalPosition();
+
+    void setHorizontalPosition(short horizontalPosition);
+
+    short getYCoordinate();
+
+    void setYCoordinate(short yCoordinate);
+
+    int getBlockId();
+
+    void setBlockId(int blockId);
 }

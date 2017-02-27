@@ -17,4 +17,39 @@
 package io.lunamc.protocol.packet.data;
 
 public interface TitleAction {
+
+    interface TitleActionSetTitle {
+
+        String getTitleText();
+
+        void setTitleText(String titleText);
+    }
+
+    interface TitleActionSetSubtitle {
+
+        String getSubtitleText();
+
+        void setSubtitleText(String subtitleText);
+    }
+
+    interface TitleActionSetTimesAndDisplay {
+
+        int getFadeIn();
+
+        void setFadeIn(int fadeIn);
+
+        int getStay();
+
+        void setStay(int stay);
+
+        int getFadeOut();
+
+        void setFadeOut(int fadeOut);
+    }
+
+    interface TitleActionHide {
+    }
+
+    interface TitleActionReset {
+    }
 }

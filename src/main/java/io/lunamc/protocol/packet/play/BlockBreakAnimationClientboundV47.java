@@ -17,7 +17,6 @@
 package io.lunamc.protocol.packet.play;
 
 import io.lunamc.protocol.packet.Packet;
-import io.lunamc.protocol.packet.data.Position;
 
 public interface BlockBreakAnimationClientboundV47 extends Packet {
 
@@ -25,9 +24,9 @@ public interface BlockBreakAnimationClientboundV47 extends Packet {
 
     void setEntityId(int entityId);
 
-    Position getLocation();
+    long getLocation();
 
-    void setLocation(Position location);
+    void setLocation(long location);
 
     byte getDestroyStage();
 

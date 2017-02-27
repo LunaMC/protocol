@@ -17,4 +17,12 @@
 package io.lunamc.protocol.packet.data;
 
 public interface Statistic {
+
+    String getName();
+
+    void setName(String name);
+
+    int getValue();
+
+    void setValue(int value);
 }

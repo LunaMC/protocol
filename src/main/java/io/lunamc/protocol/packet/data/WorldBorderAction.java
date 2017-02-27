@@ -17,4 +17,86 @@
 package io.lunamc.protocol.packet.data;
 
 public interface WorldBorderAction {
+
+    interface WorldBorderSetSizeAction {
+
+        double getRadius();
+
+        void setRadius(double radius);
+    }
+
+    interface WorldBorderLerpSize {
+
+        double getOldRadius();
+
+        void setOldRadius(double oldRadius);
+
+        double getNewRadius();
+
+        void setNewRadius(double newRadius);
+
+        long getSpeed();
+
+        void setSpeed(long speed);
+    }
+
+    interface WorldBorderSetCenter {
+
+        double getX();
+
+        void setX(double x);
+
+        double getZ();
+
+        void setZ(double z);
+    }
+
+    interface WorldBorderInitialize {
+
+        double getX();
+
+        void setX(double x);
+
+        double getZ();
+
+        void setZ(double z);
+
+        double getOldRadius();
+
+        void setOldRadius(double oldRadius);
+
+        double getNewRadius();
+
+        void setNewRadius(double newRadius);
+
+        long getSpeed();
+
+        void setSpeed(long speed);
+
+        int getPortalTeleportationBoundary();
+
+        void setPortalTeleportationBoundary(int portalTeleportationBoundary);
+
+        int getWarningTime();
+
+        void setWarningTime(int warningTime);
+
+        int getWarningBlocks();
+
+        void setWarningBlocks(int warningBlocks);
+    }
+
+    interface WorldBorderSetWarningTime {
+
+        int getWarningTime();
+
+        void setWarningTime(int warningTime);
+    }
+
+    interface WorldBorderSetWarningBlocks {
+
+        int getWarningBlocks();
+
+        void setWarningBlocks(int warningBlocks);
+    }
 }

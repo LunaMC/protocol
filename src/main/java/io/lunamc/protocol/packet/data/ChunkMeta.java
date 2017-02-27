@@ -17,4 +17,16 @@
 package io.lunamc.protocol.packet.data;
 
 public interface ChunkMeta {
+
+    int getChunkX();
+
+    void setChunkX(int chunkX);
+
+    int getChunkZ();
+
+    void setChunkZ(int chunkZ);
+
+    int getPrimaryBitMask();
+
+    void setPrimaryBitMask(int primaryBitMask);
 }
