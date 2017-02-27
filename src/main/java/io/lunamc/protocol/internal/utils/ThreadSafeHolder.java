@@ -37,6 +37,7 @@ public class ThreadSafeHolder<T> {
                 if (val == null) {
                     val = Objects.requireNonNull(supplier.get());
                     value.set(val);
+                    supplier = null;
                 }
             }
         }
