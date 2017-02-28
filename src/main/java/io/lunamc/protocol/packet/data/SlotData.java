@@ -17,8 +17,11 @@
 package io.lunamc.protocol.packet.data;
 
 import com.flowpowered.nbt.Tag;
+import io.lunamc.protocol.packet.NetworkSerializable;
 
-public interface SlotData {
+public interface SlotData extends NetworkSerializable {
+
+    short EMPTY_BLOCK_ID = -1;
 
     short getBlockId();
 

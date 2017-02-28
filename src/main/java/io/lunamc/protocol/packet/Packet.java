@@ -16,15 +16,7 @@
 
 package io.lunamc.protocol.packet;
 
-import io.netty.buffer.ByteBuf;
-
-public interface Packet {
-
-    void write(ByteBuf output);
-
-    void read(ByteBuf input);
-
-    void reset();
+public interface Packet extends NetworkSerializable {
 
     Class<? extends Packet> getModelClass();
 }

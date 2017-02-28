@@ -16,6 +16,8 @@
 
 package io.lunamc.protocol.packet.data;
 
+import io.netty.buffer.ByteBuf;
+
 import java.util.Objects;
 
 class BaseChunkMeta implements ChunkMeta {
@@ -55,6 +57,27 @@ class BaseChunkMeta implements ChunkMeta {
     @Override
     public void setPrimaryBitMask(int primaryBitMask) {
         this.primaryBitMask = primaryBitMask;
+    }
+
+    @Override
+    public void write(ByteBuf output) {
+        output.writeInt(getChunkX());
+        output.writeInt(getChunkZ());
+        output.writeShort(getPrimaryBitMask());
+    }
+
+    @Override
+    public void read(ByteBuf input) {
+        setChunkX(input.readInt());
+        setChunkZ(input.readInt());
+        setPrimaryBitMask(input.readUnsignedShort());
+    }
+
+    @Override
+    public void reset() {
+        setChunkX(0);
+        setChunkZ(0);
+        setPrimaryBitMask(0);
     }
 
     @Override

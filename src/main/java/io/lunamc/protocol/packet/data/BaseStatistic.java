@@ -16,6 +16,9 @@
 
 package io.lunamc.protocol.packet.data;
 
+import io.lunamc.protocol.ProtocolUtils;
+import io.netty.buffer.ByteBuf;
+
 import java.util.Objects;
 
 class BaseStatistic implements Statistic {
@@ -44,6 +47,24 @@ class BaseStatistic implements Statistic {
     @Override
     public void setValue(int value) {
         this.value = value;
+    }
+
+    @Override
+    public void write(ByteBuf output) {
+        ProtocolUtils.writeString(output, getName());
+        ProtocolUtils.writeVarInt(output, getValue());
+    }
+
+    @Override
+    public void read(ByteBuf input) {
+        setName(ProtocolUtils.readString(input));
+        setValue(ProtocolUtils.readVarInt(input));
+    }
+
+    @Override
+    public void reset() {
+        setName(null);
+        setValue(0);
     }
 
     @Override

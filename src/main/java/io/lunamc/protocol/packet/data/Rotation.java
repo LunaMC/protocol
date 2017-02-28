@@ -16,5 +16,19 @@
 
 package io.lunamc.protocol.packet.data;
 
-public interface Position {
+import io.lunamc.protocol.packet.NetworkSerializable;
+
+public interface Rotation extends NetworkSerializable {
+
+    float getRotationX();
+
+    void setRotationX(float rotationX);
+
+    float getRotationY();
+
+    void setRotationY(float rotationY);
+
+    float getRotationZ();
+
+    void setRotationZ(float rotationZ);
 }

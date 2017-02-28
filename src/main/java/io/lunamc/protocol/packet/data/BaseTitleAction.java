@@ -16,6 +16,9 @@
 
 package io.lunamc.protocol.packet.data;
 
+import io.lunamc.protocol.ProtocolUtils;
+import io.netty.buffer.ByteBuf;
+
 import java.util.Objects;
 
 class BaseTitleAction implements TitleAction {
@@ -38,6 +41,21 @@ class BaseTitleAction implements TitleAction {
         @Override
         public void setTitleText(String titleText) {
             this.titleText = titleText;
+        }
+
+        @Override
+        public void write(ByteBuf output) {
+            ProtocolUtils.writeString(output, getTitleText());
+        }
+
+        @Override
+        public void read(ByteBuf input) {
+            setTitleText(ProtocolUtils.readString(input));
+        }
+
+        @Override
+        public void reset() {
+            setTitleText(null);
         }
 
         @Override
@@ -72,6 +90,21 @@ class BaseTitleAction implements TitleAction {
         @Override
         public void setSubtitleText(String subtitleText) {
             this.subtitleText = subtitleText;
+        }
+
+        @Override
+        public void write(ByteBuf output) {
+            ProtocolUtils.writeString(output, getSubtitleText());
+        }
+
+        @Override
+        public void read(ByteBuf input) {
+            setSubtitleText(ProtocolUtils.readString(input));
+        }
+
+        @Override
+        public void reset() {
+            setSubtitleText(null);
         }
 
         @Override
@@ -131,6 +164,27 @@ class BaseTitleAction implements TitleAction {
         }
 
         @Override
+        public void write(ByteBuf output) {
+            output.writeInt(getFadeIn());
+            output.writeInt(getStay());
+            output.writeInt(getFadeOut());
+        }
+
+        @Override
+        public void read(ByteBuf input) {
+            setFadeIn(input.readInt());
+            setStay(input.readInt());
+            setFadeOut(input.readInt());
+        }
+
+        @Override
+        public void reset() {
+            setFadeIn(0);
+            setStay(0);
+            setFadeOut(0);
+        }
+
+        @Override
         public boolean equals(Object o) {
             if (this == o)
                 return true;
@@ -162,6 +216,18 @@ class BaseTitleAction implements TitleAction {
         }
 
         @Override
+        public void write(ByteBuf output) {
+        }
+
+        @Override
+        public void read(ByteBuf input) {
+        }
+
+        @Override
+        public void reset() {
+        }
+
+        @Override
         public String toString() {
             return getClass().getName() + "{}";
         }
@@ -170,6 +236,18 @@ class BaseTitleAction implements TitleAction {
     static class BaseTitleActionReset implements TitleActionReset {
 
         BaseTitleActionReset() {
+        }
+
+        @Override
+        public void write(ByteBuf output) {
+        }
+
+        @Override
+        public void read(ByteBuf input) {
+        }
+
+        @Override
+        public void reset() {
         }
 
         @Override

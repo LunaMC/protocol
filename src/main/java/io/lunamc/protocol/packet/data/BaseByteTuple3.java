@@ -16,6 +16,8 @@
 
 package io.lunamc.protocol.packet.data;
 
+import io.netty.buffer.ByteBuf;
+
 import java.util.Objects;
 
 class BaseByteTuple3 implements ByteTuple3 {
@@ -55,6 +57,27 @@ class BaseByteTuple3 implements ByteTuple3 {
     @Override
     public void setByte3(byte byte3) {
         this.byte3 = byte3;
+    }
+
+    @Override
+    public void write(ByteBuf output) {
+        output.writeByte(getByte1());
+        output.writeByte(getByte2());
+        output.writeByte(getByte3());
+    }
+
+    @Override
+    public void read(ByteBuf input) {
+        setByte1(input.readByte());
+        setByte2(input.readByte());
+        setByte3(input.readByte());
+    }
+
+    @Override
+    public void reset() {
+        setByte1((byte) 0);
+        setByte2((byte) 0);
+        setByte3((byte) 0);
     }
 
     @Override

@@ -16,17 +16,23 @@
 
 package io.lunamc.protocol.packet.data;
 
+import io.lunamc.protocol.ProtocolUtils;
+import io.netty.buffer.ByteBuf;
+
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 
 class BaseEntityProperty implements EntityProperty {
 
+    private final DataAllocator dataAllocator;
     private String key;
     private double value;
-    private List<? extends EntityPropertyModifier> modifiers;
+    private List<EntityPropertyModifier> modifiers;
 
-    BaseEntityProperty() {
+    BaseEntityProperty(DataAllocator dataAllocator) {
+        this.dataAllocator = Objects.requireNonNull(dataAllocator, "dataAllocator must not be null");
     }
 
     @Override
@@ -50,13 +56,50 @@ class BaseEntityProperty implements EntityProperty {
     }
 
     @Override
-    public List<? extends EntityPropertyModifier> getModifiers() {
+    public List<EntityPropertyModifier> getModifiers() {
         return modifiers;
     }
 
     @Override
-    public void setModifiers(List<? extends EntityPropertyModifier> modifiers) {
+    public void setModifiers(List<EntityPropertyModifier> modifiers) {
         this.modifiers = modifiers;
+    }
+
+    @Override
+    public void write(ByteBuf output) {
+        ProtocolUtils.writeString(output, getKey());
+        output.writeDouble(getValue());
+
+        List<EntityPropertyModifier> modifiers = getModifiers();
+        ProtocolUtils.writeVarInt(output, modifiers.size());
+        modifiers.forEach((modifier) -> modifier.write(output));
+    }
+
+    @Override
+    public void read(ByteBuf input) {
+        setKey(ProtocolUtils.readString(input));
+        setValue(input.readDouble());
+
+        int length = ProtocolUtils.readVarInt(input);
+        List<EntityPropertyModifier> modifiers = getModifiers();
+        if (modifiers == null) {
+            modifiers = new ArrayList<>(length);
+            setModifiers(modifiers);
+        } else {
+            modifiers.clear();
+        }
+        for (int i = 0; i < length; i++) {
+            EntityPropertyModifier modifier = dataAllocator.getEntityPropertyModifier();
+            modifier.read(input);
+            modifiers.add(modifier);
+        }
+    }
+
+    @Override
+    public void reset() {
+        setKey(null);
+        setValue(0);
+        setModifiers(null);
     }
 
     @Override
@@ -121,6 +164,27 @@ class BaseEntityProperty implements EntityProperty {
         @Override
         public void setOperation(byte operation) {
             this.operation = operation;
+        }
+
+        @Override
+        public void write(ByteBuf output) {
+            ProtocolUtils.writeUuid(output, getUuid());
+            output.writeDouble(getAmount());
+            output.writeByte(getOperation());
+        }
+
+        @Override
+        public void read(ByteBuf input) {
+            setUuid(ProtocolUtils.readUuid(input));
+            setAmount(input.readDouble());
+            setOperation(input.readByte());
+        }
+
+        @Override
+        public void reset() {
+            setUuid(null);
+            setAmount(0);
+            setOperation((byte) 0);
         }
 
         @Override

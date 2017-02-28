@@ -16,16 +16,18 @@
 
 package io.lunamc.protocol.packet.data;
 
+import io.lunamc.protocol.packet.NetworkSerializable;
+
 public interface WorldBorderAction {
 
-    interface WorldBorderSetSizeAction {
+    interface WorldBorderSetSizeAction extends NetworkSerializable {
 
         double getRadius();
 
         void setRadius(double radius);
     }
 
-    interface WorldBorderLerpSize {
+    interface WorldBorderLerpSize extends NetworkSerializable {
 
         double getOldRadius();
 
@@ -40,7 +42,7 @@ public interface WorldBorderAction {
         void setSpeed(long speed);
     }
 
-    interface WorldBorderSetCenter {
+    interface WorldBorderSetCenter extends NetworkSerializable {
 
         double getX();
 
@@ -51,7 +53,7 @@ public interface WorldBorderAction {
         void setZ(double z);
     }
 
-    interface WorldBorderInitialize {
+    interface WorldBorderInitialize extends NetworkSerializable {
 
         double getX();
 
@@ -86,14 +88,14 @@ public interface WorldBorderAction {
         void setWarningBlocks(int warningBlocks);
     }
 
-    interface WorldBorderSetWarningTime {
+    interface WorldBorderSetWarningTime extends NetworkSerializable {
 
         int getWarningTime();
 
         void setWarningTime(int warningTime);
     }
 
-    interface WorldBorderSetWarningBlocks {
+    interface WorldBorderSetWarningBlocks extends NetworkSerializable {
 
         int getWarningBlocks();
 

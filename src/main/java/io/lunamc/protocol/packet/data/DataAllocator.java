@@ -50,6 +50,8 @@ public interface DataAllocator {
 
     PlayerListUpdate.PlayerListRemovePlayerAction getPlayerListRemovePlayerAction();
 
+    Rotation getRotation();
+
     SlotData getSlotData();
 
     Statistic getStatistic();

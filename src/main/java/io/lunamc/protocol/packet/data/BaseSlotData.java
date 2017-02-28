@@ -17,6 +17,7 @@
 package io.lunamc.protocol.packet.data;
 
 import com.flowpowered.nbt.Tag;
+import io.netty.buffer.ByteBuf;
 
 import java.util.Objects;
 
@@ -68,6 +69,22 @@ class BaseSlotData implements SlotData {
     @Override
     public void setNbt(Tag<?> nbt) {
         this.nbt = nbt;
+    }
+
+    @Override
+    public void write(ByteBuf output) {
+        short blockId = getBlockId();
+        output.writeShort(blockId);
+    }
+
+    @Override
+    public void read(ByteBuf input) {
+
+    }
+
+    @Override
+    public void reset() {
+
     }
 
     @Override

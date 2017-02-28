@@ -16,6 +16,8 @@
 
 package io.lunamc.protocol.packet.data;
 
+import io.netty.buffer.ByteBuf;
+
 import java.util.Objects;
 
 class BaseMapIcon implements MapIcon {
@@ -55,6 +57,27 @@ class BaseMapIcon implements MapIcon {
     @Override
     public void setZ(byte z) {
         this.z = z;
+    }
+
+    @Override
+    public void write(ByteBuf output) {
+        output.writeByte(getDirectionAndType());
+        output.writeByte(getX());
+        output.writeByte(getZ());
+    }
+
+    @Override
+    public void read(ByteBuf input) {
+        setDirectionAndType(input.readByte());
+        setX(input.readByte());
+        setZ(input.readByte());
+    }
+
+    @Override
+    public void reset() {
+        setDirectionAndType((byte) 0);
+        setX((byte) 0);
+        setZ((byte) 0);
     }
 
     @Override

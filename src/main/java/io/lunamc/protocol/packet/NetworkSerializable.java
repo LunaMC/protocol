@@ -14,21 +14,15 @@
  *    limitations under the License.
  */
 
-package io.lunamc.protocol.packet.data;
+package io.lunamc.protocol.packet;
 
-import io.lunamc.protocol.packet.NetworkSerializable;
+import io.netty.buffer.ByteBuf;
 
-public interface ChunkMeta extends NetworkSerializable {
+public interface NetworkSerializable {
 
-    int getChunkX();
+    void write(ByteBuf output);
 
-    void setChunkX(int chunkX);
+    void read(ByteBuf input);
 
-    int getChunkZ();
-
-    void setChunkZ(int chunkZ);
-
-    int getPrimaryBitMask();
-
-    void setPrimaryBitMask(int primaryBitMask);
+    void reset();
 }

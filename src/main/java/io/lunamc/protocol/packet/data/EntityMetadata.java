@@ -16,15 +16,31 @@
 
 package io.lunamc.protocol.packet.data;
 
+import io.lunamc.protocol.packet.NetworkSerializable;
+
 import java.util.List;
 
-public interface EntityMetadata {
+public interface EntityMetadata extends NetworkSerializable {
 
-    List<? extends EntityMetadataEntry> getMetadata();
+    List<EntityMetadataEntry> getMetadata();
 
-    void setMetadata(List<? extends EntityMetadataEntry> entries);
+    void setMetadata(List<EntityMetadataEntry> entries);
 
-    interface EntityMetadataEntry {
+    interface EntityMetadataEntry extends NetworkSerializable {
+
+        int TYPE_BYTE = 0;
+        int TYPE_VARINT = 1;
+        int TYPE_FLOAT = 2;
+        int TYPE_STRING = 3;
+        int TYPE_CHAT = 4;
+        int TYPE_SLOT = 5;
+        int TYPE_BOOLEAN = 6;
+        int TYPE_ROTATION = 7;
+        int TYPE_POSITION = 8;
+        int TYPE_OPT_POSITION = 9;
+        int TYPE_DIRECTION = 10;
+        int TYPE_OPT_UUID = 11;
+        int TYPE_OPT_BLOCK_ID = 12;
 
         short getIndex();
 

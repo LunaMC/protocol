@@ -16,6 +16,9 @@
 
 package io.lunamc.protocol.packet.data;
 
+import io.lunamc.protocol.ProtocolUtils;
+import io.netty.buffer.ByteBuf;
+
 import java.util.Objects;
 
 class BaseWorldBorderAction implements WorldBorderAction {
@@ -38,6 +41,21 @@ class BaseWorldBorderAction implements WorldBorderAction {
         @Override
         public void setRadius(double radius) {
             this.radius = radius;
+        }
+
+        @Override
+        public void write(ByteBuf output) {
+            output.writeDouble(getRadius());
+        }
+
+        @Override
+        public void read(ByteBuf input) {
+            setRadius(input.readDouble());
+        }
+
+        @Override
+        public void reset() {
+            setRadius(0);
         }
 
         @Override
@@ -97,6 +115,27 @@ class BaseWorldBorderAction implements WorldBorderAction {
         }
 
         @Override
+        public void write(ByteBuf output) {
+            output.writeDouble(getOldRadius());
+            output.writeDouble(getNewRadius());
+            ProtocolUtils.writeVarLong(output, getSpeed());
+        }
+
+        @Override
+        public void read(ByteBuf input) {
+            setOldRadius(input.readDouble());
+            setNewRadius(input.readDouble());
+            setSpeed(ProtocolUtils.readVarLong(input));
+        }
+
+        @Override
+        public void reset() {
+            setOldRadius(0);
+            setNewRadius(0);
+            setSpeed(0);
+        }
+
+        @Override
         public boolean equals(Object o) {
             if (this == o)
                 return true;
@@ -148,6 +187,24 @@ class BaseWorldBorderAction implements WorldBorderAction {
         @Override
         public void setZ(double z) {
             this.z = z;
+        }
+
+        @Override
+        public void write(ByteBuf output) {
+            output.writeDouble(getX());
+            output.writeDouble(getZ());
+        }
+
+        @Override
+        public void read(ByteBuf input) {
+            setX(input.readDouble());
+            setZ(input.readDouble());
+        }
+
+        @Override
+        public void reset() {
+            setX(0);
+            setZ(0);
         }
 
         @Override
@@ -267,6 +324,42 @@ class BaseWorldBorderAction implements WorldBorderAction {
         }
 
         @Override
+        public void write(ByteBuf output) {
+            output.writeDouble(getX());
+            output.writeDouble(getZ());
+            output.writeDouble(getOldRadius());
+            output.writeDouble(getNewRadius());
+            ProtocolUtils.writeVarLong(output, getSpeed());
+            ProtocolUtils.writeVarInt(output, getPortalTeleportationBoundary());
+            ProtocolUtils.writeVarInt(output, getWarningTime());
+            ProtocolUtils.writeVarInt(output, getWarningBlocks());
+        }
+
+        @Override
+        public void read(ByteBuf input) {
+            setX(input.readDouble());
+            setZ(input.readDouble());
+            setOldRadius(input.readDouble());
+            setNewRadius(input.readDouble());
+            setSpeed(ProtocolUtils.readVarLong(input));
+            setPortalTeleportationBoundary(ProtocolUtils.readVarInt(input));
+            setWarningTime(ProtocolUtils.readVarInt(input));
+            setWarningBlocks(ProtocolUtils.readVarInt(input));
+        }
+
+        @Override
+        public void reset() {
+            setX(0);
+            setZ(0);
+            setOldRadius(0);
+            setNewRadius(0);
+            setSpeed(0);
+            setPortalTeleportationBoundary(0);
+            setWarningTime(0);
+            setWarningBlocks(0);
+        }
+
+        @Override
         public boolean equals(Object o) {
             if (this == o)
                 return true;
@@ -329,6 +422,21 @@ class BaseWorldBorderAction implements WorldBorderAction {
         }
 
         @Override
+        public void write(ByteBuf output) {
+            ProtocolUtils.writeVarInt(output, getWarningTime());
+        }
+
+        @Override
+        public void read(ByteBuf input) {
+            setWarningTime(ProtocolUtils.readVarInt(input));
+        }
+
+        @Override
+        public void reset() {
+            setWarningTime(0);
+        }
+
+        @Override
         public boolean equals(Object o) {
             return this == o ||
                     (o instanceof WorldBorderSetWarningTime && getWarningTime() == ((WorldBorderSetWarningTime) o).getWarningTime());
@@ -360,6 +468,21 @@ class BaseWorldBorderAction implements WorldBorderAction {
         @Override
         public void setWarningBlocks(int warningBlocks) {
             this.warningBlocks = warningBlocks;
+        }
+
+        @Override
+        public void write(ByteBuf output) {
+            ProtocolUtils.writeVarInt(output, getWarningBlocks());
+        }
+
+        @Override
+        public void read(ByteBuf input) {
+            setWarningBlocks(ProtocolUtils.readVarInt(input));
+        }
+
+        @Override
+        public void reset() {
+            setWarningBlocks(0);
         }
 
         @Override

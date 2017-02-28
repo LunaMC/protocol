@@ -16,8 +16,10 @@
 
 package io.lunamc.protocol.packet.data;
 
-// See http://wiki.vg/index.php?title=SMP_Map_Format&oldid=7411#Data
-public interface Chunk {
+import io.lunamc.protocol.packet.NetworkSerializable;
+
+// See http://wiki.vg/index.php?title=SMP_Map_Format&oldid=7164#Data
+public interface Chunk extends NetworkSerializable {
 
     int[] getBlockTypes();
 

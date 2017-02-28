@@ -16,6 +16,7 @@
 
 package io.lunamc.protocol.packet.data;
 
+import io.netty.buffer.ByteBuf;
 import io.netty.buffer.ByteBufUtil;
 
 import java.util.Arrays;
@@ -80,6 +81,27 @@ class BaseChunk implements Chunk {
     @Override
     public void setBiomes(byte[] biomes) {
         this.biomes = biomes;
+    }
+
+    @Override
+    public void write(ByteBuf output) {
+        // ToDo: Implement
+        throw new UnsupportedOperationException("Not implemented");
+    }
+
+    @Override
+    public void read(ByteBuf input) {
+        // ToDo: Implement
+        throw new UnsupportedOperationException("Not implemented");
+    }
+
+    @Override
+    public void reset() {
+        setBlockTypes(null);
+        setBitsOfDataPerBlock(0);
+        setBlockLightData(null);
+        setSkylightData(null);
+        setBiomes(null);
     }
 
     @Override

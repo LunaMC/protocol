@@ -16,6 +16,9 @@
 
 package io.lunamc.protocol.packet.data;
 
+import io.lunamc.protocol.ProtocolUtils;
+import io.netty.buffer.ByteBuf;
+
 import java.util.Objects;
 
 class BaseBlockChangeRecord implements BlockChangeRecord {
@@ -55,6 +58,27 @@ class BaseBlockChangeRecord implements BlockChangeRecord {
     @Override
     public void setBlockId(int blockId) {
         this.blockId = blockId;
+    }
+
+    @Override
+    public void write(ByteBuf output) {
+        output.writeByte(getHorizontalPosition());
+        output.writeByte(getYCoordinate());
+        ProtocolUtils.writeVarInt(output, getBlockId());
+    }
+
+    @Override
+    public void read(ByteBuf input) {
+        setHorizontalPosition(input.readUnsignedByte());
+        setYCoordinate(input.readUnsignedByte());
+        setBlockId(ProtocolUtils.readVarInt(input));
+    }
+
+    @Override
+    public void reset() {
+        setHorizontalPosition((short) 0);
+        setYCoordinate((short) 0);
+        setBlockId(0);
     }
 
     @Override

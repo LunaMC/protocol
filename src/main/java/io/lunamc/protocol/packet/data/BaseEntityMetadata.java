@@ -16,24 +16,59 @@
 
 package io.lunamc.protocol.packet.data;
 
+import io.lunamc.protocol.ProtocolUtils;
+import io.netty.buffer.ByteBuf;
+
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.UUID;
 
 class BaseEntityMetadata implements EntityMetadata {
 
-    private List<? extends EntityMetadataEntry> entries;
+    private final DataAllocator dataAllocator;
+    private List<EntityMetadataEntry> entries;
 
-    BaseEntityMetadata() {
+    BaseEntityMetadata(DataAllocator dataAllocator) {
+        this.dataAllocator = Objects.requireNonNull(dataAllocator, "dataAllocator must not be null");
     }
 
     @Override
-    public List<? extends EntityMetadataEntry> getMetadata() {
+    public List<EntityMetadataEntry> getMetadata() {
         return entries;
     }
 
     @Override
-    public void setMetadata(List<? extends EntityMetadataEntry> entries) {
+    public void setMetadata(List<EntityMetadataEntry> entries) {
         this.entries = entries;
+    }
+
+    @Override
+    public void write(ByteBuf output) {
+        for (EntityMetadataEntry entry : getMetadata())
+            entry.write(output);
+        TerminatorEntityMetadataEntry.TERMINATOR.write(output);
+    }
+
+    @Override
+    public void read(ByteBuf input) {
+        if (entries == null)
+            setMetadata(new ArrayList<>());
+        else
+            entries.clear();
+        while (true) {
+            EntityMetadataEntry entry = dataAllocator.getEntityMetadataEntry();
+            entry.read(input);
+            if (entry.getIndex() == TerminatorEntityMetadataEntry.TERMINATOR_INDEX)
+                break;
+            else
+                entries.add(entry);
+        }
+    }
+
+    @Override
+    public void reset() {
+        setMetadata(null);
     }
 
     @Override
@@ -54,11 +89,13 @@ class BaseEntityMetadata implements EntityMetadata {
 
     static class BaseEntityMetadataEntry implements EntityMetadataEntry {
 
+        private final DataAllocator dataAllocator;
         private short index;
         private byte type;
         private Object value;
 
-        BaseEntityMetadataEntry() {
+        BaseEntityMetadataEntry(DataAllocator dataAllocator) {
+            this.dataAllocator = Objects.requireNonNull(dataAllocator, "dataAllocator must not be null");
         }
 
         @Override
@@ -92,6 +129,124 @@ class BaseEntityMetadata implements EntityMetadata {
         }
 
         @Override
+        public void write(ByteBuf output) {
+            short index = getIndex();
+            output.writeByte(index);
+            if (index != TerminatorEntityMetadataEntry.TERMINATOR_INDEX) {
+                short type = getType();
+                output.writeByte(type);
+                Object value = getValue();
+                switch (type) {
+                    case TYPE_BYTE:
+                        output.writeByte((Byte) value);
+                        break;
+                    case TYPE_VARINT:
+                    case TYPE_DIRECTION:
+                        ProtocolUtils.writeVarInt(output, (Integer) value);
+                        break;
+                    case TYPE_FLOAT:
+                        output.writeFloat((Float) value);
+                        break;
+                    case TYPE_STRING:
+                    case TYPE_CHAT:
+                        ProtocolUtils.writeString(output, (String) value);
+                        break;
+                    case TYPE_SLOT:
+                        ((SlotData) value).write(output);
+                        break;
+                    case TYPE_BOOLEAN:
+                        output.writeBoolean((Boolean) value);
+                        break;
+                    case TYPE_ROTATION:
+                        ((Rotation) value).write(output);
+                        break;
+                    case TYPE_POSITION:
+                        output.writeLong((Long) value);
+                        break;
+                    case TYPE_OPT_POSITION:
+                        output.writeBoolean(value != null);
+                        if (value != null)
+                            output.writeLong((Long) value);
+                        break;
+                    case TYPE_OPT_UUID:
+                        output.writeBoolean(value != null);
+                        if (value != null)
+                            ProtocolUtils.writeUuid(output, (UUID) value);
+                        break;
+                    case TYPE_OPT_BLOCK_ID:
+                        if (value != null)
+                            ProtocolUtils.writeVarInt(output, (Integer) value);
+                        else
+                            ProtocolUtils.writeVarInt(output, 0);
+                        break;
+
+                }
+            }
+        }
+
+        @Override
+        public void read(ByteBuf input) {
+            short index = input.readUnsignedByte();
+            setIndex(index);
+            if (index != TerminatorEntityMetadataEntry.TERMINATOR_INDEX) {
+                byte type = input.readByte();
+                setType(type);
+                switch (type) {
+                    case TYPE_BYTE:
+                        setValue(input.readByte());
+                        break;
+                    case TYPE_VARINT:
+                    case TYPE_DIRECTION:
+                        setValue(ProtocolUtils.readVarInt(input));
+                        break;
+                    case TYPE_FLOAT:
+                        setValue(input.readFloat());
+                        break;
+                    case TYPE_STRING:
+                    case TYPE_CHAT:
+                        setValue(ProtocolUtils.readString(input));
+                        break;
+                    case TYPE_SLOT:
+                        SlotData tempSlot = dataAllocator.getSlotData();
+                        tempSlot.read(input);
+                        setValue(tempSlot);
+                        break;
+                    case TYPE_BOOLEAN:
+                        setValue(input.readBoolean());
+                        break;
+                    case TYPE_ROTATION:
+                        Rotation tempRotation = dataAllocator.getRotation();
+                        tempRotation.read(input);
+                        setValue(tempRotation);
+                        break;
+                    case TYPE_POSITION:
+                        setValue(input.readLong());
+                        break;
+                    case TYPE_OPT_POSITION:
+                        if (input.readBoolean())
+                            setValue(input.readLong());
+                        break;
+                    case TYPE_OPT_UUID:
+                        if (input.readBoolean())
+                            setValue(ProtocolUtils.readUuid(input));
+                        break;
+                    case TYPE_OPT_BLOCK_ID:
+                        int tempBlockId = ProtocolUtils.readVarInt(input);
+                        if (tempBlockId != 0)
+                            setValue(tempBlockId);
+                        break;
+                }
+            }
+        }
+
+        @Override
+        public void reset() {
+            setIndex((short) 0);
+            setType((byte) 0);
+            setValue(null);
+        }
+
+        @Override
         public boolean equals(Object o) {
             if (this == o)
                 return true;
@@ -114,6 +269,61 @@ class BaseEntityMetadata implements EntityMetadata {
                     ", type=" + getType() +
                     ", value=" + getValue() +
                     '}';
+        }
+    }
+
+    private static class TerminatorEntityMetadataEntry implements EntityMetadataEntry {
+
+        private static final short TERMINATOR_INDEX = (short) 0xff;
+        private static final TerminatorEntityMetadataEntry TERMINATOR = new TerminatorEntityMetadataEntry();
+
+        static {
+            TERMINATOR.setIndex(TERMINATOR_INDEX);
+        }
+
+        @Override
+        public short getIndex() {
+            return TERMINATOR_INDEX;
+        }
+
+        @Override
+        public void setIndex(short index) {
+            throw new UnsupportedOperationException("Not supported.");
+        }
+
+        @Override
+        public byte getType() {
+            throw new UnsupportedOperationException("Not supported.");
+        }
+
+        @Override
+        public void setType(byte type) {
+            throw new UnsupportedOperationException("Not supported.");
+        }
+
+        @Override
+        public Object getValue() {
+            throw new UnsupportedOperationException("Not supported.");
+        }
+
+        @Override
+        public void setValue(Object value) {
+            throw new UnsupportedOperationException("Not supported.");
+        }
+
+        @Override
+        public void write(ByteBuf output) {
+            output.writeByte(getIndex());
+        }
+
+        @Override
+        public void read(ByteBuf input) {
+            throw new UnsupportedOperationException("Not supported.");
+        }
+
+        @Override
+        public void reset() {
+            throw new UnsupportedOperationException("Not supported.");
         }
     }
 }

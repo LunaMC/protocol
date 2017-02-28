@@ -16,7 +16,9 @@
 
 package io.lunamc.protocol.packet.data;
 
-public interface MapIcon {
+import io.lunamc.protocol.packet.NetworkSerializable;
+
+public interface MapIcon extends NetworkSerializable {
 
     byte getDirectionAndType();
 

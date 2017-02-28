@@ -16,7 +16,9 @@
 
 package io.lunamc.protocol.packet.data;
 
-public interface BlockChangeRecord {
+import io.lunamc.protocol.packet.NetworkSerializable;
+
+public interface BlockChangeRecord extends NetworkSerializable {
 
     short getHorizontalPosition();
 

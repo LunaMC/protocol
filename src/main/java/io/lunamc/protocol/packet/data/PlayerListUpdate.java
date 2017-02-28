@@ -16,28 +16,30 @@
 
 package io.lunamc.protocol.packet.data;
 
+import io.lunamc.protocol.packet.NetworkSerializable;
+
 import java.util.List;
 import java.util.UUID;
 
-public interface PlayerListUpdate {
+public interface PlayerListUpdate extends NetworkSerializable {
 
     UUID getUuid();
 
     void setUuid(UUID uuid);
 
-    List<Object> getPlayers();
+    NetworkSerializable getAction();
 
-    void setPlayers(List<Object> players);
+    void setAction(NetworkSerializable action);
 
-    interface PlayerListAddPlayerAction {
+    interface PlayerListAddPlayerAction extends NetworkSerializable {
 
         String getName();
 
         void setName(String name);
 
-        List<? extends PlayerListAddPlayerActionPlayerProperty> getProperties();
+        List<PlayerListAddPlayerActionPlayerProperty> getProperties();
 
-        void setProperties(List<? extends PlayerListAddPlayerActionPlayerProperty> properties);
+        void setProperties(List<PlayerListAddPlayerActionPlayerProperty> properties);
 
         int getGamemode();
 
@@ -51,7 +53,7 @@ public interface PlayerListUpdate {
 
         void setDisplayName(String displayName);
 
-        interface PlayerListAddPlayerActionPlayerProperty {
+        interface PlayerListAddPlayerActionPlayerProperty extends NetworkSerializable {
 
             String getName();
 
@@ -67,26 +69,26 @@ public interface PlayerListUpdate {
         }
     }
 
-    interface PlayerListUpdateGamemodeAction {
+    interface PlayerListUpdateGamemodeAction extends NetworkSerializable {
 
         int getGamemode();
 
         void setGamemode(int gamemode);
     }
 
-    interface PlayerListUpdateLatencyAction {
+    interface PlayerListUpdateLatencyAction extends NetworkSerializable {
 
         int getPing();
 
         void setPing(int ping);
     }
 
-    interface PlayerListUpdateDisplayNameAction {
+    interface PlayerListUpdateDisplayNameAction extends NetworkSerializable {
 
         String getDisplayName();
 
         void setDisplayName(String displayName);
     }
 
-    interface PlayerListRemovePlayerAction {}
+    interface PlayerListRemovePlayerAction extends NetworkSerializable {}
 }

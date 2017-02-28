@@ -16,7 +16,9 @@
 
 package io.lunamc.protocol.packet.data;
 
-public interface Statistic {
+import io.lunamc.protocol.packet.NetworkSerializable;
+
+public interface Statistic extends NetworkSerializable {
 
     String getName();
 

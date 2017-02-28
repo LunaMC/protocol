@@ -16,14 +16,20 @@
 
 package io.lunamc.protocol.packet.data;
 
+import io.lunamc.protocol.ProtocolUtils;
+import io.lunamc.protocol.packet.NetworkSerializable;
+import io.netty.buffer.ByteBuf;
+
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 
+// Notice: This implementation requires settings the action before reading
 class BasePlayerListUpdate implements PlayerListUpdate {
 
     private UUID uuid;
-    private List<Object> players;
+    private NetworkSerializable action;
 
     BasePlayerListUpdate() {
     }
@@ -39,13 +45,39 @@ class BasePlayerListUpdate implements PlayerListUpdate {
     }
 
     @Override
-    public List<Object> getPlayers() {
-        return players;
+    public NetworkSerializable getAction() {
+        return action;
     }
 
     @Override
-    public void setPlayers(List<Object> players) {
-        this.players = players;
+    public void setAction(NetworkSerializable action) {
+        if (action != null &&
+                !(action instanceof PlayerListAddPlayerAction) &&
+                !(action instanceof PlayerListUpdateGamemodeAction) &&
+                !(action instanceof PlayerListUpdateLatencyAction) &&
+                !(action instanceof PlayerListUpdateDisplayNameAction) &&
+                !(action instanceof PlayerListRemovePlayerAction)) {
+            throw new IllegalArgumentException("Invalid action");
+        }
+        this.action = action;
+    }
+
+    @Override
+    public void write(ByteBuf output) {
+        ProtocolUtils.writeUuid(output, getUuid());
+        action.write(output);
+    }
+
+    @Override
+    public void read(ByteBuf input) {
+        setUuid(ProtocolUtils.readUuid(input));
+        action.read(input);
+    }
+
+    @Override
+    public void reset() {
+        setUuid(null);
+        setAction(null);
     }
 
     @Override
@@ -56,28 +88,30 @@ class BasePlayerListUpdate implements PlayerListUpdate {
             return false;
         PlayerListUpdate that = (PlayerListUpdate) o;
         return Objects.equals(getUuid(), that.getUuid()) &&
-                Objects.equals(getPlayers(), that.getPlayers());
+                Objects.equals(getAction(), that.getAction());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getUuid(), getPlayers());
+        return Objects.hash(getUuid(), getAction());
     }
 
     @Override
     public String toString() {
-        return getClass().getName() + "{uuid=" + getUuid() + ", players=" + getPlayers() + '}';
+        return getClass().getName() + "{uuid=" + getUuid() + ", action=" + getAction() + '}';
     }
 
     static class BasePlayerListAddPlayerAction implements PlayerListAddPlayerAction {
 
+        private final DataAllocator dataAllocator;
         private String name;
-        private List<? extends PlayerListAddPlayerActionPlayerProperty> properties;
+        private List<PlayerListAddPlayerActionPlayerProperty> properties;
         private int gamemode;
         private int ping;
         private String displayName;
 
-        BasePlayerListAddPlayerAction() {
+        BasePlayerListAddPlayerAction(DataAllocator dataAllocator) {
+            this.dataAllocator = Objects.requireNonNull(dataAllocator, "dataAllocator must not be null");
         }
 
         @Override
@@ -91,12 +125,12 @@ class BasePlayerListUpdate implements PlayerListUpdate {
         }
 
         @Override
-        public List<? extends PlayerListAddPlayerActionPlayerProperty> getProperties() {
+        public List<PlayerListAddPlayerActionPlayerProperty> getProperties() {
             return properties;
         }
 
         @Override
-        public void setProperties(List<? extends PlayerListAddPlayerActionPlayerProperty> properties) {
+        public void setProperties(List<PlayerListAddPlayerActionPlayerProperty> properties) {
             this.properties = properties;
         }
 
@@ -128,6 +162,53 @@ class BasePlayerListUpdate implements PlayerListUpdate {
         @Override
         public void setDisplayName(String displayName) {
             this.displayName = displayName;
+        }
+
+        @Override
+        public void write(ByteBuf output) {
+            ProtocolUtils.writeString(output, getName());
+
+            List<PlayerListAddPlayerActionPlayerProperty> properties = getProperties();
+            ProtocolUtils.writeVarInt(output, properties.size());
+            properties.forEach(property -> property.write(output));
+
+            ProtocolUtils.writeVarInt(output, getGamemode());
+            ProtocolUtils.writeVarInt(output, getPing());
+
+            String displayName = getDisplayName();
+            output.writeBoolean(displayName != null);
+            if (displayName != null)
+                ProtocolUtils.writeString(output, displayName);
+        }
+
+        @Override
+        public void read(ByteBuf input) {
+            setName(ProtocolUtils.readString(input));
+
+            int length = ProtocolUtils.readVarInt(input);
+            List<PlayerListAddPlayerActionPlayerProperty> properties = getProperties();
+            if (properties == null) {
+                properties = new ArrayList<>(length);
+                setProperties(properties);
+            }
+            for (int i = 0; i < length; i++) {
+                PlayerListAddPlayerActionPlayerProperty property = dataAllocator.getPlayerListAddPlayerActionPlayerProperty();
+                property.read(input);
+                properties.add(property);
+            }
+
+            setGamemode(ProtocolUtils.readVarInt(input));
+            setPing(ProtocolUtils.readVarInt(input));
+            setDisplayName(input.readBoolean() ? ProtocolUtils.readString(input) : null);
+        }
+
+        @Override
+        public void reset() {
+            setName(null);
+            setProperties(null);
+            setGamemode(0);
+            setPing(0);
+            setDisplayName(null);
         }
 
         @Override
@@ -199,6 +280,31 @@ class BasePlayerListUpdate implements PlayerListUpdate {
             }
 
             @Override
+            public void write(ByteBuf output) {
+                ProtocolUtils.writeString(output, getName());
+                ProtocolUtils.writeString(output, getValue());
+                String signature = getSignature();
+                output.writeBoolean(signature != null);
+                if (signature != null)
+                    ProtocolUtils.writeString(output, signature);
+            }
+
+            @Override
+            public void read(ByteBuf input) {
+                setName(ProtocolUtils.readString(input));
+                setValue(ProtocolUtils.readString(input));
+                if (input.readBoolean())
+                    setSignature(ProtocolUtils.readString(input));
+            }
+
+            @Override
+            public void reset() {
+                setName(null);
+                setValue(null);
+                setSignature(null);
+            }
+
+            @Override
             public boolean equals(Object o) {
                 if (this == o)
                     return true;
@@ -243,6 +349,21 @@ class BasePlayerListUpdate implements PlayerListUpdate {
         }
 
         @Override
+        public void write(ByteBuf output) {
+            ProtocolUtils.writeVarInt(output, getGamemode());
+        }
+
+        @Override
+        public void read(ByteBuf input) {
+            setGamemode(ProtocolUtils.readVarInt(input));
+        }
+
+        @Override
+        public void reset() {
+            setGamemode(0);
+        }
+
+        @Override
         public boolean equals(Object o) {
             return this == o ||
                     (o instanceof PlayerListUpdateGamemodeAction && getGamemode() == ((PlayerListUpdateGamemodeAction) o).getGamemode());
@@ -274,6 +395,21 @@ class BasePlayerListUpdate implements PlayerListUpdate {
         @Override
         public void setPing(int ping) {
             this.ping = ping;
+        }
+
+        @Override
+        public void write(ByteBuf output) {
+            ProtocolUtils.writeVarInt(output, getPing());
+        }
+
+        @Override
+        public void read(ByteBuf input) {
+            setPing(ProtocolUtils.readVarInt(input));
+        }
+
+        @Override
+        public void reset() {
+            setPing(0);
         }
 
         @Override
@@ -311,6 +447,21 @@ class BasePlayerListUpdate implements PlayerListUpdate {
         }
 
         @Override
+        public void write(ByteBuf output) {
+            ProtocolUtils.writeString(output, getDisplayName());
+        }
+
+        @Override
+        public void read(ByteBuf input) {
+            setDisplayName(ProtocolUtils.readString(input));
+        }
+
+        @Override
+        public void reset() {
+            setDisplayName(null);
+        }
+
+        @Override
         public boolean equals(Object o) {
             return this == o ||
                     (o instanceof PlayerListUpdateDisplayNameAction && Objects.equals(getDisplayName(), ((PlayerListUpdateDisplayNameAction) o).getDisplayName()));
@@ -330,6 +481,18 @@ class BasePlayerListUpdate implements PlayerListUpdate {
     static class BasePlayerListRemovePlayerAction implements PlayerListRemovePlayerAction {
 
         BasePlayerListRemovePlayerAction() {
+        }
+
+        @Override
+        public void write(ByteBuf output) {
+        }
+
+        @Override
+        public void read(ByteBuf input) {
+        }
+
+        @Override
+        public void reset() {
         }
 
         @Override

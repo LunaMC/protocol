@@ -16,10 +16,12 @@
 
 package io.lunamc.protocol.packet.data;
 
+import io.lunamc.protocol.packet.NetworkSerializable;
+
 import java.util.List;
 import java.util.UUID;
 
-public interface EntityProperty {
+public interface EntityProperty extends NetworkSerializable {
 
     String getKey();
 
@@ -29,11 +31,11 @@ public interface EntityProperty {
 
     void setValue(double value);
 
-    List<? extends EntityPropertyModifier> getModifiers();
+    List<EntityPropertyModifier> getModifiers();
 
-    void setModifiers(List<? extends EntityPropertyModifier> modifiers);
+    void setModifiers(List<EntityPropertyModifier> modifiers);
 
-    interface EntityPropertyModifier {
+    interface EntityPropertyModifier extends NetworkSerializable {
 
         UUID getUuid();
 

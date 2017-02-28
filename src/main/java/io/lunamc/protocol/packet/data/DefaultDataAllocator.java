@@ -42,17 +42,17 @@ public class DefaultDataAllocator implements DataAllocator {
 
     @Override
     public EntityMetadata getEntityMetadata() {
-        return new BaseEntityMetadata();
+        return new BaseEntityMetadata(this);
     }
 
     @Override
     public EntityMetadata.EntityMetadataEntry getEntityMetadataEntry() {
-        return new BaseEntityMetadata.BaseEntityMetadataEntry();
+        return new BaseEntityMetadata.BaseEntityMetadataEntry(this);
     }
 
     @Override
     public EntityProperty getEntityProperty() {
-        return new BaseEntityProperty();
+        return new BaseEntityProperty(this);
     }
 
     @Override
@@ -98,6 +98,11 @@ public class DefaultDataAllocator implements DataAllocator {
     @Override
     public PlayerListUpdate.PlayerListRemovePlayerAction getPlayerListRemovePlayerAction() {
         return new BasePlayerListUpdate.BasePlayerListRemovePlayerAction();
+    }
+
+    @Override
+    public Rotation getRotation() {
+        return new BaseRotation();
     }
 
     @Override

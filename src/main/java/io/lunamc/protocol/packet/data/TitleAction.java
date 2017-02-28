@@ -16,23 +16,25 @@
 
 package io.lunamc.protocol.packet.data;
 
+import io.lunamc.protocol.packet.NetworkSerializable;
+
 public interface TitleAction {
 
-    interface TitleActionSetTitle {
+    interface TitleActionSetTitle extends NetworkSerializable {
 
         String getTitleText();
 
         void setTitleText(String titleText);
     }
 
-    interface TitleActionSetSubtitle {
+    interface TitleActionSetSubtitle extends NetworkSerializable {
 
         String getSubtitleText();
 
         void setSubtitleText(String subtitleText);
     }
 
-    interface TitleActionSetTimesAndDisplay {
+    interface TitleActionSetTimesAndDisplay extends NetworkSerializable {
 
         int getFadeIn();
 
@@ -47,9 +49,9 @@ public interface TitleAction {
         void setFadeOut(int fadeOut);
     }
 
-    interface TitleActionHide {
+    interface TitleActionHide extends NetworkSerializable {
     }
 
-    interface TitleActionReset {
+    interface TitleActionReset extends NetworkSerializable {
     }
 }

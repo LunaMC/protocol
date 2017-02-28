@@ -16,7 +16,9 @@
 
 package io.lunamc.protocol.packet.data;
 
-public interface ByteTuple3 {
+import io.lunamc.protocol.packet.NetworkSerializable;
+
+public interface ByteTuple3 extends NetworkSerializable {
 
     byte getByte1();
 
