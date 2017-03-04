@@ -20,7 +20,7 @@ import java.util.Objects;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.function.Supplier;
 
-public class ThreadSafeHolder<T> {
+public class ThreadSafeHolder<T> implements Supplier<T> {
 
     private final AtomicReference<T> value = new AtomicReference<>();
     private Supplier<T> supplier;
@@ -29,6 +29,7 @@ public class ThreadSafeHolder<T> {
         this.supplier = Objects.requireNonNull(supplier, "supplier must not be null");
     }
 
+    @Override
     public T get() {
         T val = value.get();
         if (val == null) {

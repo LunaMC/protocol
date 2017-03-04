@@ -42,6 +42,6 @@ public class PooledHandshakePacketAllocator implements HandshakePacketAllocator 
 
     @Override
     public HandshakeServerboundV47 getHandshakeServerboundV47() {
-        return handshakeServerboundV47Recycler.get().get();
+        return RecyclerUtils.get(handshakeServerboundV47Recycler);
     }
 }

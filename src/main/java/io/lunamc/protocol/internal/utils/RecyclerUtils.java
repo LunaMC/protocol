@@ -28,6 +28,10 @@ public class RecyclerUtils {
         throw new UnsupportedOperationException(getClass().getSimpleName() + " is a utility class and should not be constructed");
     }
 
+    public static <T> T get(Supplier<Recycler<T>> supplier) {
+        return supplier.get().get();
+    }
+
     public static <T> Supplier<Recycler<T>> createLazy(Function<Recycler.Handle<T>, T> constructor) {
         return () -> create(constructor);
     }

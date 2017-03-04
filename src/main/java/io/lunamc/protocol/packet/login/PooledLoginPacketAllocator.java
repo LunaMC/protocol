@@ -72,31 +72,31 @@ public class PooledLoginPacketAllocator implements LoginPacketAllocator {
 
     @Override
     public DisconnectClientboundV47 getDisconnectClientboundV47() {
-        return disconnectClientboundV47Recycler.get().get();
+        return RecyclerUtils.get(disconnectClientboundV47Recycler);
     }
 
     @Override
     public EncryptionRequestClientboundV47 getEncryptionRequestClientboundV47() {
-        return encryptionRequestClientboundV47Recycler.get().get();
+        return RecyclerUtils.get(encryptionRequestClientboundV47Recycler);
     }
 
     @Override
     public LoginSuccessClientboundV47 getLoginSuccessClientboundV47() {
-        return loginSuccessClientboundV47Recycler.get().get();
+        return RecyclerUtils.get(loginSuccessClientboundV47Recycler);
     }
 
     @Override
     public SetCompressionClientboundV47 getSetCompressionClientboundV47() {
-        return setCompressionClientboundV47Recycler.get().get();
+        return RecyclerUtils.get(setCompressionClientboundV47Recycler);
     }
 
     @Override
     public LoginStartServerboundV47 getLoginStartServerboundV47() {
-        return loginStartServerboundV47Recycler.get().get();
+        return RecyclerUtils.get(loginStartServerboundV47Recycler);
     }
 
     @Override
     public EncryptionResponseServerboundV47 getEncryptionResponseServerboundV47() {
-        return encryptionResponseServerboundV47Recycler.get().get();
+        return RecyclerUtils.get(encryptionResponseServerboundV47Recycler);
     }
 }
