@@ -14,7 +14,7 @@
  *    limitations under the License.
  */
 
-package io.lunamc.protocol.packet.login;
+package io.lunamc.protocol.packet.status;
 
 import io.lunamc.protocol.internal.utils.PacketMapper;
 import io.lunamc.protocol.packet.Packet;
@@ -23,23 +23,21 @@ import java.util.NoSuchElementException;
 import java.util.Objects;
 import java.util.function.Function;
 
-public class LoginPacketUtils {
+public class StatusPacketUtils {
 
-    private static final PacketMapper<LoginPacketAllocator> V47_MAPPER;
+    private static final PacketMapper<StatusPacketAllocator> V47_MAPPER;
 
     static {
-        V47_MAPPER = PacketMapper.<LoginPacketAllocator>newBuilder()
-                .registerServerboundPacket(LoginStartServerboundV47.class, 0x00, LoginPacketAllocator::getLoginStartServerboundV47)
-                .registerServerboundPacket(EncryptionResponseServerboundV47.class, 0x01, LoginPacketAllocator::getEncryptionResponseServerboundV47)
+        V47_MAPPER = PacketMapper.<StatusPacketAllocator>newBuilder()
+                .registerClientboundPacket(ResponseClientboundV47.class, 0x00, StatusPacketAllocator::getResponseClientboundV47)
+                .registerClientboundPacket(PingMultiboundV47.class, 0x01, StatusPacketAllocator::getPingMultiboundV47)
 
-                .registerClientboundPacket(DisconnectClientboundV47.class, 0x00, LoginPacketAllocator::getDisconnectClientboundV47)
-                .registerClientboundPacket(EncryptionRequestClientboundV47.class, 0x01, LoginPacketAllocator::getEncryptionRequestClientboundV47)
-                .registerClientboundPacket(LoginSuccessClientboundV47.class, 0x02, LoginPacketAllocator::getLoginSuccessClientboundV47)
-                .registerClientboundPacket(SetCompressionClientboundV47.class, 0x03, LoginPacketAllocator::getSetCompressionClientboundV47)
+                .registerServerboundPacket(RequestServerboundV47.class, 0x00, StatusPacketAllocator::getRequestServerboundV47)
+                .registerServerboundPacket(PingMultiboundV47.class, 0x01, StatusPacketAllocator::getPingMultiboundV47)
                 .build();
     }
 
-    private LoginPacketUtils() {
+    private StatusPacketUtils() {
         throw new UnsupportedOperationException(getClass().getSimpleName() + " is a utility class and should not be constructed");
     }
 
@@ -57,9 +55,9 @@ public class LoginPacketUtils {
         throw new NoSuchElementException("Cannot find packet id for " + packet.getClass().getName() + " for protocol version " + protocolVersion);
     }
 
-    public static Packet allocateServerboundPacket(LoginPacketAllocator allocator, int packetId, int protocolVersion) {
+    public static Packet allocateServerboundPacket(StatusPacketAllocator allocator, int packetId, int protocolVersion) {
         Objects.requireNonNull(allocator, "allocator must not be null");
-        Function<LoginPacketAllocator, Packet> allocatorFunction = null;
+        Function<StatusPacketAllocator, Packet> allocatorFunction = null;
         if (protocolVersion >= 47)
             allocatorFunction = V47_MAPPER.getServerboundPacketAllocator(packetId);
 
@@ -69,9 +67,9 @@ public class LoginPacketUtils {
             throw new NoSuchElementException("Cannot allocate serverbound packet with packetId=" + packetId + " and protocolVersion=" + protocolVersion);
     }
 
-    public static Packet allocateClientboundPacket(LoginPacketAllocator allocator, int packetId, int protocolVersion) {
+    public static Packet allocateClientboundPacket(StatusPacketAllocator allocator, int packetId, int protocolVersion) {
         Objects.requireNonNull(allocator, "allocator must not be null");
-        Function<LoginPacketAllocator, Packet> allocatorFunction = null;
+        Function<StatusPacketAllocator, Packet> allocatorFunction = null;
         if (protocolVersion >= 47)
             allocatorFunction = V47_MAPPER.getClientboundPacketAllocator(packetId);
 

@@ -19,34 +19,37 @@ package io.lunamc.protocol.packet.handshake;
 import io.lunamc.protocol.packet.Packet;
 
 import java.util.NoSuchElementException;
+import java.util.Objects;
 
 public class HandshakePacketUtils {
+
+    // Handshake state has only one packet. It's okay to keep the things simple by not using PacketMapper
 
     private HandshakePacketUtils() {
         throw new UnsupportedOperationException(getClass().getSimpleName() + " is a utility class and should not be constructed");
     }
 
-    public static int getServerboundPacketId(Class<? extends Packet> aClass, int protocolVersion) {
-        if (HandshakeServerboundV47.class.isAssignableFrom(aClass) && protocolVersion >= 47)
+    public static int getServerboundPacketId(Packet packet, int protocolVersion) {
+        Objects.requireNonNull(packet, "packet must not be null");
+        if (protocolVersion >= 47 && HandshakeServerboundV47.class.isAssignableFrom(packet.getModelClass()))
             return 0x00;
-        throw new NoSuchElementException("Cannot find packet id for " + aClass.getName() + " for protocol version " + protocolVersion);
+        throw new NoSuchElementException("Cannot find packet id for " + packet.getClass().getName() + " for protocol version " + protocolVersion);
     }
 
-    public static int getClientboundPacketId(Class<? extends Packet> aClass, int protocolVersion) {
-        throw new NoSuchElementException("Cannot find packet id for " + aClass.getName() + " for protocol version " + protocolVersion);
+    public static int getClientboundPacketId(Packet packet, int protocolVersion) {
+        Objects.requireNonNull(packet, "packet must not be null");
+        throw new NoSuchElementException("Cannot find packet id for " + packet.getClass().getName() + " for protocol version " + protocolVersion);
     }
 
     public static Packet allocateServerboundPacket(HandshakePacketAllocator allocator, int packetId, int protocolVersion) {
-        switch (packetId) {
-            case 0x00:
-                if (protocolVersion >= 47)
-                    return allocator.getHandshakeServerboundV47();
-                break;
-        }
+        Objects.requireNonNull(allocator, "allocator must not be null");
+        if (protocolVersion >= 47 && packetId == 0x00)
+            return allocator.getHandshakeServerboundV47();
         throw new NoSuchElementException("Cannot allocate serverbound packet with packetId=" + packetId + " and protocolVersion=" + protocolVersion);
     }
 
     public static Packet allocateClientboundPacket(HandshakePacketAllocator allocator, int packetId, int protocolVersion) {
+        Objects.requireNonNull(allocator, "allocator must not be null");
         throw new NoSuchElementException("Cannot allocate clientbound packet with packetId=" + packetId + " and protocolVersion=" + protocolVersion);
     }
 }

@@ -82,6 +82,8 @@ public interface PlayPacketAllocator {
 
     ChunkDataClientboundV47 getChunkDataClientboundV47();
 
+    MultiBlockChangeClientboundV47 getMultiBlockChangeClientboundV47();
+
     BlockChangeClientboundV47 getBlockChangeClientboundV47();
 
     BlockActionClientboundV47 getBlockActionClientboundV47();
@@ -195,8 +197,6 @@ public interface PlayPacketAllocator {
     HeldItemChangeMultiboundV47 getHeldItemChangeMultiboundV47();
 
     UpdateSignMultiboundV47 getUpdateSignMultiboundV47();
-
-    MultiBlockChangeClientboundV47 getMultiBlockChangeMultiboundV47();
 
     CloseWindowMultiboundV47 getCloseWindowMultiboundV47();
 

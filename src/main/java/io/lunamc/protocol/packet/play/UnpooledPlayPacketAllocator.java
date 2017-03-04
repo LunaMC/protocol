@@ -181,6 +181,11 @@ public class UnpooledPlayPacketAllocator implements PlayPacketAllocator {
     }
 
     @Override
+    public MultiBlockChangeClientboundV47 getMultiBlockChangeClientboundV47() {
+        throw new UnsupportedOperationException("Not implemented");
+    }
+
+    @Override
     public BlockChangeClientboundV47 getBlockChangeClientboundV47() {
         throw new UnsupportedOperationException("Not implemented");
     }
@@ -457,11 +462,6 @@ public class UnpooledPlayPacketAllocator implements PlayPacketAllocator {
 
     @Override
     public HeldItemChangeMultiboundV47 getHeldItemChangeMultiboundV47() {
-        throw new UnsupportedOperationException("Not implemented");
-    }
-
-    @Override
-    public MultiBlockChangeClientboundV47 getMultiBlockChangeMultiboundV47() {
         throw new UnsupportedOperationException("Not implemented");
     }
 
