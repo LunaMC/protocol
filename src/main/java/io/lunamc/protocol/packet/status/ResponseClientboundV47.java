@@ -16,22 +16,16 @@
 
 package io.lunamc.protocol.packet.status;
 
-public class PooledStatusPacketAllocator implements StatusPacketAllocator {
+import io.lunamc.protocol.packet.Packet;
 
-    public static final PooledStatusPacketAllocator INSTANCE = new PooledStatusPacketAllocator();
+public interface ResponseClientboundV47 extends Packet {
 
-    @Override
-    public ResponseClientboundV47 getResponseClientboundV47() {
-        throw new UnsupportedOperationException("Not implemented");
-    }
+    String getResponse();
 
-    @Override
-    public RequestServerboundV47 getRequestServerboundV47() {
-        throw new UnsupportedOperationException("Not implemented");
-    }
+    void setResponse(String response);
 
     @Override
-    public PingMultiboundV47 getPingMultiboundV47() {
-        throw new UnsupportedOperationException("Not implemented");
+    default Class<? extends Packet> getModelClass() {
+        return ResponseClientboundV47.class;
     }
 }

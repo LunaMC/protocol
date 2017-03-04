@@ -17,4 +17,10 @@
 package io.lunamc.protocol.packet.status;
 
 public interface StatusPacketAllocator {
+
+    ResponseClientboundV47 getResponseClientboundV47();
+
+    RequestServerboundV47 getRequestServerboundV47();
+
+    PingMultiboundV47 getPingMultiboundV47();
 }

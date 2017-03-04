@@ -19,4 +19,19 @@ package io.lunamc.protocol.packet.status;
 public class UnpooledStatusPacketAllocator implements StatusPacketAllocator {
 
     public static final UnpooledStatusPacketAllocator INSTANCE = new UnpooledStatusPacketAllocator();
+
+    @Override
+    public ResponseClientboundV47 getResponseClientboundV47() {
+        throw new UnsupportedOperationException("Not implemented");
+    }
+
+    @Override
+    public RequestServerboundV47 getRequestServerboundV47() {
+        throw new UnsupportedOperationException("Not implemented");
+    }
+
+    @Override
+    public PingMultiboundV47 getPingMultiboundV47() {
+        throw new UnsupportedOperationException("Not implemented");
+    }
 }
