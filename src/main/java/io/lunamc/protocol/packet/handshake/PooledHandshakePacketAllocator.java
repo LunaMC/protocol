@@ -20,6 +20,7 @@ import io.lunamc.protocol.internal.utils.RecyclerUtils;
 import io.lunamc.protocol.internal.utils.ThreadSafeHolder;
 import io.netty.util.Recycler;
 
+import java.util.Objects;
 import java.util.function.Supplier;
 
 public class PooledHandshakePacketAllocator implements HandshakePacketAllocator {
@@ -35,6 +36,7 @@ public class PooledHandshakePacketAllocator implements HandshakePacketAllocator 
     }
 
     protected PooledHandshakePacketAllocator(Supplier<Recycler<ReferenceCountedHandshakeServerboundV47>> handshakeServerboundV47RecyclerSupplier) {
+        Objects.requireNonNull(handshakeServerboundV47RecyclerSupplier, "handshakeServerboundV47RecyclerSupplier must not be null");
         handshakeServerboundV47Recycler = new ThreadSafeHolder<>(handshakeServerboundV47RecyclerSupplier);
     }
 

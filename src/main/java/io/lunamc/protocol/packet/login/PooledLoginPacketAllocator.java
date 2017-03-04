@@ -20,6 +20,7 @@ import io.lunamc.protocol.internal.utils.RecyclerUtils;
 import io.lunamc.protocol.internal.utils.ThreadSafeHolder;
 import io.netty.util.Recycler;
 
+import java.util.Objects;
 import java.util.function.Supplier;
 
 public class PooledLoginPacketAllocator implements LoginPacketAllocator {
@@ -50,11 +51,22 @@ public class PooledLoginPacketAllocator implements LoginPacketAllocator {
                                       Supplier<Recycler<ReferenceCountedSetCompressionClientboundV47>> setCompressionClientboundV47RecyclerSupplier,
                                       Supplier<Recycler<ReferenceCountedLoginStartServerboundV47>> loginStartServerboundV47RecyclerSupplier,
                                       Supplier<Recycler<ReferenceCountedEncryptionResponseServerboundV47>> encryptionResponseServerboundV47RecyclerSupplier) {
+        Objects.requireNonNull(disconnectClientboundV47RecyclerSupplier, "disconnectClientboundV47RecyclerSupplier must not be null");
         disconnectClientboundV47Recycler = new ThreadSafeHolder<>(disconnectClientboundV47RecyclerSupplier);
+
+        Objects.requireNonNull(encryptionRequestClientboundV47RecyclerSupplier, "encryptionRequestClientboundV47RecyclerSupplier must not be null");
         encryptionRequestClientboundV47Recycler = new ThreadSafeHolder<>(encryptionRequestClientboundV47RecyclerSupplier);
+
+        Objects.requireNonNull(loginSuccessClientboundV47RecyclerSupplier, "loginSuccessClientboundV47RecyclerSupplier must not be null");
         loginSuccessClientboundV47Recycler = new ThreadSafeHolder<>(loginSuccessClientboundV47RecyclerSupplier);
+
+        Objects.requireNonNull(setCompressionClientboundV47RecyclerSupplier, "setCompressionClientboundV47RecyclerSupplier must not be null");
         setCompressionClientboundV47Recycler = new ThreadSafeHolder<>(setCompressionClientboundV47RecyclerSupplier);
+
+        Objects.requireNonNull(loginStartServerboundV47RecyclerSupplier, "loginStartServerboundV47RecyclerSupplier must not be null");
         loginStartServerboundV47Recycler = new ThreadSafeHolder<>(loginStartServerboundV47RecyclerSupplier);
+
+        Objects.requireNonNull(encryptionResponseServerboundV47RecyclerSupplier, "encryptionResponseServerboundV47RecyclerSupplier must not be null");
         encryptionResponseServerboundV47Recycler = new ThreadSafeHolder<>(encryptionResponseServerboundV47RecyclerSupplier);
     }
 
