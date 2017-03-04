@@ -16,6 +16,7 @@
 
 package io.lunamc.protocol.packet.handshake;
 
+import io.lunamc.protocol.internal.utils.RecyclerUtils;
 import io.lunamc.protocol.internal.utils.ThreadSafeHolder;
 import io.netty.util.Recycler;
 
@@ -28,12 +29,9 @@ public class PooledHandshakePacketAllocator implements HandshakePacketAllocator 
     private ThreadSafeHolder<Recycler<ReferenceCountedHandshakeServerboundV47>> handshakeServerboundV47Recycler;
 
     protected PooledHandshakePacketAllocator() {
-        this(() -> new Recycler<ReferenceCountedHandshakeServerboundV47>() {
-            @Override
-            protected ReferenceCountedHandshakeServerboundV47 newObject(Handle<ReferenceCountedHandshakeServerboundV47> handle) {
-                return new ReferenceCountedHandshakeServerboundV47(handle);
-            }
-        });
+        this(
+                RecyclerUtils.createLazy(ReferenceCountedHandshakeServerboundV47::new)
+        );
     }
 
     protected PooledHandshakePacketAllocator(Supplier<Recycler<ReferenceCountedHandshakeServerboundV47>> handshakeServerboundV47RecyclerSupplier) {

@@ -16,6 +16,7 @@
 
 package io.lunamc.protocol.packet.login;
 
+import io.lunamc.protocol.internal.utils.RecyclerUtils;
 import io.lunamc.protocol.internal.utils.ThreadSafeHolder;
 import io.netty.util.Recycler;
 
@@ -34,42 +35,12 @@ public class PooledLoginPacketAllocator implements LoginPacketAllocator {
 
     public PooledLoginPacketAllocator() {
         this(
-                () -> new Recycler<ReferenceCountedDisconnectClientboundV47>() {
-                    @Override
-                    protected ReferenceCountedDisconnectClientboundV47 newObject(Handle<ReferenceCountedDisconnectClientboundV47> handle) {
-                        return new ReferenceCountedDisconnectClientboundV47(handle);
-                    }
-                },
-                () -> new Recycler<ReferenceCountedEncryptionRequestClientboundV47>() {
-                    @Override
-                    protected ReferenceCountedEncryptionRequestClientboundV47 newObject(Handle<ReferenceCountedEncryptionRequestClientboundV47> handle) {
-                        return new ReferenceCountedEncryptionRequestClientboundV47(handle);
-                    }
-                },
-                () -> new Recycler<ReferenceCountedLoginSuccessClientboundV47>() {
-                    @Override
-                    protected ReferenceCountedLoginSuccessClientboundV47 newObject(Handle<ReferenceCountedLoginSuccessClientboundV47> handle) {
-                        return new ReferenceCountedLoginSuccessClientboundV47(handle);
-                    }
-                },
-                () -> new Recycler<ReferenceCountedSetCompressionClientboundV47>() {
-                    @Override
-                    protected ReferenceCountedSetCompressionClientboundV47 newObject(Handle<ReferenceCountedSetCompressionClientboundV47> handle) {
-                        return new ReferenceCountedSetCompressionClientboundV47(handle);
-                    }
-                },
-                () -> new Recycler<ReferenceCountedLoginStartServerboundV47>() {
-                    @Override
-                    protected ReferenceCountedLoginStartServerboundV47 newObject(Handle<ReferenceCountedLoginStartServerboundV47> handle) {
-                        return new ReferenceCountedLoginStartServerboundV47(handle);
-                    }
-                },
-                () -> new Recycler<ReferenceCountedEncryptionResponseServerboundV47>() {
-                    @Override
-                    protected ReferenceCountedEncryptionResponseServerboundV47 newObject(Handle<ReferenceCountedEncryptionResponseServerboundV47> handle) {
-                        return new ReferenceCountedEncryptionResponseServerboundV47(handle);
-                    }
-                }
+                RecyclerUtils.createLazy(ReferenceCountedDisconnectClientboundV47::new),
+                RecyclerUtils.createLazy(ReferenceCountedEncryptionRequestClientboundV47::new),
+                RecyclerUtils.createLazy(ReferenceCountedLoginSuccessClientboundV47::new),
+                RecyclerUtils.createLazy(ReferenceCountedSetCompressionClientboundV47::new),
+                RecyclerUtils.createLazy(ReferenceCountedLoginStartServerboundV47::new),
+                RecyclerUtils.createLazy(ReferenceCountedEncryptionResponseServerboundV47::new)
         );
     }
 
