@@ -163,4 +163,56 @@ public interface PlayPacketAllocator {
     ResourcePackSendClientboundV47 getResourcePackSendClientboundV47();
 
     UpdateEntityNbtClientboundV47 getUpdateEntityNbtClientboundV47();
+
+    KeepAliveServerboundV47 getKeepAliveServerboundV47();
+
+    ChatMessageServerboundV47 getChatMessageServerboundV47();
+
+    UseEntityServerboundV47 getUseEntityServerboundV47();
+
+    PlayerServerboundV47 getPlayerServerboundV47();
+
+    PlayerPositionServerboundV47 getPlayerPositionServerboundV47();
+
+    PlayerLookServerboundV47 getPlayerLookServerboundV47();
+
+    PlayerPositionAndLookServerboundV47 getPlayerPositionAndLookServerboundV47();
+
+    PlayerDiggingServerboundV47 getPlayerDiggingServerboundV47();
+
+    PlayerBlockPlacementServerboundV47 getPlayerBlockPlacementServerboundV47();
+
+    HeldItemChangeServerboundV47 getHeldItemChangeServerboundV47();
+
+    AnimationServerboundV47 getAnimationServerboundV47();
+
+    EntityActionServerboundV47 getEntityActionServerboundV47();
+
+    SteerVehicleServerboundV47 getSteerVehicleServerboundV47();
+
+    CloseWindowServerboundV47 getCloseWindowServerboundV47();
+
+    ClickWindowServerboundV47 getClickWindowServerboundV47();
+
+    ConfirmTransactionServerboundV47 getConfirmTransactionServerboundV47();
+
+    CreativeInventoryActionServerboundV47 getCreativeInventoryActionServerboundV47();
+
+    EnchantItemServerboundV47 getEnchantItemServerboundV47();
+
+    UpdateSignServerboundV47 getUpdateSignServerboundV47();
+
+    PlayerAbilitiesServerboundV47 getPlayerAbilitiesServerboundV47();
+
+    TabCompleteServerboundV47 getTabCompleteServerboundV47();
+
+    ClientSettingsServerboundV47 getClientSettingsServerboundV47();
+
+    ClientStatusServerboundV47 getClientStatusServerboundV47();
+
+    PluginMessageServerboundV47 getPluginMessageServerboundV47();
+
+    SpectateServerboundV47 getSpectateServerboundV47();
+
+    ResourcePackStatusServerboundV47 getResourcePackStatusServerboundV47();
 }

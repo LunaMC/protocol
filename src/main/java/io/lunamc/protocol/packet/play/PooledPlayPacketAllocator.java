@@ -384,4 +384,134 @@ public class PooledPlayPacketAllocator implements PlayPacketAllocator {
     public UpdateEntityNbtClientboundV47 getUpdateEntityNbtClientboundV47() {
         throw new UnsupportedOperationException("Not implemented");
     }
+
+    @Override
+    public KeepAliveServerboundV47 getKeepAliveServerboundV47() {
+        throw new UnsupportedOperationException("Not implemented");
+    }
+
+    @Override
+    public ChatMessageServerboundV47 getChatMessageServerboundV47() {
+        throw new UnsupportedOperationException("Not implemented");
+    }
+
+    @Override
+    public UseEntityServerboundV47 getUseEntityServerboundV47() {
+        throw new UnsupportedOperationException("Not implemented");
+    }
+
+    @Override
+    public PlayerServerboundV47 getPlayerServerboundV47() {
+        throw new UnsupportedOperationException("Not implemented");
+    }
+
+    @Override
+    public PlayerPositionServerboundV47 getPlayerPositionServerboundV47() {
+        throw new UnsupportedOperationException("Not implemented");
+    }
+
+    @Override
+    public PlayerLookServerboundV47 getPlayerLookServerboundV47() {
+        throw new UnsupportedOperationException("Not implemented");
+    }
+
+    @Override
+    public PlayerPositionAndLookServerboundV47 getPlayerPositionAndLookServerboundV47() {
+        throw new UnsupportedOperationException("Not implemented");
+    }
+
+    @Override
+    public PlayerDiggingServerboundV47 getPlayerDiggingServerboundV47() {
+        throw new UnsupportedOperationException("Not implemented");
+    }
+
+    @Override
+    public PlayerBlockPlacementServerboundV47 getPlayerBlockPlacementServerboundV47() {
+        throw new UnsupportedOperationException("Not implemented");
+    }
+
+    @Override
+    public HeldItemChangeServerboundV47 getHeldItemChangeServerboundV47() {
+        throw new UnsupportedOperationException("Not implemented");
+    }
+
+    @Override
+    public AnimationServerboundV47 getAnimationServerboundV47() {
+        throw new UnsupportedOperationException("Not implemented");
+    }
+
+    @Override
+    public EntityActionServerboundV47 getEntityActionServerboundV47() {
+        throw new UnsupportedOperationException("Not implemented");
+    }
+
+    @Override
+    public SteerVehicleServerboundV47 getSteerVehicleServerboundV47() {
+        throw new UnsupportedOperationException("Not implemented");
+    }
+
+    @Override
+    public CloseWindowServerboundV47 getCloseWindowServerboundV47() {
+        throw new UnsupportedOperationException("Not implemented");
+    }
+
+    @Override
+    public ClickWindowServerboundV47 getClickWindowServerboundV47() {
+        throw new UnsupportedOperationException("Not implemented");
+    }
+
+    @Override
+    public ConfirmTransactionServerboundV47 getConfirmTransactionServerboundV47() {
+        throw new UnsupportedOperationException("Not implemented");
+    }
+
+    @Override
+    public CreativeInventoryActionServerboundV47 getCreativeInventoryActionServerboundV47() {
+        throw new UnsupportedOperationException("Not implemented");
+    }
+
+    @Override
+    public EnchantItemServerboundV47 getEnchantItemServerboundV47() {
+        throw new UnsupportedOperationException("Not implemented");
+    }
+
+    @Override
+    public UpdateSignServerboundV47 getUpdateSignServerboundV47() {
+        throw new UnsupportedOperationException("Not implemented");
+    }
+
+    @Override
+    public PlayerAbilitiesServerboundV47 getPlayerAbilitiesServerboundV47() {
+        throw new UnsupportedOperationException("Not implemented");
+    }
+
+    @Override
+    public TabCompleteServerboundV47 getTabCompleteServerboundV47() {
+        throw new UnsupportedOperationException("Not implemented");
+    }
+
+    @Override
+    public ClientSettingsServerboundV47 getClientSettingsServerboundV47() {
+        throw new UnsupportedOperationException("Not implemented");
+    }
+
+    @Override
+    public ClientStatusServerboundV47 getClientStatusServerboundV47() {
+        throw new UnsupportedOperationException("Not implemented");
+    }
+
+    @Override
+    public PluginMessageServerboundV47 getPluginMessageServerboundV47() {
+        throw new UnsupportedOperationException("Not implemented");
+    }
+
+    @Override
+    public SpectateServerboundV47 getSpectateServerboundV47() {
+        throw new UnsupportedOperationException("Not implemented");
+    }
+
+    @Override
+    public ResourcePackStatusServerboundV47 getResourcePackStatusServerboundV47() {
+        throw new UnsupportedOperationException("Not implemented");
+    }
 }
