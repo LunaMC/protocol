@@ -17,20 +17,15 @@
 package io.lunamc.protocol.packet.play;
 
 import io.lunamc.protocol.packet.Packet;
-import io.netty.buffer.ByteBuf;
 
-public interface PluginMessageClientboundV47 extends Packet {
+public interface KeepAliveMultiboundV47 extends Packet {
 
-    String getChannel();
+    int getKeepAliveId();
 
-    void setChannel(String channel);
-
-    ByteBuf getData();
-
-    void setData(ByteBuf data);
+    void setKeepAliveId(int keepAliveId);
 
     @Override
     default Class<? extends Packet> getModelClass() {
-        return PluginMessageClientboundV47.class;
+        return KeepAliveMultiboundV47.class;
     }
 }

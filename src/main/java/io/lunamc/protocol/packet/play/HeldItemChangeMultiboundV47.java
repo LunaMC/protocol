@@ -18,22 +18,14 @@ package io.lunamc.protocol.packet.play;
 
 import io.lunamc.protocol.packet.Packet;
 
-public interface ConfirmTransactionClientboundV47 extends Packet {
+public interface HeldItemChangeMultiboundV47 extends Packet {
 
-    byte getWindowId();
+    byte getSlot();
 
-    void setWindowId(byte windowId);
-
-    short getActionNumber();
-
-    void setActionNumber(short actionNumber);
-
-    boolean isAccepted();
-
-    void setAccepted(boolean accepted);
+    void setSlot(byte slot);
 
     @Override
     default Class<? extends Packet> getModelClass() {
-        return ConfirmTransactionClientboundV47.class;
+        return HeldItemChangeMultiboundV47.class;
     }
 }

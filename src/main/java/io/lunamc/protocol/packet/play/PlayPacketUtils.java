@@ -33,7 +33,7 @@ public class PlayPacketUtils {
 
     static {
         Map<Class<?>, Integer> protocolV47ClientboundPacketIds = new HashMap<>();
-        protocolV47ClientboundPacketIds.put(KeepAliveClientboundV47.class, 0x00);
+        protocolV47ClientboundPacketIds.put(KeepAliveMultiboundV47.class, 0x00);
         protocolV47ClientboundPacketIds.put(JoinGameClientboundV47.class, 0x01);
         protocolV47ClientboundPacketIds.put(ChatMessageClientboundV47.class, 0x02);
         protocolV47ClientboundPacketIds.put(TimeUpdateClientboundV47.class, 0x03);
@@ -42,7 +42,7 @@ public class PlayPacketUtils {
         protocolV47ClientboundPacketIds.put(UpdateHealthClientboundV47.class, 0x06);
         protocolV47ClientboundPacketIds.put(RespawnClientboundV47.class, 0x07);
         protocolV47ClientboundPacketIds.put(PlayerPositionAndLookClientboundV47.class, 0x08);
-        protocolV47ClientboundPacketIds.put(HeldItemChangeClientboundV47.class, 0x09);
+        protocolV47ClientboundPacketIds.put(HeldItemChangeMultiboundV47.class, 0x09);
         protocolV47ClientboundPacketIds.put(UseBedClientboundV47.class, 0x0a);
         protocolV47ClientboundPacketIds.put(AnimationClientboundV47.class, 0x0b);
         protocolV47ClientboundPacketIds.put(SpawnPlayerClientboundV47.class, 0x0c);
@@ -79,12 +79,12 @@ public class PlayPacketUtils {
         protocolV47ClientboundPacketIds.put(ChangeGameStateClientboundV47.class, 0x2b);
         protocolV47ClientboundPacketIds.put(SpawnGlobalEntityClientboundV47.class, 0x2c);
         protocolV47ClientboundPacketIds.put(OpenWindowClientboundV47.class, 0x2d);
-        protocolV47ClientboundPacketIds.put(CloseWindowClientboundV47.class, 0x2e);
+        protocolV47ClientboundPacketIds.put(CloseWindowMultiboundV47.class, 0x2e);
         protocolV47ClientboundPacketIds.put(SetSlotClientboundV47.class, 0x2f);
         protocolV47ClientboundPacketIds.put(WindowItemsClientboundV47.class, 0x30);
         protocolV47ClientboundPacketIds.put(WindowPropertyClientboundV47.class, 0x31);
-        protocolV47ClientboundPacketIds.put(ConfirmTransactionClientboundV47.class, 0x32);
-        protocolV47ClientboundPacketIds.put(UpdateSignClientboundV47.class, 0x33);
+        protocolV47ClientboundPacketIds.put(ConfirmTransactionMultiboundV47.class, 0x32);
+        protocolV47ClientboundPacketIds.put(UpdateSignMultiboundV47.class, 0x33);
         protocolV47ClientboundPacketIds.put(MapClientboundV47.class, 0x34);
         protocolV47ClientboundPacketIds.put(UpdateBlockEntityClientboundV47.class, 0x35);
         protocolV47ClientboundPacketIds.put(OpenSignEditorClientboundV47.class, 0x36);
@@ -96,7 +96,7 @@ public class PlayPacketUtils {
         protocolV47ClientboundPacketIds.put(UpdateScoreClientboundV47.class, 0x3c);
         protocolV47ClientboundPacketIds.put(DisplayScoreboardClientboundV47.class, 0x3d);
         protocolV47ClientboundPacketIds.put(TeamsClientboundV47.class, 0x3e);
-        protocolV47ClientboundPacketIds.put(PluginMessageClientboundV47.class, 0x3f);
+        protocolV47ClientboundPacketIds.put(PluginMessageMultiboundV47.class, 0x3f);
         protocolV47ClientboundPacketIds.put(DisconnectClientboundV47.class, 0x40);
         protocolV47ClientboundPacketIds.put(ServerDifficultyClientboundV47.class, 0x41);
         protocolV47ClientboundPacketIds.put(CombatEventClientboundV47.class, 0x42);
@@ -110,7 +110,7 @@ public class PlayPacketUtils {
         PROTOCOL_V47_CLIENTBOUND_PACKET_IDS = Collections.unmodifiableMap(protocolV47ClientboundPacketIds);
 
         Map<Class<?>, Integer> protocolV47ServerboundPacketIds = new HashMap<>();
-        protocolV47ServerboundPacketIds.put(KeepAliveServerboundV47.class, 0x00);
+        protocolV47ServerboundPacketIds.put(KeepAliveMultiboundV47.class, 0x00);
         protocolV47ServerboundPacketIds.put(ChatMessageServerboundV47.class, 0x01);
         protocolV47ServerboundPacketIds.put(UseEntityServerboundV47.class, 0x02);
         protocolV47ServerboundPacketIds.put(PlayerServerboundV47.class, 0x03);
@@ -119,27 +119,27 @@ public class PlayPacketUtils {
         protocolV47ServerboundPacketIds.put(PlayerPositionAndLookServerboundV47.class, 0x06);
         protocolV47ServerboundPacketIds.put(PlayerDiggingServerboundV47.class, 0x07);
         protocolV47ServerboundPacketIds.put(PlayerBlockPlacementServerboundV47.class, 0x08);
-        protocolV47ServerboundPacketIds.put(HeldItemChangeServerboundV47.class, 0x09);
+        protocolV47ServerboundPacketIds.put(HeldItemChangeMultiboundV47.class, 0x09);
         protocolV47ServerboundPacketIds.put(AnimationServerboundV47.class, 0x0a);
         protocolV47ServerboundPacketIds.put(EntityActionServerboundV47.class, 0x0b);
         protocolV47ServerboundPacketIds.put(SteerVehicleServerboundV47.class, 0x0c);
-        protocolV47ServerboundPacketIds.put(CloseWindowServerboundV47.class, 0x0d);
+        protocolV47ServerboundPacketIds.put(CloseWindowMultiboundV47.class, 0x0d);
         protocolV47ServerboundPacketIds.put(ClickWindowServerboundV47.class, 0x0e);
-        protocolV47ServerboundPacketIds.put(ConfirmTransactionServerboundV47.class, 0x0f);
+        protocolV47ServerboundPacketIds.put(ConfirmTransactionMultiboundV47.class, 0x0f);
         protocolV47ServerboundPacketIds.put(CreativeInventoryActionServerboundV47.class, 0x10);
         protocolV47ServerboundPacketIds.put(EnchantItemServerboundV47.class, 0x11);
-        protocolV47ServerboundPacketIds.put(UpdateSignServerboundV47.class, 0x12);
+        protocolV47ServerboundPacketIds.put(UpdateSignMultiboundV47.class, 0x12);
         protocolV47ServerboundPacketIds.put(PlayerAbilitiesServerboundV47.class, 0x13);
         protocolV47ServerboundPacketIds.put(TabCompleteServerboundV47.class, 0x14);
         protocolV47ServerboundPacketIds.put(ClientSettingsServerboundV47.class, 0x15);
         protocolV47ServerboundPacketIds.put(ClientStatusServerboundV47.class, 0x16);
-        protocolV47ServerboundPacketIds.put(PluginMessageServerboundV47.class, 0x17);
+        protocolV47ServerboundPacketIds.put(PluginMessageMultiboundV47.class, 0x17);
         protocolV47ServerboundPacketIds.put(SpectateServerboundV47.class, 0x18);
         protocolV47ServerboundPacketIds.put(ResourcePackStatusServerboundV47.class, 0x19);
         PROTOCOL_V47_SERVERBOUND_PACKET_IDS = Collections.unmodifiableMap(protocolV47ServerboundPacketIds);
 
         Map<Integer, Function<PlayPacketAllocator, Packet>> protocolV47ClientboundPacketAllocators = new HashMap<>();
-        protocolV47ClientboundPacketAllocators.put(0x00, PlayPacketAllocator::getKeepAliveClientboundV47);
+        protocolV47ClientboundPacketAllocators.put(0x00, PlayPacketAllocator::getKeepAliveMultiboundV47);
         protocolV47ClientboundPacketAllocators.put(0x01, PlayPacketAllocator::getJoinGameClientboundV47);
         protocolV47ClientboundPacketAllocators.put(0x02, PlayPacketAllocator::getChatMessageClientboundV47);
         protocolV47ClientboundPacketAllocators.put(0x03, PlayPacketAllocator::getTimeUpdateClientboundV47);
@@ -148,7 +148,7 @@ public class PlayPacketUtils {
         protocolV47ClientboundPacketAllocators.put(0x06, PlayPacketAllocator::getUpdateHealthClientboundV47);
         protocolV47ClientboundPacketAllocators.put(0x07, PlayPacketAllocator::getRespawnClientboundV47);
         protocolV47ClientboundPacketAllocators.put(0x08, PlayPacketAllocator::getPlayerPositionAndLookClientboundV47);
-        protocolV47ClientboundPacketAllocators.put(0x09, PlayPacketAllocator::getHeldItemChangeClientboundV47);
+        protocolV47ClientboundPacketAllocators.put(0x09, PlayPacketAllocator::getHeldItemChangeMultiboundV47);
         protocolV47ClientboundPacketAllocators.put(0x0a, PlayPacketAllocator::getUseBedClientboundV47);
         protocolV47ClientboundPacketAllocators.put(0x0b, PlayPacketAllocator::getAnimationClientboundV47);
         protocolV47ClientboundPacketAllocators.put(0x0c, PlayPacketAllocator::getSpawnPlayerClientboundV47);
@@ -173,7 +173,7 @@ public class PlayPacketUtils {
         protocolV47ClientboundPacketAllocators.put(0x1f, PlayPacketAllocator::getSetExperienceClientboundV47);
         protocolV47ClientboundPacketAllocators.put(0x20, PlayPacketAllocator::getEntityPropertiesClientboundV47);
         protocolV47ClientboundPacketAllocators.put(0x21, PlayPacketAllocator::getChunkDataClientboundV47);
-        protocolV47ClientboundPacketAllocators.put(0x22, PlayPacketAllocator::getMultiBlockChangeClientboundV47);
+        protocolV47ClientboundPacketAllocators.put(0x22, PlayPacketAllocator::getMultiBlockChangeMultiboundV47);
         protocolV47ClientboundPacketAllocators.put(0x23, PlayPacketAllocator::getBlockChangeClientboundV47);
         protocolV47ClientboundPacketAllocators.put(0x24, PlayPacketAllocator::getBlockActionClientboundV47);
         protocolV47ClientboundPacketAllocators.put(0x25, PlayPacketAllocator::getBlockBreakAnimationClientboundV47);
@@ -185,12 +185,12 @@ public class PlayPacketUtils {
         protocolV47ClientboundPacketAllocators.put(0x2b, PlayPacketAllocator::getChangeGameStateClientboundV47);
         protocolV47ClientboundPacketAllocators.put(0x2c, PlayPacketAllocator::getSpawnGlobalEntityClientboundV47);
         protocolV47ClientboundPacketAllocators.put(0x2d, PlayPacketAllocator::getOpenWindowClientboundV47);
-        protocolV47ClientboundPacketAllocators.put(0x2e, PlayPacketAllocator::getCloseWindowClientboundV47);
+        protocolV47ClientboundPacketAllocators.put(0x2e, PlayPacketAllocator::getCloseWindowMultiboundV47);
         protocolV47ClientboundPacketAllocators.put(0x2f, PlayPacketAllocator::getSetSlotClientboundV47);
         protocolV47ClientboundPacketAllocators.put(0x30, PlayPacketAllocator::getWindowItemsClientboundV47);
         protocolV47ClientboundPacketAllocators.put(0x31, PlayPacketAllocator::getWindowPropertyClientboundV47);
-        protocolV47ClientboundPacketAllocators.put(0x32, PlayPacketAllocator::getConfirmTransactionClientboundV47);
-        protocolV47ClientboundPacketAllocators.put(0x33, PlayPacketAllocator::getUpdateHealthClientboundV47);
+        protocolV47ClientboundPacketAllocators.put(0x32, PlayPacketAllocator::getConfirmTransactionMultiboundV47);
+        protocolV47ClientboundPacketAllocators.put(0x33, PlayPacketAllocator::getUpdateSignMultiboundV47);
         protocolV47ClientboundPacketAllocators.put(0x34, PlayPacketAllocator::getMapClientboundV47);
         protocolV47ClientboundPacketAllocators.put(0x35, PlayPacketAllocator::getUpdateBlockEntityClientboundV47);
         protocolV47ClientboundPacketAllocators.put(0x36, PlayPacketAllocator::getOpenSignEditorClientboundV47);
@@ -202,7 +202,7 @@ public class PlayPacketUtils {
         protocolV47ClientboundPacketAllocators.put(0x3c, PlayPacketAllocator::getUpdateScoreClientboundV47);
         protocolV47ClientboundPacketAllocators.put(0x3d, PlayPacketAllocator::getDisplayScoreboardClientboundV47);
         protocolV47ClientboundPacketAllocators.put(0x3e, PlayPacketAllocator::getTeamsClientboundV47);
-        protocolV47ClientboundPacketAllocators.put(0x3f, PlayPacketAllocator::getPluginMessageClientboundV47);
+        protocolV47ClientboundPacketAllocators.put(0x3f, PlayPacketAllocator::getPluginMessageMultiboundV47);
         protocolV47ClientboundPacketAllocators.put(0x40, PlayPacketAllocator::getDisconnectClientboundV47);
         protocolV47ClientboundPacketAllocators.put(0x41, PlayPacketAllocator::getServerDifficultyClientboundV47);
         protocolV47ClientboundPacketAllocators.put(0x42, PlayPacketAllocator::getCombatEventClientboundV47);
@@ -216,7 +216,7 @@ public class PlayPacketUtils {
         PROTOCOL_V47_CLIENTBOUND_PACKET_ALLOCATORS = Collections.unmodifiableMap(protocolV47ClientboundPacketAllocators);
 
         Map<Integer, Function<PlayPacketAllocator, Packet>> protocolV47ServerboundPacketAllocators = new HashMap<>();
-        protocolV47ServerboundPacketAllocators.put(0x00, PlayPacketAllocator::getKeepAliveServerboundV47);
+        protocolV47ServerboundPacketAllocators.put(0x00, PlayPacketAllocator::getKeepAliveMultiboundV47);
         protocolV47ServerboundPacketAllocators.put(0x01, PlayPacketAllocator::getChatMessageServerboundV47);
         protocolV47ServerboundPacketAllocators.put(0x02, PlayPacketAllocator::getUseEntityServerboundV47);
         protocolV47ServerboundPacketAllocators.put(0x03, PlayPacketAllocator::getPlayerServerboundV47);
@@ -225,21 +225,21 @@ public class PlayPacketUtils {
         protocolV47ServerboundPacketAllocators.put(0x06, PlayPacketAllocator::getPlayerPositionAndLookServerboundV47);
         protocolV47ServerboundPacketAllocators.put(0x07, PlayPacketAllocator::getPlayerDiggingServerboundV47);
         protocolV47ServerboundPacketAllocators.put(0x08, PlayPacketAllocator::getPlayerBlockPlacementServerboundV47);
-        protocolV47ServerboundPacketAllocators.put(0x09, PlayPacketAllocator::getHeldItemChangeServerboundV47);
+        protocolV47ServerboundPacketAllocators.put(0x09, PlayPacketAllocator::getHeldItemChangeMultiboundV47);
         protocolV47ServerboundPacketAllocators.put(0x0a, PlayPacketAllocator::getAnimationServerboundV47);
         protocolV47ServerboundPacketAllocators.put(0x0b, PlayPacketAllocator::getEntityActionServerboundV47);
         protocolV47ServerboundPacketAllocators.put(0x0c, PlayPacketAllocator::getSteerVehicleServerboundV47);
-        protocolV47ServerboundPacketAllocators.put(0x0d, PlayPacketAllocator::getCloseWindowServerboundV47);
+        protocolV47ServerboundPacketAllocators.put(0x0d, PlayPacketAllocator::getCloseWindowMultiboundV47);
         protocolV47ServerboundPacketAllocators.put(0x0e, PlayPacketAllocator::getClickWindowServerboundV47);
-        protocolV47ServerboundPacketAllocators.put(0x0f, PlayPacketAllocator::getConfirmTransactionServerboundV47);
+        protocolV47ServerboundPacketAllocators.put(0x0f, PlayPacketAllocator::getConfirmTransactionMultiboundV47);
         protocolV47ServerboundPacketAllocators.put(0x10, PlayPacketAllocator::getCreativeInventoryActionServerboundV47);
         protocolV47ServerboundPacketAllocators.put(0x11, PlayPacketAllocator::getEnchantItemServerboundV47);
-        protocolV47ServerboundPacketAllocators.put(0x12, PlayPacketAllocator::getUpdateSignServerboundV47);
+        protocolV47ServerboundPacketAllocators.put(0x12, PlayPacketAllocator::getUpdateSignMultiboundV47);
         protocolV47ServerboundPacketAllocators.put(0x13, PlayPacketAllocator::getPlayerAbilitiesServerboundV47);
         protocolV47ServerboundPacketAllocators.put(0x14, PlayPacketAllocator::getTabCompleteServerboundV47);
         protocolV47ServerboundPacketAllocators.put(0x15, PlayPacketAllocator::getClientSettingsServerboundV47);
         protocolV47ServerboundPacketAllocators.put(0x16, PlayPacketAllocator::getClientStatusServerboundV47);
-        protocolV47ServerboundPacketAllocators.put(0x17, PlayPacketAllocator::getPluginMessageServerboundV47);
+        protocolV47ServerboundPacketAllocators.put(0x17, PlayPacketAllocator::getPluginMessageMultiboundV47);
         protocolV47ServerboundPacketAllocators.put(0x18, PlayPacketAllocator::getSpectateServerboundV47);
         protocolV47ServerboundPacketAllocators.put(0x19, PlayPacketAllocator::getResourcePackStatusServerboundV47);
         PROTOCOL_V47_SERVERBOUND_PACKET_ALLOCATORS = Collections.unmodifiableMap(protocolV47ServerboundPacketAllocators);

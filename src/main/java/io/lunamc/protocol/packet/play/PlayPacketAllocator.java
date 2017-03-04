@@ -18,8 +18,6 @@ package io.lunamc.protocol.packet.play;
 
 public interface PlayPacketAllocator {
 
-    KeepAliveClientboundV47 getKeepAliveClientboundV47();
-
     JoinGameClientboundV47 getJoinGameClientboundV47();
 
     ChatMessageClientboundV47 getChatMessageClientboundV47();
@@ -35,8 +33,6 @@ public interface PlayPacketAllocator {
     RespawnClientboundV47 getRespawnClientboundV47();
 
     PlayerPositionAndLookClientboundV47 getPlayerPositionAndLookClientboundV47();
-
-    HeldItemChangeClientboundV47 getHeldItemChangeClientboundV47();
 
     UseBedClientboundV47 getUseBedClientboundV47();
 
@@ -86,8 +82,6 @@ public interface PlayPacketAllocator {
 
     ChunkDataClientboundV47 getChunkDataClientboundV47();
 
-    MultiBlockChangeClientboundV47 getMultiBlockChangeClientboundV47();
-
     BlockChangeClientboundV47 getBlockChangeClientboundV47();
 
     BlockActionClientboundV47 getBlockActionClientboundV47();
@@ -110,17 +104,11 @@ public interface PlayPacketAllocator {
 
     OpenWindowClientboundV47 getOpenWindowClientboundV47();
 
-    CloseWindowClientboundV47 getCloseWindowClientboundV47();
-
     SetSlotClientboundV47 getSetSlotClientboundV47();
 
     WindowItemsClientboundV47 getWindowItemsClientboundV47();
 
     WindowPropertyClientboundV47 getWindowPropertyClientboundV47();
-
-    ConfirmTransactionClientboundV47 getConfirmTransactionClientboundV47();
-
-    UpdateSignClientboundV47 getUpdateSignClientboundV47();
 
     MapClientboundV47 getMapClientboundV47();
 
@@ -144,8 +132,6 @@ public interface PlayPacketAllocator {
 
     TeamsClientboundV47 getTeamsClientboundV47();
 
-    PluginMessageClientboundV47 getPluginMessageClientboundV47();
-
     DisconnectClientboundV47 getDisconnectClientboundV47();
 
     ServerDifficultyClientboundV47 getServerDifficultyClientboundV47();
@@ -164,8 +150,6 @@ public interface PlayPacketAllocator {
 
     UpdateEntityNbtClientboundV47 getUpdateEntityNbtClientboundV47();
 
-    KeepAliveServerboundV47 getKeepAliveServerboundV47();
-
     ChatMessageServerboundV47 getChatMessageServerboundV47();
 
     UseEntityServerboundV47 getUseEntityServerboundV47();
@@ -182,25 +166,17 @@ public interface PlayPacketAllocator {
 
     PlayerBlockPlacementServerboundV47 getPlayerBlockPlacementServerboundV47();
 
-    HeldItemChangeServerboundV47 getHeldItemChangeServerboundV47();
-
     AnimationServerboundV47 getAnimationServerboundV47();
 
     EntityActionServerboundV47 getEntityActionServerboundV47();
 
     SteerVehicleServerboundV47 getSteerVehicleServerboundV47();
 
-    CloseWindowServerboundV47 getCloseWindowServerboundV47();
-
     ClickWindowServerboundV47 getClickWindowServerboundV47();
-
-    ConfirmTransactionServerboundV47 getConfirmTransactionServerboundV47();
 
     CreativeInventoryActionServerboundV47 getCreativeInventoryActionServerboundV47();
 
     EnchantItemServerboundV47 getEnchantItemServerboundV47();
-
-    UpdateSignServerboundV47 getUpdateSignServerboundV47();
 
     PlayerAbilitiesServerboundV47 getPlayerAbilitiesServerboundV47();
 
@@ -210,9 +186,21 @@ public interface PlayPacketAllocator {
 
     ClientStatusServerboundV47 getClientStatusServerboundV47();
 
-    PluginMessageServerboundV47 getPluginMessageServerboundV47();
-
     SpectateServerboundV47 getSpectateServerboundV47();
 
     ResourcePackStatusServerboundV47 getResourcePackStatusServerboundV47();
+
+    KeepAliveMultiboundV47 getKeepAliveMultiboundV47();
+
+    HeldItemChangeMultiboundV47 getHeldItemChangeMultiboundV47();
+
+    UpdateSignMultiboundV47 getUpdateSignMultiboundV47();
+
+    MultiBlockChangeClientboundV47 getMultiBlockChangeMultiboundV47();
+
+    CloseWindowMultiboundV47 getCloseWindowMultiboundV47();
+
+    PluginMessageMultiboundV47 getPluginMessageMultiboundV47();
+
+    ConfirmTransactionMultiboundV47 getConfirmTransactionMultiboundV47();
 }

@@ -21,11 +21,11 @@ import io.netty.buffer.ByteBuf;
 
 import java.util.Objects;
 
-class BaseKeepAliveClientboundV47 implements KeepAliveClientboundV47 {
+class BaseKeepAliveMultiboundV47 implements KeepAliveMultiboundV47 {
 
     private int keepAliveId;
 
-    BaseKeepAliveClientboundV47() {
+    BaseKeepAliveMultiboundV47() {
     }
 
     @Override
@@ -56,7 +56,7 @@ class BaseKeepAliveClientboundV47 implements KeepAliveClientboundV47 {
     @Override
     public boolean equals(Object o) {
         return this == o ||
-                (o instanceof KeepAliveClientboundV47 && getKeepAliveId() == ((KeepAliveClientboundV47) o).getKeepAliveId());
+                (o instanceof KeepAliveMultiboundV47 && getKeepAliveId() == ((KeepAliveMultiboundV47) o).getKeepAliveId());
     }
 
     @Override

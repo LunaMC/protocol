@@ -21,11 +21,6 @@ public class PooledPlayPacketAllocator implements PlayPacketAllocator {
     public static final PooledPlayPacketAllocator INSTANCE = new PooledPlayPacketAllocator();
 
     @Override
-    public KeepAliveClientboundV47 getKeepAliveClientboundV47() {
-        throw new UnsupportedOperationException("Not implemented");
-    }
-
-    @Override
     public JoinGameClientboundV47 getJoinGameClientboundV47() {
         throw new UnsupportedOperationException("Not implemented");
     }
@@ -62,11 +57,6 @@ public class PooledPlayPacketAllocator implements PlayPacketAllocator {
 
     @Override
     public PlayerPositionAndLookClientboundV47 getPlayerPositionAndLookClientboundV47() {
-        throw new UnsupportedOperationException("Not implemented");
-    }
-
-    @Override
-    public HeldItemChangeClientboundV47 getHeldItemChangeClientboundV47() {
         throw new UnsupportedOperationException("Not implemented");
     }
 
@@ -191,11 +181,6 @@ public class PooledPlayPacketAllocator implements PlayPacketAllocator {
     }
 
     @Override
-    public MultiBlockChangeClientboundV47 getMultiBlockChangeClientboundV47() {
-        throw new UnsupportedOperationException("Not implemented");
-    }
-
-    @Override
     public BlockChangeClientboundV47 getBlockChangeClientboundV47() {
         throw new UnsupportedOperationException("Not implemented");
     }
@@ -251,11 +236,6 @@ public class PooledPlayPacketAllocator implements PlayPacketAllocator {
     }
 
     @Override
-    public CloseWindowClientboundV47 getCloseWindowClientboundV47() {
-        throw new UnsupportedOperationException("Not implemented");
-    }
-
-    @Override
     public SetSlotClientboundV47 getSetSlotClientboundV47() {
         throw new UnsupportedOperationException("Not implemented");
     }
@@ -267,16 +247,6 @@ public class PooledPlayPacketAllocator implements PlayPacketAllocator {
 
     @Override
     public WindowPropertyClientboundV47 getWindowPropertyClientboundV47() {
-        throw new UnsupportedOperationException("Not implemented");
-    }
-
-    @Override
-    public ConfirmTransactionClientboundV47 getConfirmTransactionClientboundV47() {
-        throw new UnsupportedOperationException("Not implemented");
-    }
-
-    @Override
-    public UpdateSignClientboundV47 getUpdateSignClientboundV47() {
         throw new UnsupportedOperationException("Not implemented");
     }
 
@@ -336,11 +306,6 @@ public class PooledPlayPacketAllocator implements PlayPacketAllocator {
     }
 
     @Override
-    public PluginMessageClientboundV47 getPluginMessageClientboundV47() {
-        throw new UnsupportedOperationException("Not implemented");
-    }
-
-    @Override
     public DisconnectClientboundV47 getDisconnectClientboundV47() {
         throw new UnsupportedOperationException("Not implemented");
     }
@@ -386,11 +351,6 @@ public class PooledPlayPacketAllocator implements PlayPacketAllocator {
     }
 
     @Override
-    public KeepAliveServerboundV47 getKeepAliveServerboundV47() {
-        throw new UnsupportedOperationException("Not implemented");
-    }
-
-    @Override
     public ChatMessageServerboundV47 getChatMessageServerboundV47() {
         throw new UnsupportedOperationException("Not implemented");
     }
@@ -431,11 +391,6 @@ public class PooledPlayPacketAllocator implements PlayPacketAllocator {
     }
 
     @Override
-    public HeldItemChangeServerboundV47 getHeldItemChangeServerboundV47() {
-        throw new UnsupportedOperationException("Not implemented");
-    }
-
-    @Override
     public AnimationServerboundV47 getAnimationServerboundV47() {
         throw new UnsupportedOperationException("Not implemented");
     }
@@ -451,17 +406,7 @@ public class PooledPlayPacketAllocator implements PlayPacketAllocator {
     }
 
     @Override
-    public CloseWindowServerboundV47 getCloseWindowServerboundV47() {
-        throw new UnsupportedOperationException("Not implemented");
-    }
-
-    @Override
     public ClickWindowServerboundV47 getClickWindowServerboundV47() {
-        throw new UnsupportedOperationException("Not implemented");
-    }
-
-    @Override
-    public ConfirmTransactionServerboundV47 getConfirmTransactionServerboundV47() {
         throw new UnsupportedOperationException("Not implemented");
     }
 
@@ -472,11 +417,6 @@ public class PooledPlayPacketAllocator implements PlayPacketAllocator {
 
     @Override
     public EnchantItemServerboundV47 getEnchantItemServerboundV47() {
-        throw new UnsupportedOperationException("Not implemented");
-    }
-
-    @Override
-    public UpdateSignServerboundV47 getUpdateSignServerboundV47() {
         throw new UnsupportedOperationException("Not implemented");
     }
 
@@ -501,17 +441,47 @@ public class PooledPlayPacketAllocator implements PlayPacketAllocator {
     }
 
     @Override
-    public PluginMessageServerboundV47 getPluginMessageServerboundV47() {
-        throw new UnsupportedOperationException("Not implemented");
-    }
-
-    @Override
     public SpectateServerboundV47 getSpectateServerboundV47() {
         throw new UnsupportedOperationException("Not implemented");
     }
 
     @Override
     public ResourcePackStatusServerboundV47 getResourcePackStatusServerboundV47() {
+        throw new UnsupportedOperationException("Not implemented");
+    }
+
+    @Override
+    public KeepAliveMultiboundV47 getKeepAliveMultiboundV47() {
+        throw new UnsupportedOperationException("Not implemented");
+    }
+
+    @Override
+    public HeldItemChangeMultiboundV47 getHeldItemChangeMultiboundV47() {
+        throw new UnsupportedOperationException("Not implemented");
+    }
+
+    @Override
+    public MultiBlockChangeClientboundV47 getMultiBlockChangeMultiboundV47() {
+        throw new UnsupportedOperationException("Not implemented");
+    }
+
+    @Override
+    public CloseWindowMultiboundV47 getCloseWindowMultiboundV47() {
+        throw new UnsupportedOperationException("Not implemented");
+    }
+
+    @Override
+    public ConfirmTransactionMultiboundV47 getConfirmTransactionMultiboundV47() {
+        throw new UnsupportedOperationException("Not implemented");
+    }
+
+    @Override
+    public UpdateSignMultiboundV47 getUpdateSignMultiboundV47() {
+        throw new UnsupportedOperationException("Not implemented");
+    }
+
+    @Override
+    public PluginMessageMultiboundV47 getPluginMessageMultiboundV47() {
         throw new UnsupportedOperationException("Not implemented");
     }
 }

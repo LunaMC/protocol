@@ -17,15 +17,20 @@
 package io.lunamc.protocol.packet.play;
 
 import io.lunamc.protocol.packet.Packet;
+import io.netty.buffer.ByteBuf;
 
-public interface HeldItemChangeServerboundV47 extends Packet {
+public interface PluginMessageMultiboundV47 extends Packet {
 
-    short getSlot();
+    String getChannel();
 
-    void setSlot(byte slot);
+    void setChannel(String channel);
+
+    ByteBuf getData();
+
+    void setData(ByteBuf data);
 
     @Override
     default Class<? extends Packet> getModelClass() {
-        return HeldItemChangeServerboundV47.class;
+        return PluginMessageMultiboundV47.class;
     }
 }

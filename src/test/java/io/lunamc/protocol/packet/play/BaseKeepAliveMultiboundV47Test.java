@@ -16,16 +16,16 @@
 
 package io.lunamc.protocol.packet.play;
 
+import io.lunamc.protocol.packet.AbstractPacketTest;
 import io.lunamc.protocol.packet.Packet;
 
-public interface CloseWindowServerboundV47 extends Packet {
-
-    short getWindowId();
-
-    void setWindowId(short windowId);
+public class BaseKeepAliveMultiboundV47Test extends AbstractPacketTest {
 
     @Override
-    default Class<? extends Packet> getModelClass() {
-        return CloseWindowServerboundV47.class;
+    protected Packet createPacket(boolean content) {
+        BaseKeepAliveMultiboundV47 packet = new BaseKeepAliveMultiboundV47();
+        if (content)
+            packet.setKeepAliveId(1337);
+        return packet;
     }
 }

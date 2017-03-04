@@ -18,30 +18,14 @@ package io.lunamc.protocol.packet.play;
 
 import io.lunamc.protocol.packet.Packet;
 
-public interface UpdateSignClientboundV47 extends Packet {
+public interface CloseWindowMultiboundV47 extends Packet {
 
-    long getLocation();
+    short getWindowId();
 
-    void setLocation(long location);
-
-    String getLine1();
-
-    void setLine1(String line1);
-
-    String getLine2();
-
-    void setLine2(String line2);
-
-    String getLine3();
-
-    void setLine3(String line3);
-
-    String getLine4();
-
-    void setLine4(String line4);
+    void setWindowId(short windowId);
 
     @Override
     default Class<? extends Packet> getModelClass() {
-        return UpdateSignClientboundV47.class;
+        return CloseWindowMultiboundV47.class;
     }
 }
