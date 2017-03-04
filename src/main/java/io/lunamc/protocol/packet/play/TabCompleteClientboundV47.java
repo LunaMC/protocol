@@ -18,11 +18,18 @@ package io.lunamc.protocol.packet.play;
 
 import io.lunamc.protocol.packet.Packet;
 
+import java.util.List;
+
 public interface TabCompleteClientboundV47 extends Packet {
 
-    String[] getMatches();
+    List<String> getMatches();
 
-    void setMatches(String[] matches);
+    void setMatches(List<String> matches);
+
+    @Override
+    default void reset() {
+        setMatches(null);
+    }
 
     @Override
     default Class<? extends Packet> getModelClass() {

@@ -18,12 +18,19 @@ package io.lunamc.protocol.packet.play;
 
 import io.lunamc.protocol.packet.Packet;
 import io.lunamc.protocol.packet.data.WorldBorderAction;
+import io.lunamc.protocol.utils.PacketUtils;
 
 public interface WorldBorderClientboundV47 extends Packet {
 
     WorldBorderAction getAction();
 
-    void setAction(WorldBorderAction action);
+    void setAction(Object action);
+
+    @Override
+    default void reset() {
+        PacketUtils.reset(getAction());
+        setAction(null);
+    }
 
     @Override
     default Class<? extends Packet> getModelClass() {

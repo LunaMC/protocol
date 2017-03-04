@@ -49,11 +49,6 @@ class BaseSetCompressionClientboundV47 implements SetCompressionClientboundV47 {
     }
 
     @Override
-    public void reset() {
-        setThreshold(0);
-    }
-
-    @Override
     public boolean equals(Object o) {
         return this == o ||
                 (o instanceof SetCompressionClientboundV47 && getThreshold() == ((SetCompressionClientboundV47) o).getThreshold());

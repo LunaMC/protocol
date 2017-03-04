@@ -54,11 +54,6 @@ class BaseTitleAction implements TitleAction {
         }
 
         @Override
-        public void reset() {
-            setTitleText(null);
-        }
-
-        @Override
         public boolean equals(Object o) {
             return this == o ||
                     (o instanceof TitleActionSetTitle && Objects.equals(getTitleText(), ((TitleActionSetTitle) o).getTitleText()));
@@ -100,11 +95,6 @@ class BaseTitleAction implements TitleAction {
         @Override
         public void read(ByteBuf input) {
             setSubtitleText(ProtocolUtils.readString(input));
-        }
-
-        @Override
-        public void reset() {
-            setSubtitleText(null);
         }
 
         @Override
@@ -175,13 +165,6 @@ class BaseTitleAction implements TitleAction {
             setFadeIn(input.readInt());
             setStay(input.readInt());
             setFadeOut(input.readInt());
-        }
-
-        @Override
-        public void reset() {
-            setFadeIn(0);
-            setStay(0);
-            setFadeOut(0);
         }
 
         @Override

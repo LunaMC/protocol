@@ -25,6 +25,11 @@ public interface DestroyEntitiesClientboundV47 extends Packet {
     void setEntityIds(int[] entityIds);
 
     @Override
+    default void reset() {
+        setEntityIds(null);
+    }
+
+    @Override
     default Class<? extends Packet> getModelClass() {
         return DestroyEntitiesClientboundV47.class;
     }

@@ -22,7 +22,7 @@ public interface UpdateScoreClientboundV47 extends Packet {
 
     String getScoreName();
 
-    void setScoreName();
+    void setScoreName(String scoreName);
 
     byte getAction();
 
@@ -35,6 +35,14 @@ public interface UpdateScoreClientboundV47 extends Packet {
     int getValue();
 
     void setValue(int value);
+
+    @Override
+    default void reset() {
+        setScoreName(null);
+        setAction((byte) 0);
+        setObjectiveName(null);
+        setValue(0);
+    }
 
     @Override
     default Class<? extends Packet> getModelClass() {

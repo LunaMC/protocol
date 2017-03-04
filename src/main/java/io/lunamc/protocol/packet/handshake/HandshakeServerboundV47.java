@@ -37,6 +37,14 @@ public interface HandshakeServerboundV47 extends Packet {
     void setNextState(NextProtocolState nextState);
 
     @Override
+    default void reset() {
+        setProtocolVersion(0);
+        setServerAddress(null);
+        setServerPort(0);
+        setNextState(null);
+    }
+
+    @Override
     default Class<? extends Packet> getModelClass() {
         return HandshakeServerboundV47.class;
     }

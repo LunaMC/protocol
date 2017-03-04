@@ -25,6 +25,11 @@ public interface ResponseClientboundV47 extends Packet {
     void setResponse(String response);
 
     @Override
+    default void reset() {
+        setResponse(null);
+    }
+
+    @Override
     default Class<? extends Packet> getModelClass() {
         return ResponseClientboundV47.class;
     }

@@ -49,6 +49,17 @@ public interface JoinGameClientboundV47 extends Packet {
     void setReducedDebugInfo(boolean reducedDebugInfo);
 
     @Override
+    default void reset() {
+        setEntityId(0);
+        setGamemode((short) 0);
+        setDimension((byte) 0);
+        setDifficulty((short) 0);
+        setMaxPlayers((short) 0);
+        setLevelType(null);
+        setReducedDebugInfo(false);
+    }
+
+    @Override
     default Class<? extends Packet> getModelClass() {
         return JoinGameClientboundV47.class;
     }

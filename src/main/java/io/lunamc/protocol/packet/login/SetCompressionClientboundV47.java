@@ -25,6 +25,11 @@ public interface SetCompressionClientboundV47 extends Packet {
     void setThreshold(int threshold);
 
     @Override
+    default void reset() {
+        setThreshold(0);
+    }
+
+    @Override
     default Class<? extends Packet> getModelClass() {
         return SetCompressionClientboundV47.class;
     }

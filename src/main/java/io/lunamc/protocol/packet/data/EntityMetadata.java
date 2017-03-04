@@ -26,6 +26,11 @@ public interface EntityMetadata extends NetworkSerializable {
 
     void setMetadata(List<EntityMetadataEntry> entries);
 
+    @Override
+    default void reset() {
+        setMetadata(null);
+    }
+
     interface EntityMetadataEntry extends NetworkSerializable {
 
         int TYPE_BYTE = 0;
@@ -53,5 +58,12 @@ public interface EntityMetadata extends NetworkSerializable {
         Object getValue();
 
         void setValue(Object value);
+
+        @Override
+        default void reset() {
+            setIndex((short) 0);
+            setType((byte) 0);
+            setValue(null);
+        }
     }
 }

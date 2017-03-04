@@ -54,11 +54,6 @@ class BaseWorldBorderAction implements WorldBorderAction {
         }
 
         @Override
-        public void reset() {
-            setRadius(0);
-        }
-
-        @Override
         public boolean equals(Object o) {
             return this == o ||
                     (o instanceof WorldBorderSetSizeAction && Double.compare(((WorldBorderSetSizeAction) o).getRadius(), getRadius()) == 0);
@@ -129,13 +124,6 @@ class BaseWorldBorderAction implements WorldBorderAction {
         }
 
         @Override
-        public void reset() {
-            setOldRadius(0);
-            setNewRadius(0);
-            setSpeed(0);
-        }
-
-        @Override
         public boolean equals(Object o) {
             if (this == o)
                 return true;
@@ -199,12 +187,6 @@ class BaseWorldBorderAction implements WorldBorderAction {
         public void read(ByteBuf input) {
             setX(input.readDouble());
             setZ(input.readDouble());
-        }
-
-        @Override
-        public void reset() {
-            setX(0);
-            setZ(0);
         }
 
         @Override
@@ -348,18 +330,6 @@ class BaseWorldBorderAction implements WorldBorderAction {
         }
 
         @Override
-        public void reset() {
-            setX(0);
-            setZ(0);
-            setOldRadius(0);
-            setNewRadius(0);
-            setSpeed(0);
-            setPortalTeleportationBoundary(0);
-            setWarningTime(0);
-            setWarningBlocks(0);
-        }
-
-        @Override
         public boolean equals(Object o) {
             if (this == o)
                 return true;
@@ -432,11 +402,6 @@ class BaseWorldBorderAction implements WorldBorderAction {
         }
 
         @Override
-        public void reset() {
-            setWarningTime(0);
-        }
-
-        @Override
         public boolean equals(Object o) {
             return this == o ||
                     (o instanceof WorldBorderSetWarningTime && getWarningTime() == ((WorldBorderSetWarningTime) o).getWarningTime());
@@ -478,11 +443,6 @@ class BaseWorldBorderAction implements WorldBorderAction {
         @Override
         public void read(ByteBuf input) {
             setWarningBlocks(ProtocolUtils.readVarInt(input));
-        }
-
-        @Override
-        public void reset() {
-            setWarningBlocks(0);
         }
 
         @Override

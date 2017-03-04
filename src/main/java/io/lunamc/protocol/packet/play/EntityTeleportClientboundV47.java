@@ -49,6 +49,17 @@ public interface EntityTeleportClientboundV47 extends Packet {
     void setOnGround(boolean onGround);
 
     @Override
+    default void reset() {
+        setEntityId(0);
+        setX(0);
+        setY(0);
+        setZ(0);
+        setYaw((byte) 0);
+        setPitch((byte) 0);
+        setOnGround(false);
+    }
+
+    @Override
     default Class<? extends Packet> getModelClass() {
         return EntityTeleportClientboundV47.class;
     }

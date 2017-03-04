@@ -33,6 +33,13 @@ public interface ConfirmTransactionMultiboundV47 extends Packet {
     void setAccepted(boolean accepted);
 
     @Override
+    default void reset() {
+        setWindowId((byte) 0);
+        setActionNumber((short) 0);
+        setAccepted(false);
+    }
+
+    @Override
     default Class<? extends Packet> getModelClass() {
         return ConfirmTransactionMultiboundV47.class;
     }

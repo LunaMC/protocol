@@ -115,6 +115,21 @@ public interface ParticleClientboundV47 extends Packet {
     void setData(int[] data);
 
     @Override
+    default void reset() {
+        setParticleId(0);
+        setLongDistance(false);
+        setX(0);
+        setY(0);
+        setZ(9);
+        setOffsetX(0);
+        setOffsetY(0);
+        setOffsetZ(0);
+        setParticleData(0);
+        setParticleCount(0);
+        setData(null);
+    }
+
+    @Override
     default Class<? extends Packet> getModelClass() {
         return ParticleClientboundV47.class;
     }

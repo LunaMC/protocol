@@ -17,6 +17,7 @@
 package io.lunamc.protocol.packet.play;
 
 import io.lunamc.protocol.packet.Packet;
+import io.netty.buffer.ByteBuf;
 
 public interface BlockActionClientboundV47 extends Packet {
 
@@ -35,6 +36,13 @@ public interface BlockActionClientboundV47 extends Packet {
     int getBlockType();
 
     void setBlockType(int blockType);
+
+    @Override
+    default void reset() {
+        setLocation(0);
+        setByte1((short) 0);
+        setByte2((short) 0);
+    }
 
     @Override
     default Class<? extends Packet> getModelClass() {

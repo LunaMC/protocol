@@ -61,12 +61,6 @@ class BaseTimeUpdateClientboundV47 implements TimeUpdateClientboundV47 {
     }
 
     @Override
-    public void reset() {
-        setWorldAge(0);
-        setTimeOfDay(0);
-    }
-
-    @Override
     public boolean equals(Object o) {
         if (this == o)
             return true;

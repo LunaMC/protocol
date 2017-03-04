@@ -18,6 +18,9 @@ package io.lunamc.protocol.packet.play;
 
 import io.lunamc.protocol.packet.Packet;
 import io.lunamc.protocol.packet.data.ByteTuple3;
+import io.lunamc.protocol.utils.PacketUtils;
+
+import java.util.List;
 
 public interface ExplosionClientboundV47 extends Packet {
 
@@ -37,9 +40,9 @@ public interface ExplosionClientboundV47 extends Packet {
 
     void setRadius(float radius);
 
-    ByteTuple3[] getRecords();
+    List<ByteTuple3> getRecords();
 
-    void setRecords(ByteTuple3[] records);
+    void setRecords(List<ByteTuple3> records);
 
     float getPlayerMotionX();
 
@@ -52,6 +55,19 @@ public interface ExplosionClientboundV47 extends Packet {
     float getPlayerMotionZ();
 
     void setPlayerMotionZ(float playerMotionZ);
+
+    @Override
+    default void reset() {
+        setX(0);
+        setY(0);
+        setZ(0);
+        setRadius(0);
+        PacketUtils.resetAll(getRecords());
+        setRecords(null);
+        setPlayerMotionX(0);
+        setPlayerMotionY(0);
+        setPlayerMotionZ(0);
+    }
 
     @Override
     default Class<? extends Packet> getModelClass() {

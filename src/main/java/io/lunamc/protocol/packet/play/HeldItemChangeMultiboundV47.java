@@ -25,6 +25,11 @@ public interface HeldItemChangeMultiboundV47 extends Packet {
     void setSlot(byte slot);
 
     @Override
+    default void reset() {
+        setSlot((byte) 0);
+    }
+
+    @Override
     default Class<? extends Packet> getModelClass() {
         return HeldItemChangeMultiboundV47.class;
     }

@@ -17,8 +17,21 @@
 package io.lunamc.protocol.packet.play;
 
 import io.lunamc.protocol.packet.Packet;
+import io.netty.buffer.ByteBuf;
 
 public interface AnimationServerboundV47 extends Packet {
+
+    @Override
+    default void write(ByteBuf output) {
+    }
+
+    @Override
+    default void read(ByteBuf input) {
+    }
+
+    @Override
+    default void reset() {
+    }
 
     @Override
     default Class<? extends Packet> getModelClass() {

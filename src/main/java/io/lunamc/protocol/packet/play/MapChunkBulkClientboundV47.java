@@ -19,6 +19,7 @@ package io.lunamc.protocol.packet.play;
 import io.lunamc.protocol.packet.Packet;
 import io.lunamc.protocol.packet.data.Chunk;
 import io.lunamc.protocol.packet.data.ChunkMeta;
+import io.lunamc.protocol.utils.PacketUtils;
 
 // Notice: Not available in protocol version 107+
 public interface MapChunkBulkClientboundV47 extends Packet {
@@ -34,6 +35,15 @@ public interface MapChunkBulkClientboundV47 extends Packet {
     Chunk[] getChunkData();
 
     void setChunkData(Chunk[] chunkData);
+
+    @Override
+    default void reset() {
+        setSkyLightSent(false);
+        PacketUtils.resetAll(getChunkMetas());
+        setChunkMetas(null);
+        PacketUtils.resetAll(getChunkData());
+        setChunkData(null);
+    }
 
     @Override
     default Class<? extends Packet> getModelClass() {

@@ -17,6 +17,7 @@
 package io.lunamc.protocol.packet.data;
 
 import io.lunamc.protocol.packet.NetworkSerializable;
+import io.netty.buffer.ByteBuf;
 
 import java.util.List;
 import java.util.UUID;
@@ -30,6 +31,12 @@ public interface PlayerListUpdate extends NetworkSerializable {
     NetworkSerializable getAction();
 
     void setAction(NetworkSerializable action);
+
+    @Override
+    default void reset() {
+        setUuid(null);
+        setAction(null);
+    }
 
     interface PlayerListAddPlayerAction extends NetworkSerializable {
 
@@ -53,6 +60,15 @@ public interface PlayerListUpdate extends NetworkSerializable {
 
         void setDisplayName(String displayName);
 
+        @Override
+        default void reset() {
+            setName(null);
+            setProperties(null);
+            setGamemode(0);
+            setPing(0);
+            setDisplayName(null);
+        }
+
         interface PlayerListAddPlayerActionPlayerProperty extends NetworkSerializable {
 
             String getName();
@@ -66,6 +82,13 @@ public interface PlayerListUpdate extends NetworkSerializable {
             String getSignature();
 
             void setSignature(String signature);
+
+            @Override
+            default void reset() {
+                setName(null);
+                setValue(null);
+                setSignature(null);
+            }
         }
     }
 
@@ -74,6 +97,11 @@ public interface PlayerListUpdate extends NetworkSerializable {
         int getGamemode();
 
         void setGamemode(int gamemode);
+
+        @Override
+        default void reset() {
+            setGamemode(0);
+        }
     }
 
     interface PlayerListUpdateLatencyAction extends NetworkSerializable {
@@ -81,6 +109,11 @@ public interface PlayerListUpdate extends NetworkSerializable {
         int getPing();
 
         void setPing(int ping);
+
+        @Override
+        default void reset() {
+            setPing(0);
+        }
     }
 
     interface PlayerListUpdateDisplayNameAction extends NetworkSerializable {
@@ -88,7 +121,25 @@ public interface PlayerListUpdate extends NetworkSerializable {
         String getDisplayName();
 
         void setDisplayName(String displayName);
+
+        @Override
+        default void reset() {
+            setDisplayName(null);
+        }
     }
 
-    interface PlayerListRemovePlayerAction extends NetworkSerializable {}
+    interface PlayerListRemovePlayerAction extends NetworkSerializable {
+
+        @Override
+        default void write(ByteBuf output) {
+        }
+
+        @Override
+        default void read(ByteBuf input) {
+        }
+
+        @Override
+        default void reset() {
+        }
+    }
 }

@@ -75,12 +75,6 @@ class BasePlayerListUpdate implements PlayerListUpdate {
     }
 
     @Override
-    public void reset() {
-        setUuid(null);
-        setAction(null);
-    }
-
-    @Override
     public boolean equals(Object o) {
         if (this == o)
             return true;
@@ -203,15 +197,6 @@ class BasePlayerListUpdate implements PlayerListUpdate {
         }
 
         @Override
-        public void reset() {
-            setName(null);
-            setProperties(null);
-            setGamemode(0);
-            setPing(0);
-            setDisplayName(null);
-        }
-
-        @Override
         public boolean equals(Object o) {
             if (this == o)
                 return true;
@@ -298,13 +283,6 @@ class BasePlayerListUpdate implements PlayerListUpdate {
             }
 
             @Override
-            public void reset() {
-                setName(null);
-                setValue(null);
-                setSignature(null);
-            }
-
-            @Override
             public boolean equals(Object o) {
                 if (this == o)
                     return true;
@@ -359,11 +337,6 @@ class BasePlayerListUpdate implements PlayerListUpdate {
         }
 
         @Override
-        public void reset() {
-            setGamemode(0);
-        }
-
-        @Override
         public boolean equals(Object o) {
             return this == o ||
                     (o instanceof PlayerListUpdateGamemodeAction && getGamemode() == ((PlayerListUpdateGamemodeAction) o).getGamemode());
@@ -405,11 +378,6 @@ class BasePlayerListUpdate implements PlayerListUpdate {
         @Override
         public void read(ByteBuf input) {
             setPing(ProtocolUtils.readVarInt(input));
-        }
-
-        @Override
-        public void reset() {
-            setPing(0);
         }
 
         @Override
@@ -457,11 +425,6 @@ class BasePlayerListUpdate implements PlayerListUpdate {
         }
 
         @Override
-        public void reset() {
-            setDisplayName(null);
-        }
-
-        @Override
         public boolean equals(Object o) {
             return this == o ||
                     (o instanceof PlayerListUpdateDisplayNameAction && Objects.equals(getDisplayName(), ((PlayerListUpdateDisplayNameAction) o).getDisplayName()));
@@ -481,18 +444,6 @@ class BasePlayerListUpdate implements PlayerListUpdate {
     static class BasePlayerListRemovePlayerAction implements PlayerListRemovePlayerAction {
 
         BasePlayerListRemovePlayerAction() {
-        }
-
-        @Override
-        public void write(ByteBuf output) {
-        }
-
-        @Override
-        public void read(ByteBuf input) {
-        }
-
-        @Override
-        public void reset() {
         }
 
         @Override

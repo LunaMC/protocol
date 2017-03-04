@@ -18,6 +18,9 @@ package io.lunamc.protocol.packet.play;
 
 import io.lunamc.protocol.packet.Packet;
 import io.lunamc.protocol.packet.data.BlockChangeRecord;
+import io.lunamc.protocol.utils.PacketUtils;
+
+import java.util.List;
 
 public interface MultiBlockChangeClientboundV47 extends Packet {
 
@@ -29,9 +32,17 @@ public interface MultiBlockChangeClientboundV47 extends Packet {
 
     void setChunkZ(int chunkZ);
 
-    BlockChangeRecord[] getRecords();
+    List<BlockChangeRecord> getRecords();
 
-    void setRecords(BlockChangeRecord[] records);
+    void setRecords(List<BlockChangeRecord> records);
+
+    @Override
+    default void reset() {
+        setChunkX(0);
+        setChunkZ(0);
+        PacketUtils.reset(getRecords());
+        setRecords(null);
+    }
 
     @Override
     default Class<? extends Packet> getModelClass() {

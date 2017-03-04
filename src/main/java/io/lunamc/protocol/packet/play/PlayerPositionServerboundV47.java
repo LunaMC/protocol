@@ -24,9 +24,9 @@ public interface PlayerPositionServerboundV47 extends Packet {
 
     void setX(double x);
 
-    double getFeedY();
+    double getFeeTY();
 
-    void setFeedY(double y);
+    void setFeetY(double feetY);
 
     double getZ();
 
@@ -35,6 +35,14 @@ public interface PlayerPositionServerboundV47 extends Packet {
     boolean isOnGround();
 
     void setOnGround(boolean onGround);
+
+    @Override
+    default void reset() {
+        setX(0);
+        setFeetY(0);
+        setZ(0);
+        setOnGround(false);
+    }
 
     @Override
     default Class<? extends Packet> getModelClass() {

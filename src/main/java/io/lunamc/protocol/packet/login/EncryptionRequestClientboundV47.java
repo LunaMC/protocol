@@ -33,6 +33,13 @@ public interface EncryptionRequestClientboundV47 extends Packet {
     void setVerifyToken(byte[] verifyToken);
 
     @Override
+    default void reset() {
+        setServerId(null);
+        setPublicKey(null);
+        setVerifyToken(null);
+    }
+
+    @Override
     default Class<? extends Packet> getModelClass() {
         return EncryptionRequestClientboundV47.class;
     }

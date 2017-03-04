@@ -49,11 +49,6 @@ class BaseLoginStartServerboundV47 implements LoginStartServerboundV47 {
     }
 
     @Override
-    public void reset() {
-        setName(null);
-    }
-
-    @Override
     public boolean equals(Object o) {
         return this == o ||
                 (o instanceof LoginStartServerboundV47 && Objects.equals(getName(), ((LoginStartServerboundV47) o).getName()));

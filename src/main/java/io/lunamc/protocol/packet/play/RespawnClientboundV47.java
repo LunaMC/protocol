@@ -37,6 +37,14 @@ public interface RespawnClientboundV47 extends Packet {
     void setLevelType(String levelType);
 
     @Override
+    default void reset() {
+        setDimension(0);
+        setDifficulty((short) 0);
+        setGamemode((short) 0);
+        setLevelType(null);
+    }
+
+    @Override
     default Class<? extends Packet> getModelClass() {
         return RespawnClientboundV47.class;
     }

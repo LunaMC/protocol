@@ -28,4 +28,9 @@ public interface LoginStartServerboundV47 extends Packet {
     default Class<? extends Packet> getModelClass() {
         return LoginStartServerboundV47.class;
     }
+
+    @Override
+    default void reset() {
+        setName(null);
+    }
 }

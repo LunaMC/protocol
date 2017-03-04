@@ -33,6 +33,13 @@ public interface WindowPropertyClientboundV47 extends Packet {
     void setValue(short value);
 
     @Override
+    default void reset() {
+        setWindowId((short) 0);
+        setProperty((short) 0);
+        setValue((short) 0);
+    }
+
+    @Override
     default Class<? extends Packet> getModelClass() {
         return WindowPropertyClientboundV47.class;
     }

@@ -29,6 +29,12 @@ public interface UseBedClientboundV47 extends Packet {
     void setLocation(long location);
 
     @Override
+    default void reset() {
+        setEntityId(0);
+        setLocation(0);
+    }
+
+    @Override
     default Class<? extends Packet> getModelClass() {
         return UseBedClientboundV47.class;
     }

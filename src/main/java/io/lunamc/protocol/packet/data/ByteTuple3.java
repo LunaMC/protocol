@@ -31,4 +31,11 @@ public interface ByteTuple3 extends NetworkSerializable {
     byte getByte3();
 
     void setByte3(byte byte3);
+
+    @Override
+    default void reset() {
+        setByte1((byte) 0);
+        setByte2((byte) 0);
+        setByte3((byte) 0);
+    }
 }

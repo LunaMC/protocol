@@ -29,6 +29,12 @@ public interface DisplayScoreboardClientboundV47 extends Packet {
     void setScoreName(String scoreName);
 
     @Override
+    default void reset() {
+        setPosition((byte) 0);
+        setScoreName(null);
+    }
+
+    @Override
     default Class<? extends Packet> getModelClass() {
         return DisplayScoreboardClientboundV47.class;
     }

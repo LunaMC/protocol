@@ -41,6 +41,12 @@ public interface ChangeGameStateClientboundV47 extends Packet {
     void setValue(float value);
 
     @Override
+    default void reset() {
+        setReason((short) 0);
+        setValue(0);
+    }
+
+    @Override
     default Class<? extends Packet> getModelClass() {
         return ChangeGameStateClientboundV47.class;
     }

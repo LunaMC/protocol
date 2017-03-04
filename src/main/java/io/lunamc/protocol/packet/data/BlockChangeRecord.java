@@ -31,4 +31,11 @@ public interface BlockChangeRecord extends NetworkSerializable {
     int getBlockId();
 
     void setBlockId(int blockId);
+
+    @Override
+    default void reset() {
+        setHorizontalPosition((short) 0);
+        setYCoordinate((short) 0);
+        setBlockId(0);
+    }
 }

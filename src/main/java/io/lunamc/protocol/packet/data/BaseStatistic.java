@@ -62,12 +62,6 @@ class BaseStatistic implements Statistic {
     }
 
     @Override
-    public void reset() {
-        setName(null);
-        setValue(0);
-    }
-
-    @Override
     public boolean equals(Object o) {
         if (this == o)
             return true;

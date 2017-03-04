@@ -33,6 +33,13 @@ public interface AttachEntityClientboundV47 extends Packet {
     void setLeash(boolean leash);
 
     @Override
+    default void reset() {
+        setEntityId(0);
+        setVehicleId(0);
+        setLeash(false);
+    }
+
+    @Override
     default Class<? extends Packet> getModelClass() {
         return AttachEntityClientboundV47.class;
     }

@@ -26,7 +26,7 @@ public interface ScoreboardObjectiveClientboundV47 extends Packet {
 
     byte getMode();
 
-    void setMOde(byte mode);
+    void setMode(byte mode);
 
     String getObjectiveValue();
 
@@ -35,6 +35,14 @@ public interface ScoreboardObjectiveClientboundV47 extends Packet {
     String getType();
 
     void setType(String type);
+
+    @Override
+    default void reset() {
+        setObjectiveName(null);
+        setMode((byte) 0);
+        setObjectiveValue(null);
+        setType(null);
+    }
 
     @Override
     default Class<? extends Packet> getModelClass() {

@@ -18,14 +18,21 @@ package io.lunamc.protocol.packet.play;
 
 import io.lunamc.protocol.packet.Packet;
 import io.lunamc.protocol.packet.data.Statistic;
+import io.lunamc.protocol.utils.PacketUtils;
 
 import java.util.List;
 
 public interface StatisticsClientboundV47 extends Packet {
 
-    List<? extends Statistic> getStatistics();
+    List<Statistic> getStatistics();
 
-    void setStatistics(List<? extends Statistic> statistics);
+    void setStatistics(List<Statistic> statistics);
+
+    @Override
+    default void reset() {
+        PacketUtils.resetAll(getStatistics());
+        setStatistics(null);
+    }
 
     @Override
     default Class<? extends Packet> getModelClass() {

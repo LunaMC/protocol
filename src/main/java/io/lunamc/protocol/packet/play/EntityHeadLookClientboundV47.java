@@ -29,6 +29,12 @@ public interface EntityHeadLookClientboundV47 extends Packet {
     void setHeadYaw(byte headYaw);
 
     @Override
+    default void reset() {
+        setEntityId(0);
+        setHeadYaw((byte) 0);
+    }
+
+    @Override
     default Class<? extends Packet> getModelClass() {
         return EntityHeadLookClientboundV47.class;
     }

@@ -41,6 +41,15 @@ public interface CombatEventClientboundV47 extends Packet {
     void setMessage(String message);
 
     @Override
+    default void reset() {
+        setEntityId(0);
+        setDuration(0);
+        setPlayerId(0);
+        setEntityId(0);
+        setMessage(null);
+    }
+
+    @Override
     default Class<? extends Packet> getModelClass() {
         return CombatEventClientboundV47.class;
     }

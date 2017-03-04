@@ -75,13 +75,6 @@ class BaseBlockChangeRecord implements BlockChangeRecord {
     }
 
     @Override
-    public void reset() {
-        setHorizontalPosition((short) 0);
-        setYCoordinate((short) 0);
-        setBlockId(0);
-    }
-
-    @Override
     public boolean equals(Object o) {
         if (this == o)
             return true;

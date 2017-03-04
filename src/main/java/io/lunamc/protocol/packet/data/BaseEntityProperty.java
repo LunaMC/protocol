@@ -96,13 +96,6 @@ class BaseEntityProperty implements EntityProperty {
     }
 
     @Override
-    public void reset() {
-        setKey(null);
-        setValue(0);
-        setModifiers(null);
-    }
-
-    @Override
     public boolean equals(Object o) {
         if (this == o)
             return true;
@@ -178,13 +171,6 @@ class BaseEntityProperty implements EntityProperty {
             setUuid(ProtocolUtils.readUuid(input));
             setAmount(input.readDouble());
             setOperation(input.readByte());
-        }
-
-        @Override
-        public void reset() {
-            setUuid(null);
-            setAmount(0);
-            setOperation((byte) 0);
         }
 
         @Override

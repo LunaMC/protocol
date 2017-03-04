@@ -42,6 +42,14 @@ public interface SpawnPaintingClientboundV47 extends Packet {
     void setDirection(short direction);
 
     @Override
+    default void reset() {
+        setEntityId(0);
+        setTitle(null);
+        setLocation(0);
+        setDirection((short) 0);
+    }
+
+    @Override
     default Class<? extends Packet> getModelClass() {
         return SpawnPaintingClientboundV47.class;
     }

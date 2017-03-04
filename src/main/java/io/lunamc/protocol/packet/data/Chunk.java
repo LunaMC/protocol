@@ -40,4 +40,13 @@ public interface Chunk extends NetworkSerializable {
     byte[] getBiomes();
 
     void setBiomes(byte[] biomes);
+
+    @Override
+    default void reset() {
+        setBlockTypes(null);
+        setBitsOfDataPerBlock(0);
+        setBlockLightData(null);
+        setSkylightData(null);
+        setBiomes(null);
+    }
 }

@@ -33,6 +33,13 @@ public interface TabCompleteServerboundV47 extends Packet {
     void setLookedAtBlock(long lookedAtBlock);
 
     @Override
+    default void reset() {
+        setText(null);
+        setHasPosition(false);
+        setLookedAtBlock(0);
+    }
+
+    @Override
     default Class<? extends Packet> getModelClass() {
         return TabCompleteServerboundV47.class;
     }

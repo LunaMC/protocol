@@ -37,6 +37,14 @@ public interface EntityVelocityClientboundV47 extends Packet {
     void setVelocityZ(short velocityZ);
 
     @Override
+    default void reset() {
+        setEntityId(0);
+        setVelocityX((byte) 0);
+        setVelocityY((byte) 0);
+        setVelocityZ((byte) 0);
+    }
+
+    @Override
     default Class<? extends Packet> getModelClass() {
         return EntityVelocityClientboundV47.class;
     }

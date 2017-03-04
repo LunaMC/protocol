@@ -25,6 +25,11 @@ public interface WorldBorderAction {
         double getRadius();
 
         void setRadius(double radius);
+
+        @Override
+        default void reset() {
+            setRadius(0);
+        }
     }
 
     interface WorldBorderLerpSize extends NetworkSerializable {
@@ -40,6 +45,13 @@ public interface WorldBorderAction {
         long getSpeed();
 
         void setSpeed(long speed);
+
+        @Override
+        default void reset() {
+            setOldRadius(0);
+            setNewRadius(0);
+            setSpeed(0);
+        }
     }
 
     interface WorldBorderSetCenter extends NetworkSerializable {
@@ -51,6 +63,12 @@ public interface WorldBorderAction {
         double getZ();
 
         void setZ(double z);
+
+        @Override
+        default void reset() {
+            setX(0);
+            setZ(0);
+        }
     }
 
     interface WorldBorderInitialize extends NetworkSerializable {
@@ -86,6 +104,18 @@ public interface WorldBorderAction {
         int getWarningBlocks();
 
         void setWarningBlocks(int warningBlocks);
+
+        @Override
+        default void reset() {
+            setX(0);
+            setZ(0);
+            setOldRadius(0);
+            setNewRadius(0);
+            setSpeed(0);
+            setPortalTeleportationBoundary(0);
+            setWarningTime(0);
+            setWarningBlocks(0);
+        }
     }
 
     interface WorldBorderSetWarningTime extends NetworkSerializable {
@@ -93,6 +123,11 @@ public interface WorldBorderAction {
         int getWarningTime();
 
         void setWarningTime(int warningTime);
+
+        @Override
+        default void reset() {
+            setWarningTime(0);
+        }
     }
 
     interface WorldBorderSetWarningBlocks extends NetworkSerializable {
@@ -100,5 +135,10 @@ public interface WorldBorderAction {
         int getWarningBlocks();
 
         void setWarningBlocks(int warningBlocks);
+
+        @Override
+        default void reset() {
+            setWarningBlocks(0);
+        }
     }
 }

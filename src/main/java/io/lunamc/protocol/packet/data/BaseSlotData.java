@@ -83,11 +83,6 @@ class BaseSlotData implements SlotData {
     }
 
     @Override
-    public void reset() {
-
-    }
-
-    @Override
     public boolean equals(Object o) {
         if (this == o)
             return true;

@@ -64,12 +64,6 @@ class BaseEncryptionResponseServerboundV47 implements EncryptionResponseServerbo
     }
 
     @Override
-    public void reset() {
-        setSharedSecret(null);
-        setVerifyToken(null);
-    }
-
-    @Override
     public boolean equals(Object o) {
         if (this == o)
             return true;

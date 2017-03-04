@@ -18,6 +18,7 @@ package io.lunamc.protocol.packet.play;
 
 import io.lunamc.protocol.packet.Packet;
 import io.lunamc.protocol.packet.data.EntityMetadata;
+import io.lunamc.protocol.utils.PacketUtils;
 
 public interface EntityMetadataClientboundV47 extends Packet {
 
@@ -28,6 +29,13 @@ public interface EntityMetadataClientboundV47 extends Packet {
     EntityMetadata getMetadata();
 
     void setMetadata(EntityMetadata metadata);
+
+    @Override
+    default void reset() {
+        setEntityId(0);
+        PacketUtils.reset(getMetadata());
+        setMetadata(null);
+    }
 
     @Override
     default Class<? extends Packet> getModelClass() {

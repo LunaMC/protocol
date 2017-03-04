@@ -27,4 +27,10 @@ public interface Statistic extends NetworkSerializable {
     int getValue();
 
     void setValue(int value);
+
+    @Override
+    default void reset() {
+        setName(null);
+        setValue(0);
+    }
 }

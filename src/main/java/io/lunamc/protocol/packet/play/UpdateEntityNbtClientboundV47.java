@@ -18,6 +18,7 @@ package io.lunamc.protocol.packet.play;
 
 import com.flowpowered.nbt.Tag;
 import io.lunamc.protocol.packet.Packet;
+import io.lunamc.protocol.utils.PacketUtils;
 
 public interface UpdateEntityNbtClientboundV47 extends Packet {
 
@@ -28,6 +29,13 @@ public interface UpdateEntityNbtClientboundV47 extends Packet {
     Tag<?> getTag();
 
     void setTag(Tag<?> tag);
+
+    @Override
+    default void reset() {
+        setEntityId(0);
+        PacketUtils.reset(getTag());
+        setTag(null);
+    }
 
     @Override
     default Class<? extends Packet> getModelClass() {

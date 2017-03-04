@@ -34,6 +34,12 @@ public interface ResourcePackStatusServerboundV47 extends Packet {
     void setResult(int result);
 
     @Override
+    default void reset() {
+        setHash(null);
+        setResult(0);
+    }
+
+    @Override
     default Class<? extends Packet> getModelClass() {
         return ResourcePackStatusServerboundV47.class;
     }

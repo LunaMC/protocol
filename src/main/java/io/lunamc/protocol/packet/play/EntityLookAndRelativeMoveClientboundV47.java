@@ -46,7 +46,18 @@ public interface EntityLookAndRelativeMoveClientboundV47 extends Packet {
 
     boolean isOnGround();
 
-    void setOnGround();
+    void setOnGround(boolean onGround);
+
+    @Override
+    default void reset() {
+        setEntityId(0);
+        setDeltaX((byte) 0);
+        setDeltaY((byte) 0);
+        setDeltaZ((byte) 0);
+        setYaw((byte) 0);
+        setPitch((byte) 0);
+        setOnGround(false);
+    }
 
     @Override
     default Class<? extends Packet> getModelClass() {

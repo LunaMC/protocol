@@ -39,6 +39,13 @@ public interface PlayerAbilitiesClientboundV47 extends Packet {
     void setFieldOfViewModifier(float fieldOfViewModifier);
 
     @Override
+    default void reset() {
+        setFlags((byte) 0);
+        setFlyingSpeed(0);
+        setFieldOfViewModifier(0);
+    }
+
+    @Override
     default Class<? extends Packet> getModelClass() {
         return PlayerAbilitiesClientboundV47.class;
     }

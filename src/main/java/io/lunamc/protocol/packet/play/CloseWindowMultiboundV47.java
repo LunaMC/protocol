@@ -25,6 +25,11 @@ public interface CloseWindowMultiboundV47 extends Packet {
     void setWindowId(short windowId);
 
     @Override
+    default void reset() {
+        setWindowId((short) 0);
+    }
+
+    @Override
     default Class<? extends Packet> getModelClass() {
         return CloseWindowMultiboundV47.class;
     }

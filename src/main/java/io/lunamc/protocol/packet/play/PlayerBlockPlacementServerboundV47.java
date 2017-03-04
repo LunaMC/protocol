@@ -18,6 +18,7 @@ package io.lunamc.protocol.packet.play;
 
 import io.lunamc.protocol.packet.Packet;
 import io.lunamc.protocol.packet.data.SlotData;
+import io.lunamc.protocol.utils.PacketUtils;
 
 public interface PlayerBlockPlacementServerboundV47 extends Packet {
 
@@ -51,6 +52,17 @@ public interface PlayerBlockPlacementServerboundV47 extends Packet {
     byte getCursorPositionZ();
 
     void setCursorPositionZ(byte cursorPositionZ);
+
+    @Override
+    default void reset() {
+        setLocation(0);
+        setFace((byte) 0);
+        PacketUtils.reset(getHeldItem());
+        setHeldItem(null);
+        setCursorPositionX((byte) 0);
+        setCursorPositionY((byte) 0);
+        setCursorPositionZ((byte) 0);
+    }
 
     @Override
     default Class<? extends Packet> getModelClass() {

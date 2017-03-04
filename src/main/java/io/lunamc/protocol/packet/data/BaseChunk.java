@@ -96,15 +96,6 @@ class BaseChunk implements Chunk {
     }
 
     @Override
-    public void reset() {
-        setBlockTypes(null);
-        setBitsOfDataPerBlock(0);
-        setBlockLightData(null);
-        setSkylightData(null);
-        setBiomes(null);
-    }
-
-    @Override
     public boolean equals(Object o) {
         if (this == o)
             return true;

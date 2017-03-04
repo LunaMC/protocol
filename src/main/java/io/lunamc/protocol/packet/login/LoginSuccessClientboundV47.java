@@ -29,6 +29,12 @@ public interface LoginSuccessClientboundV47 extends Packet {
     void setUsername(String username);
 
     @Override
+    default void reset() {
+        setUuid(null);
+        setUsername(null);
+    }
+
+    @Override
     default Class<? extends Packet> getModelClass() {
         return LoginSuccessClientboundV47.class;
     }

@@ -18,6 +18,7 @@ package io.lunamc.protocol.packet.play;
 
 import io.lunamc.protocol.packet.Packet;
 import io.lunamc.protocol.packet.data.SlotData;
+import io.lunamc.protocol.utils.PacketUtils;
 
 public interface CreativeInventoryActionServerboundV47 extends Packet {
 
@@ -28,6 +29,13 @@ public interface CreativeInventoryActionServerboundV47 extends Packet {
     SlotData getClickedItem();
 
     void setClickedItem(SlotData clickedItem);
+
+    @Override
+    default void reset() {
+        setSlot((short) 0);
+        PacketUtils.reset(getClickedItem());
+        setClickedItem(null);
+    }
 
     @Override
     default Class<? extends Packet> getModelClass() {

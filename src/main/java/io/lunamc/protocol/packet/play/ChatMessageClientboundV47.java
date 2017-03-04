@@ -29,6 +29,12 @@ public interface ChatMessageClientboundV47 extends Packet {
     void setPosition(byte position);
 
     @Override
+    default void reset() {
+        setJsonData(null);
+        setPosition((byte) 0);
+    }
+
+    @Override
     default Class<? extends Packet> getModelClass() {
         return ChatMessageClientboundV47.class;
     }

@@ -29,6 +29,12 @@ public interface EncryptionResponseServerboundV47 extends Packet {
     void setVerifyToken(byte[] verifyToken);
 
     @Override
+    default void reset() {
+        setSharedSecret(null);
+        setVerifyToken(null);
+    }
+
+    @Override
     default Class<? extends Packet> getModelClass() {
         return EncryptionResponseServerboundV47.class;
     }

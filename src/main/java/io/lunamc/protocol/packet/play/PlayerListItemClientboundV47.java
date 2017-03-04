@@ -19,15 +19,23 @@ package io.lunamc.protocol.packet.play;
 import io.lunamc.protocol.packet.Packet;
 import io.lunamc.protocol.packet.data.PlayerListUpdate;
 
+import java.util.List;
+
 public interface PlayerListItemClientboundV47 extends Packet {
 
     int getAction();
 
     void setAction(int action);
 
-    PlayerListUpdate[] getPlayerListUpdates();
+    List<PlayerListUpdate> getPlayerListUpdates();
 
-    void setPlayerListUpdates(PlayerListUpdate[] playerListUpdates);
+    void setPlayerListUpdates(List<PlayerListUpdate> playerListUpdates);
+
+    @Override
+    default void reset() {
+        setAction(0);
+        setPlayerListUpdates(null);
+    }
 
     @Override
     default Class<? extends Packet> getModelClass() {

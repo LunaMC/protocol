@@ -31,4 +31,11 @@ public interface MapIcon extends NetworkSerializable {
     byte getZ();
 
     void setZ(byte z);
+
+    @Override
+    default void reset() {
+        setDirectionAndType((byte) 0);
+        setX((byte) 0);
+        setZ((byte) 0);
+    }
 }

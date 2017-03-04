@@ -29,6 +29,12 @@ public interface TimeUpdateClientboundV47 extends Packet {
     void setTimeOfDay(long timeOfDay);
 
     @Override
+    default void reset() {
+        setWorldAge(0);
+        setTimeOfDay(0);
+    }
+
+    @Override
     default Class<? extends Packet> getModelClass() {
         return TimeUpdateClientboundV47.class;
     }

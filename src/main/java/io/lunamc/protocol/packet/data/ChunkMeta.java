@@ -31,4 +31,11 @@ public interface ChunkMeta extends NetworkSerializable {
     int getPrimaryBitMask();
 
     void setPrimaryBitMask(int primaryBitMask);
+
+    @Override
+    default void reset() {
+        setChunkX(0);
+        setChunkZ(0);
+        setPrimaryBitMask(0);
+    }
 }

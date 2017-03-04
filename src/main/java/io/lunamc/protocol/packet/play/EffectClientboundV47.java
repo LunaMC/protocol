@@ -37,6 +37,14 @@ public interface EffectClientboundV47 extends Packet {
     void setDisableRelativeVolume(boolean disableRelativeVolume);
 
     @Override
+    default void reset() {
+        setEffectId(0);
+        setLocation(0);
+        setData(0);
+        setDisableRelativeVolume(false);
+    }
+
+    @Override
     default Class<? extends Packet> getModelClass() {
         return EffectClientboundV47.class;
     }

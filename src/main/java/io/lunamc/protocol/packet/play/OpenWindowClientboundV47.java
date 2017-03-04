@@ -38,7 +38,16 @@ public interface OpenWindowClientboundV47 extends Packet {
 
     int getEntityId();
 
-    void setEntityId();
+    void setEntityId(int entityId);
+
+    @Override
+    default void reset() {
+        setWindowId((short) 0);
+        setWindowType(null);
+        setWindowTitle(null);
+        setNumberOfSlots((short) 0);
+        setEntityId(0);
+    }
 
     @Override
     default Class<? extends Packet> getModelClass() {

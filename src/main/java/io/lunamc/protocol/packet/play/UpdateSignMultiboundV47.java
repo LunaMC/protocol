@@ -41,6 +41,15 @@ public interface UpdateSignMultiboundV47 extends Packet {
     void setLine4(String line4);
 
     @Override
+    default void reset() {
+        setLocation(0);
+        setLine1(null);
+        setLine2(null);
+        setLine3(null);
+        setLine4(null);
+    }
+
+    @Override
     default Class<? extends Packet> getModelClass() {
         return UpdateSignMultiboundV47.class;
     }

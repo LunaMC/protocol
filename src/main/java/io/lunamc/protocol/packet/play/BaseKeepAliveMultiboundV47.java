@@ -49,11 +49,6 @@ class BaseKeepAliveMultiboundV47 implements KeepAliveMultiboundV47 {
     }
 
     @Override
-    public void reset() {
-        setKeepAliveId(0);
-    }
-
-    @Override
     public boolean equals(Object o) {
         return this == o ||
                 (o instanceof KeepAliveMultiboundV47 && getKeepAliveId() == ((KeepAliveMultiboundV47) o).getKeepAliveId());

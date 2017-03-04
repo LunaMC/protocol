@@ -62,12 +62,6 @@ class BaseLoginSuccessClientboundV47 implements LoginSuccessClientboundV47 {
     }
 
     @Override
-    public void reset() {
-        setUuid(null);
-        setUsername(null);
-    }
-
-    @Override
     public boolean equals(Object o) {
         if (this == o)
             return true;

@@ -74,13 +74,6 @@ class BaseChunkMeta implements ChunkMeta {
     }
 
     @Override
-    public void reset() {
-        setChunkX(0);
-        setChunkZ(0);
-        setPrimaryBitMask(0);
-    }
-
-    @Override
     public boolean equals(Object o) {
         if (this == o)
             return true;

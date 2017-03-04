@@ -18,12 +18,19 @@ package io.lunamc.protocol.packet.play;
 
 import io.lunamc.protocol.packet.Packet;
 import io.lunamc.protocol.packet.data.TitleAction;
+import io.lunamc.protocol.utils.PacketUtils;
 
 public interface TitleClientboundV47 extends Packet {
 
-    TitleAction getAction();
+    Object getAction();
 
-    void setAction(TitleAction action);
+    void setAction(Object action);
+
+    @Override
+    default void reset() {
+        PacketUtils.reset(getAction());
+        setAction(null);
+    }
 
     @Override
     default Class<? extends Packet> getModelClass() {

@@ -24,9 +24,9 @@ public interface PlayerPositionAndLookServerboundV47 extends Packet {
 
     void setX(double x);
 
-    double getFeedY();
+    double getFeetY();
 
-    void setFeedY(double y);
+    void setFeetY(double feetY);
 
     double getZ();
 
@@ -43,6 +43,16 @@ public interface PlayerPositionAndLookServerboundV47 extends Packet {
     boolean isOnGround();
 
     void setOnGround(boolean onGround);
+
+    @Override
+    default void reset() {
+        setX(0);
+        setFeetY(0);
+        setZ(0);
+        setYaw(0);
+        setPitch(0);
+        setOnGround(false);
+    }
 
     @Override
     default Class<? extends Packet> getModelClass() {

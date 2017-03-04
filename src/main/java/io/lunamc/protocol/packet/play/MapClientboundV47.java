@@ -19,6 +19,8 @@ package io.lunamc.protocol.packet.play;
 import io.lunamc.protocol.packet.Packet;
 import io.lunamc.protocol.packet.data.MapIcon;
 
+import java.util.List;
+
 public interface MapClientboundV47 extends Packet {
 
     int getItemDamage();
@@ -29,9 +31,9 @@ public interface MapClientboundV47 extends Packet {
 
     void setScale(byte scale);
 
-    MapIcon[] getIcons();
+    List<MapIcon> getIcons();
 
-    void setIcons(MapIcon[] icons);
+    void setIcons(List<MapIcon> icons);
 
     byte getColumns();
 
@@ -52,6 +54,18 @@ public interface MapClientboundV47 extends Packet {
     short[] getData();
 
     void setData(short[] data);
+
+    @Override
+    default void reset() {
+        setItemDamage(0);
+        setScale((byte) 0);
+        setIcons(null);
+        setColumns((byte) 0);
+        setRows((byte) 0);
+        setX((byte) 0);
+        setZ((byte) 0);
+        setData(null);
+    }
 
     @Override
     default Class<? extends Packet> getModelClass() {

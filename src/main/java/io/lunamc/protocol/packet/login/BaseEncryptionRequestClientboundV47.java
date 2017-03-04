@@ -77,13 +77,6 @@ class BaseEncryptionRequestClientboundV47 implements EncryptionRequestClientboun
     }
 
     @Override
-    public void reset() {
-        setServerId(null);
-        setPublicKey(null);
-        setVerifyToken(null);
-    }
-
-    @Override
     public boolean equals(Object o) {
         if (this == o)
             return true;

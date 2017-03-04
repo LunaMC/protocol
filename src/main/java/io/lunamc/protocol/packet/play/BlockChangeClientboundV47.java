@@ -29,6 +29,12 @@ public interface BlockChangeClientboundV47 extends Packet {
     void setBlockId(int blockId);
 
     @Override
+    default void reset() {
+        setLocation(0);
+        setBlockId(0);
+    }
+
+    @Override
     default Class<? extends Packet> getModelClass() {
         return BlockChangeClientboundV47.class;
     }

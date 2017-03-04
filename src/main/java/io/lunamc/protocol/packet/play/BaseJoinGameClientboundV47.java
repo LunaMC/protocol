@@ -127,17 +127,6 @@ class BaseJoinGameClientboundV47 implements JoinGameClientboundV47 {
     }
 
     @Override
-    public void reset() {
-        setEntityId(0);
-        setGamemode((short) 0);
-        setDimension((byte) 0);
-        setDifficulty((short) 0);
-        setMaxPlayers((short) 0);
-        setLevelType(null);
-        setReducedDebugInfo(false);
-    }
-
-    @Override
     public boolean equals(Object o) {
         if (this == o)
             return true;

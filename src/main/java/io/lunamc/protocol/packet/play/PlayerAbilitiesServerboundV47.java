@@ -38,6 +38,13 @@ public interface PlayerAbilitiesServerboundV47 extends Packet {
     void setWalkingSpeed(float walkingSpeed);
 
     @Override
+    default void reset() {
+        setFlags((byte) 0);
+        setFlyingSpeed(0);
+        setWalkingSpeed(0);
+    }
+
+    @Override
     default Class<? extends Packet> getModelClass() {
         return PlayerAbilitiesServerboundV47.class;
     }

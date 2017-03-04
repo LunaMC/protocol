@@ -49,11 +49,6 @@ class BaseDisconnectClientboundV47 implements DisconnectClientboundV47 {
     }
 
     @Override
-    public void reset() {
-        setReason(null);
-    }
-
-    @Override
     public boolean equals(Object o) {
         return this == o ||
                 (o instanceof DisconnectClientboundV47 && Objects.equals(getReason(), ((DisconnectClientboundV47) o).getReason()));

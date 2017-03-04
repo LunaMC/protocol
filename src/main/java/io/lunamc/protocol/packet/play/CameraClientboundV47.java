@@ -25,6 +25,11 @@ public interface CameraClientboundV47 extends Packet {
     void setCameraId(int cameraId);
 
     @Override
+    default void reset() {
+        setCameraId(0);
+    }
+
+    @Override
     default Class<? extends Packet> getModelClass() {
         return CameraClientboundV47.class;
     }

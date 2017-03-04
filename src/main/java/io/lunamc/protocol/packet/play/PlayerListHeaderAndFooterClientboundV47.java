@@ -29,6 +29,12 @@ public interface PlayerListHeaderAndFooterClientboundV47 extends Packet {
     void setFooter(String footer);
 
     @Override
+    default void reset() {
+        setHeader(null);
+        setFooter(null);
+    }
+
+    @Override
     default Class<? extends Packet> getModelClass() {
         return PlayerListHeaderAndFooterClientboundV47.class;
     }

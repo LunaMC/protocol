@@ -36,6 +36,12 @@ public interface AnimationClientboundV47 extends Packet {
     void setAnimation(short animation);
 
     @Override
+    default void reset() {
+        setEntityId(0);
+        setAnimation((short) 0);
+    }
+
+    @Override
     default Class<? extends Packet> getModelClass() {
         return AnimationClientboundV47.class;
     }

@@ -29,6 +29,12 @@ public interface ResourcePackSendClientboundV47 extends Packet {
     void setHash(String has);
 
     @Override
+    default void reset() {
+        setUrl(null);
+        setHash(null);
+    }
+
+    @Override
     default Class<? extends Packet> getModelClass() {
         return ResourcePackSendClientboundV47.class;
     }

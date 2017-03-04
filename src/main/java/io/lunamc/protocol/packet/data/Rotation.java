@@ -31,4 +31,11 @@ public interface Rotation extends NetworkSerializable {
     float getRotationZ();
 
     void setRotationZ(float rotationZ);
+
+    @Override
+    default void reset() {
+        setRotationX(0);
+        setRotationY(0);
+        setRotationZ(0);
+    }
 }

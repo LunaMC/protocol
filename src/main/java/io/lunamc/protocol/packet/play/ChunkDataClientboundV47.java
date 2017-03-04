@@ -18,6 +18,7 @@ package io.lunamc.protocol.packet.play;
 
 import io.lunamc.protocol.packet.Packet;
 import io.lunamc.protocol.packet.data.Chunk;
+import io.lunamc.protocol.utils.PacketUtils;
 
 public interface ChunkDataClientboundV47 extends Packet {
 
@@ -40,6 +41,16 @@ public interface ChunkDataClientboundV47 extends Packet {
     Chunk getData();
 
     void setData(Chunk data);
+
+    @Override
+    default void reset() {
+        setChunkX(0);
+        setChunkZ(0);
+        setGroundUpContinuous(false);
+        setPrimaryBitMask(0);
+        PacketUtils.reset(getData());
+        setData(null);
+    }
 
     @Override
     default Class<? extends Packet> getModelClass() {

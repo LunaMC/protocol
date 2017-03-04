@@ -33,6 +33,13 @@ public interface PlayerLookServerboundV47 extends Packet {
     void setOnGround(boolean onGround);
 
     @Override
+    default void reset() {
+        setYaw(0);
+        setPitch(0);
+        setOnGround(false);
+    }
+
+    @Override
     default Class<? extends Packet> getModelClass() {
         return PlayerLookServerboundV47.class;
     }

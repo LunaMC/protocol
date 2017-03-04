@@ -18,6 +18,7 @@ package io.lunamc.protocol.packet.play;
 
 import io.lunamc.protocol.packet.Packet;
 import io.netty.buffer.ByteBuf;
+import io.netty.util.ReferenceCountUtil;
 
 public interface PluginMessageMultiboundV47 extends Packet {
 
@@ -28,6 +29,13 @@ public interface PluginMessageMultiboundV47 extends Packet {
     ByteBuf getData();
 
     void setData(ByteBuf data);
+
+    @Override
+    default void reset() {
+        setChannel(null);
+        ReferenceCountUtil.release(getData());
+        setData(null);
+    }
 
     @Override
     default Class<? extends Packet> getModelClass() {

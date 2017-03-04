@@ -25,6 +25,11 @@ public interface KeepAliveMultiboundV47 extends Packet {
     void setKeepAliveId(int keepAliveId);
 
     @Override
+    default void reset() {
+        setKeepAliveId(0);
+    }
+
+    @Override
     default Class<? extends Packet> getModelClass() {
         return KeepAliveMultiboundV47.class;
     }

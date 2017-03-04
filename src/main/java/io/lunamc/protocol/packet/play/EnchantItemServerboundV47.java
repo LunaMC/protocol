@@ -29,6 +29,12 @@ public interface EnchantItemServerboundV47 extends Packet {
     void setEnchantment(byte enchantment);
 
     @Override
+    default void reset() {
+        setWindowId((byte) 0);
+        setEnchantment((byte) 0);
+    }
+
+    @Override
     default Class<? extends Packet> getModelClass() {
         return EnchantItemServerboundV47.class;
     }

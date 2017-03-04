@@ -53,6 +53,15 @@ public interface ClientSettingsServerboundV47 extends Packet {
     void setDisplayedSkinParts(short displayedSkinParts);
 
     @Override
+    default void reset() {
+        setLocale(null);
+        setViewDistance((byte) 0);
+        setChatMode((byte) 0);
+        setChatColorsEnabled(false);
+        setDisplayedSkinParts((short) 0);
+    }
+
+    @Override
     default Class<? extends Packet> getModelClass() {
         return ClientSettingsServerboundV47.class;
     }

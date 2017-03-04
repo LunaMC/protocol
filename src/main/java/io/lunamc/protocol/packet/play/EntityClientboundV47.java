@@ -25,6 +25,11 @@ public interface EntityClientboundV47 extends Packet {
     void setEntityId(int entityId);
 
     @Override
+    default void reset() {
+        setEntityId(0);
+    }
+
+    @Override
     default Class<? extends Packet> getModelClass() {
         return EntityClientboundV47.class;
     }

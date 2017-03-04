@@ -18,6 +18,7 @@ package io.lunamc.protocol.packet.play;
 
 import io.lunamc.protocol.packet.Packet;
 import io.lunamc.protocol.packet.data.SlotData;
+import io.lunamc.protocol.utils.PacketUtils;
 
 public interface SetSlotClientboundV47 extends Packet {
 
@@ -32,6 +33,14 @@ public interface SetSlotClientboundV47 extends Packet {
     SlotData getSlotData();
 
     void setSlotData(SlotData slotData);
+
+    @Override
+    default void reset() {
+        setWindowId((byte) 0);
+        setSlot((short) 0);
+        PacketUtils.reset(getSlotData());
+        setSlotData(null);
+    }
 
     @Override
     default Class<? extends Packet> getModelClass() {

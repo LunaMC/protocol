@@ -71,13 +71,6 @@ public class BaseRotation implements Rotation {
     }
 
     @Override
-    public void reset() {
-        setRotationX(0);
-        setRotationY(0);
-        setRotationZ(0);
-    }
-
-    @Override
     public boolean equals(Object o) {
         if (this == o)
             return true;

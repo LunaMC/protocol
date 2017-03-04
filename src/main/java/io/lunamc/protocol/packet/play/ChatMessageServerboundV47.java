@@ -25,6 +25,11 @@ public interface ChatMessageServerboundV47 extends Packet {
     void setJsonData(String jsonData);
 
     @Override
+    default void reset() {
+        setJsonData(null);
+    }
+
+    @Override
     default Class<? extends Packet> getModelClass() {
         return ChatMessageServerboundV47.class;
     }

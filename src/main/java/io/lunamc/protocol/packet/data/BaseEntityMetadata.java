@@ -67,11 +67,6 @@ class BaseEntityMetadata implements EntityMetadata {
     }
 
     @Override
-    public void reset() {
-        setMetadata(null);
-    }
-
-    @Override
     public boolean equals(Object o) {
         return this == o ||
                 (o instanceof BaseEntityMetadata && Objects.equals(entries, ((BaseEntityMetadata) o).entries));
@@ -237,13 +232,6 @@ class BaseEntityMetadata implements EntityMetadata {
                         break;
                 }
             }
-        }
-
-        @Override
-        public void reset() {
-            setIndex((short) 0);
-            setType((byte) 0);
-            setValue(null);
         }
 
         @Override

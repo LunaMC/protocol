@@ -40,4 +40,16 @@ public interface EntityActionServerboundV47 extends Packet {
     int getActionParameter();
 
     void setActionParameter(int actionParameter);
+
+    @Override
+    default void reset() {
+        setEntityId(0);
+        setActionId(0);
+        setActionId(0);
+    }
+
+    @Override
+    default Class<? extends Packet> getModelClass() {
+        return EntityActionServerboundV47.class;
+    }
 }

@@ -45,6 +45,16 @@ public interface SoundEffectClientboundV47 extends Packet {
     void setPitch(short pitch);
 
     @Override
+    default void reset() {
+        setSoundName(null);
+        setEffectPositionX(0);
+        setEffectPositionY(0);
+        setEffectPositionZ(0);
+        setVolume(0);
+        setPitch((short) 0);
+    }
+
+    @Override
     default Class<? extends Packet> getModelClass() {
         return SoundEffectClientboundV47.class;
     }

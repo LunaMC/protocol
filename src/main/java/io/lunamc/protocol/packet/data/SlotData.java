@@ -38,4 +38,12 @@ public interface SlotData extends NetworkSerializable {
     Tag<?> getNbt();
 
     void setNbt(Tag<?> nbt);
+
+    @Override
+    default void reset() {
+        setBlockId((short) 0);
+        setItemCount((byte) 0);
+        setItemDamage((short) 0);
+        setNbt(null);
+    }
 }

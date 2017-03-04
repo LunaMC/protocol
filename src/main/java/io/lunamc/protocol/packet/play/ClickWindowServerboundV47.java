@@ -18,6 +18,7 @@ package io.lunamc.protocol.packet.play;
 
 import io.lunamc.protocol.packet.Packet;
 import io.lunamc.protocol.packet.data.SlotData;
+import io.lunamc.protocol.utils.PacketUtils;
 
 public interface ClickWindowServerboundV47 extends Packet {
 
@@ -78,6 +79,17 @@ public interface ClickWindowServerboundV47 extends Packet {
     SlotData getClickedItem();
 
     void setClickedItem(SlotData clickedItem);
+
+    @Override
+    default void reset() {
+        setWindowId((short) 0);
+        setSlot((short) 0);
+        setButton((byte) 0);
+        setActionNumber((short) 0);
+        setMode((byte) 0);
+        PacketUtils.reset(getClickedItem());
+        setClickedItem(null);
+    }
 
     @Override
     default Class<? extends Packet> getModelClass() {

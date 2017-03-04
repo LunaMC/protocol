@@ -25,6 +25,11 @@ public interface PingMultiboundV47 extends Packet {
     void setPayload(long payload);
 
     @Override
+    default void reset() {
+        setPayload(0);
+    }
+
+    @Override
     default Class<? extends Packet> getModelClass() {
         return PingMultiboundV47.class;
     }

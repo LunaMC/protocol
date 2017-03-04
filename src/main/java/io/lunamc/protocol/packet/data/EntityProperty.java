@@ -35,6 +35,13 @@ public interface EntityProperty extends NetworkSerializable {
 
     void setModifiers(List<EntityPropertyModifier> modifiers);
 
+    @Override
+    default void reset() {
+        setKey(null);
+        setValue(0);
+        setModifiers(null);
+    }
+
     interface EntityPropertyModifier extends NetworkSerializable {
 
         UUID getUuid();
@@ -48,5 +55,12 @@ public interface EntityProperty extends NetworkSerializable {
         byte getOperation();
 
         void setOperation(byte operation);
+
+        @Override
+        default void reset() {
+            setUuid(null);
+            setAmount(0);
+            setOperation((byte) 0);
+        }
     }
 }

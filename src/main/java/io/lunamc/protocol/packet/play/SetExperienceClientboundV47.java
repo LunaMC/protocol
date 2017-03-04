@@ -33,6 +33,13 @@ public interface SetExperienceClientboundV47 extends Packet {
     void setTotalExperience(int totalExperience);
 
     @Override
+    default void reset() {
+        setExperienceBar(0);
+        setLevel(0);
+        setTotalExperience(0);
+    }
+
+    @Override
     default Class<? extends Packet> getModelClass() {
         return SetExperienceClientboundV47.class;
     }

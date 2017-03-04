@@ -74,13 +74,6 @@ class BaseMapIcon implements MapIcon {
     }
 
     @Override
-    public void reset() {
-        setDirectionAndType((byte) 0);
-        setX((byte) 0);
-        setZ((byte) 0);
-    }
-
-    @Override
     public boolean equals(Object o) {
         if (this == o)
             return true;

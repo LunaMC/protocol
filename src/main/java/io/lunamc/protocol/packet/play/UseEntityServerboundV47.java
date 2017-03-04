@@ -45,6 +45,15 @@ public interface UseEntityServerboundV47 extends Packet {
     void setTargetZ(float targetZ);
 
     @Override
+    default void reset() {
+        setTarget(0);
+        setType(0);
+        setTargetX(0);
+        setTargetY(0);
+        setTargetZ(0);
+    }
+
+    @Override
     default Class<? extends Packet> getModelClass() {
         return UseEntityServerboundV47.class;
     }

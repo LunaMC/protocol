@@ -25,6 +25,11 @@ public interface PlayerServerboundV47 extends Packet {
     void setOnGround(boolean onGround);
 
     @Override
+    default void reset() {
+        setOnGround(false);
+    }
+
+    @Override
     default Class<? extends Packet> getModelClass() {
         return PlayerServerboundV47.class;
     }

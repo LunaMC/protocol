@@ -29,11 +29,18 @@ public interface SteerVehicleServerboundV47 extends Packet {
 
     float getForward();
 
-    void setForward();
+    void setForward(float forward);
 
     short getFlags();
 
     void setFlags(short flags);
+
+    @Override
+    default void reset() {
+        setSideways(0);
+        setForward(0);
+        setFlags((short) 0);
+    }
 
     @Override
     default Class<? extends Packet> getModelClass() {

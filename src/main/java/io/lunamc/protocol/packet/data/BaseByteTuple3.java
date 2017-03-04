@@ -74,13 +74,6 @@ class BaseByteTuple3 implements ByteTuple3 {
     }
 
     @Override
-    public void reset() {
-        setByte1((byte) 0);
-        setByte2((byte) 0);
-        setByte3((byte) 0);
-    }
-
-    @Override
     public boolean equals(Object o) {
         if (this == o)
             return true;

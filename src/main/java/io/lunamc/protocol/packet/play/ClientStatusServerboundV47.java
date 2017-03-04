@@ -29,6 +29,11 @@ public interface ClientStatusServerboundV47 extends Packet {
     void setActionId(int actionId);
 
     @Override
+    default void reset() {
+        setActionId(0);
+    }
+
+    @Override
     default Class<? extends Packet> getModelClass() {
         return ClientStatusServerboundV47.class;
     }

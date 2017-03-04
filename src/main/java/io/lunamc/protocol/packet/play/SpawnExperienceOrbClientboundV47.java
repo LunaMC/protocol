@@ -41,6 +41,15 @@ public interface SpawnExperienceOrbClientboundV47 extends Packet {
     void setCount(short count);
 
     @Override
+    default void reset() {
+        setEntityId(0);
+        setX(0);
+        setY(0);
+        setZ(0);
+        setCount((short) 0);
+    }
+
+    @Override
     default Class<? extends Packet> getModelClass() {
         return SpawnExperienceOrbClientboundV47.class;
     }

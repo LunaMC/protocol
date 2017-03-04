@@ -18,6 +18,8 @@ package io.lunamc.protocol.packet.play;
 
 import io.lunamc.protocol.packet.Packet;
 
+import java.util.List;
+
 public interface TeamsClientboundV47 extends Packet {
 
     String getTeamName();
@@ -48,9 +50,21 @@ public interface TeamsClientboundV47 extends Packet {
 
     void setColor(byte color);
 
-    String[] getPlayers();
+    List<String> getPlayers();
 
-    void setPlayers(String[] players);
+    void setPlayers(List<String> players);
+
+    @Override
+    default void reset() {
+        setTeamName(null);
+        setMode((byte) 0);
+        setTeamDisplayName(null);
+        setTeamPrefix(null);
+        setFriendlyFire((byte) 0);
+        setNameTagVisibility(null);
+        setColor((byte) 0);
+        setPlayers(null);
+    }
 
     @Override
     default Class<? extends Packet> getModelClass() {

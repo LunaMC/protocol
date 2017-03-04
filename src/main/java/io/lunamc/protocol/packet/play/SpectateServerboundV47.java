@@ -27,6 +27,11 @@ public interface SpectateServerboundV47 extends Packet {
     void setTargetPlayer(UUID targetPlayer);
 
     @Override
+    default void reset() {
+        setTargetPlayer(null);
+    }
+
+    @Override
     default Class<? extends Packet> getModelClass() {
         return SpectateServerboundV47.class;
     }

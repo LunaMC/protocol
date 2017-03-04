@@ -48,6 +48,13 @@ public interface PlayerDiggingServerboundV47 extends Packet {
     void setFace(byte face);
 
     @Override
+    default void reset() {
+        setStatus((byte) 0);
+        setLocation(0);
+        setFace((byte) 0);
+    }
+
+    @Override
     default Class<? extends Packet> getModelClass() {
         return PlayerDiggingServerboundV47.class;
     }

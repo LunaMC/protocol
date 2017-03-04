@@ -18,6 +18,7 @@ package io.lunamc.protocol.packet.play;
 
 import io.lunamc.protocol.packet.Packet;
 import io.lunamc.protocol.packet.data.EntityMetadata;
+import io.lunamc.protocol.utils.PacketUtils;
 
 import java.util.UUID;
 
@@ -57,7 +58,21 @@ public interface SpawnPlayerClientboundV47 extends Packet {
 
     EntityMetadata getMetadata();
 
-    void setMetadata();
+    void setMetadata(EntityMetadata metadata);
+
+    @Override
+    default void reset() {
+        setEntityId(0);
+        setPlayerUuid(null);
+        setX(0);
+        setY(0);
+        setZ(0);
+        setYaw((byte) 0);
+        setPitch((byte) 0);
+        setCurrentItem((short) 0);
+        PacketUtils.reset(getMetadata());
+        setMetadata(null);
+    }
 
     @Override
     default Class<? extends Packet> getModelClass() {
