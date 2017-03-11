@@ -67,7 +67,7 @@ public class UnpooledPlayPacketAllocator implements PlayPacketAllocator {
 
     @Override
     public AnimationClientboundV47 getAnimationClientboundV47() {
-        throw new UnsupportedOperationException("Not implemented");
+        return new BaseAnimationClientboundV47();
     }
 
     @Override
@@ -147,7 +147,7 @@ public class UnpooledPlayPacketAllocator implements PlayPacketAllocator {
 
     @Override
     public AttachEntityClientboundV47 getAttachEntityClientboundV47() {
-        throw new UnsupportedOperationException("Not implemented");
+        return new BaseAttachEntityClientboundV47();
     }
 
     @Override
@@ -192,7 +192,7 @@ public class UnpooledPlayPacketAllocator implements PlayPacketAllocator {
 
     @Override
     public BlockActionClientboundV47 getBlockActionClientboundV47() {
-        throw new UnsupportedOperationException("Not implemented");
+        return new BaseBlockActionClientboundV47();
     }
 
     @Override
@@ -397,7 +397,7 @@ public class UnpooledPlayPacketAllocator implements PlayPacketAllocator {
 
     @Override
     public AnimationServerboundV47 getAnimationServerboundV47() {
-        throw new UnsupportedOperationException("Not implemented");
+        return BaseAnimationServerboundV47.INSTANCE;
     }
 
     @Override

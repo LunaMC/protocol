@@ -397,7 +397,7 @@ public class PooledPlayPacketAllocator implements PlayPacketAllocator {
 
     @Override
     public AnimationServerboundV47 getAnimationServerboundV47() {
-        throw new UnsupportedOperationException("Not implemented");
+        return BaseAnimationServerboundV47.INSTANCE;
     }
 
     @Override
