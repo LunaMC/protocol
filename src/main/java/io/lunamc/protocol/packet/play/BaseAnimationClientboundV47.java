@@ -26,6 +26,9 @@ public class BaseAnimationClientboundV47 implements AnimationClientboundV47 {
     private int entityId;
     private short animation;
 
+    BaseAnimationClientboundV47() {
+    }
+
     @Override
     public int getEntityId() {
         return entityId;

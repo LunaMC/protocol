@@ -27,6 +27,9 @@ public class BaseBlockBreakAnimationClientboundV47 implements BlockBreakAnimatio
     private long location;
     private byte destroyStage;
 
+    BaseBlockBreakAnimationClientboundV47() {
+    }
+
     @Override
     public int getEntityId() {
         return entityId;

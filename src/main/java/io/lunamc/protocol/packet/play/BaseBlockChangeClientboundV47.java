@@ -26,6 +26,9 @@ public class BaseBlockChangeClientboundV47 implements BlockChangeClientboundV47 
     private long location;
     private int blockId;
 
+    BaseBlockChangeClientboundV47() {
+    }
+
     @Override
     public long getLocation() {
         return location;

@@ -25,6 +25,9 @@ public class BaseChangeGameStateClientboundV47 implements ChangeGameStateClientb
     private short reason;
     private float value;
 
+    BaseChangeGameStateClientboundV47() {
+    }
+
     @Override
     public short getReason() {
         return reason;

@@ -25,6 +25,9 @@ public class BaseCameraClientboundV47 implements CameraClientboundV47 {
 
     private int cameraId;
 
+    BaseCameraClientboundV47() {
+    }
+
     @Override
     public int getCameraId() {
         return cameraId;

@@ -28,6 +28,9 @@ public class BaseBlockActionClientboundV47 implements BlockActionClientboundV47 
     private short byte2;
     private int blockType;
 
+    BaseBlockActionClientboundV47() {
+    }
+
     @Override
     public long getLocation() {
         return location;

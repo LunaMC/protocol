@@ -25,6 +25,9 @@ public class BaseChatMessageServerboundV47 implements ChatMessageServerboundV47 
 
     private String jsonData;
 
+    BaseChatMessageServerboundV47() {
+    }
+
     @Override
     public String getJsonData() {
         return jsonData;

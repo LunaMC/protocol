@@ -29,6 +29,9 @@ public class BaseClientSettingsServerboundV47 implements ClientSettingsServerbou
     private boolean chatColorsEnabled;
     private short displayedSkinParts;
 
+    BaseClientSettingsServerboundV47() {
+    }
+
     @Override
     public String getLocale() {
         return locale;

@@ -20,6 +20,9 @@ public class BaseAnimationServerboundV47 implements AnimationServerboundV47 {
 
     public static final BaseAnimationServerboundV47 INSTANCE = new BaseAnimationServerboundV47();
 
+    BaseAnimationServerboundV47() {
+    }
+
     @Override
     public boolean equals(Object obj) {
         return obj instanceof AnimationServerboundV47;

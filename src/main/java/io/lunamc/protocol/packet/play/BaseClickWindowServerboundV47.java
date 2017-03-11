@@ -24,7 +24,7 @@ import java.util.Objects;
 
 public class BaseClickWindowServerboundV47 implements ClickWindowServerboundV47 {
 
-    private final DataAllocator dataAllocator;
+    private final transient DataAllocator dataAllocator;
     private short windowId;
     private short slot;
     private byte button;
@@ -32,7 +32,7 @@ public class BaseClickWindowServerboundV47 implements ClickWindowServerboundV47 
     private byte mode;
     private SlotData clickedItem;
 
-    public BaseClickWindowServerboundV47(DataAllocator dataAllocator) {
+    BaseClickWindowServerboundV47(DataAllocator dataAllocator) {
         this.dataAllocator = Objects.requireNonNull(dataAllocator, "dataAllocator must not be null");
     }
 

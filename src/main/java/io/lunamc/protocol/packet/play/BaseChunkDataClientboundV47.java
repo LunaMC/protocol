@@ -25,14 +25,14 @@ import java.util.Objects;
 
 public class BaseChunkDataClientboundV47 implements ChunkDataClientboundV47 {
 
-    private final DataAllocator dataAllocator;
+    private final transient DataAllocator dataAllocator;
     private int chunkX;
     private int chunkZ;
     private boolean groundUpContinuous;
     private int primaryBitMask;
     private Chunk data;
 
-    public BaseChunkDataClientboundV47(DataAllocator dataAllocator) {
+    BaseChunkDataClientboundV47(DataAllocator dataAllocator) {
         this.dataAllocator = Objects.requireNonNull(dataAllocator, "dataAllocator must not be null");
     }
 

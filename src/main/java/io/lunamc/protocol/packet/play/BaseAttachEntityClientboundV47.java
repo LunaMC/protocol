@@ -26,6 +26,9 @@ public class BaseAttachEntityClientboundV47 implements AttachEntityClientboundV4
     private int vehicleId;
     private boolean leash;
 
+    BaseAttachEntityClientboundV47() {
+    }
+
     @Override
     public int getEntityId() {
         return entityId;

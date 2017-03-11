@@ -16,9 +16,20 @@
 
 package io.lunamc.protocol.packet.play;
 
+import io.lunamc.protocol.packet.data.DataAllocator;
+import io.lunamc.protocol.packet.data.DefaultDataAllocator;
+
+import java.util.Objects;
+
 public class UnpooledPlayPacketAllocator implements PlayPacketAllocator {
 
-    public static final UnpooledPlayPacketAllocator INSTANCE = new UnpooledPlayPacketAllocator();
+    public static final UnpooledPlayPacketAllocator INSTANCE = new UnpooledPlayPacketAllocator(DefaultDataAllocator.INSTANCE);
+
+    private DataAllocator dataAllocator;
+
+    public UnpooledPlayPacketAllocator(DataAllocator dataAllocator) {
+        this.dataAllocator = Objects.requireNonNull(dataAllocator, "dataAllocator must not be null");
+    }
 
     @Override
     public JoinGameClientboundV47 getJoinGameClientboundV47() {
@@ -177,7 +188,7 @@ public class UnpooledPlayPacketAllocator implements PlayPacketAllocator {
 
     @Override
     public ChunkDataClientboundV47 getChunkDataClientboundV47() {
-        throw new UnsupportedOperationException("Not implemented");
+        return new BaseChunkDataClientboundV47(dataAllocator);
     }
 
     @Override
@@ -197,7 +208,7 @@ public class UnpooledPlayPacketAllocator implements PlayPacketAllocator {
 
     @Override
     public BlockBreakAnimationClientboundV47 getBlockBreakAnimationClientboundV47() {
-        throw new UnsupportedOperationException("Not implemented");
+        return new BaseBlockBreakAnimationClientboundV47();
     }
 
     @Override
@@ -227,7 +238,7 @@ public class UnpooledPlayPacketAllocator implements PlayPacketAllocator {
 
     @Override
     public ChangeGameStateClientboundV47 getChangeGameStateClientboundV47() {
-        throw new UnsupportedOperationException("Not implemented");
+        return new BaseChangeGameStateClientboundV47();
     }
 
     @Override
@@ -327,7 +338,7 @@ public class UnpooledPlayPacketAllocator implements PlayPacketAllocator {
 
     @Override
     public CameraClientboundV47 getCameraClientboundV47() {
-        throw new UnsupportedOperationException("Not implemented");
+        return new BaseCameraClientboundV47();
     }
 
     @Override
@@ -357,7 +368,7 @@ public class UnpooledPlayPacketAllocator implements PlayPacketAllocator {
 
     @Override
     public ChatMessageServerboundV47 getChatMessageServerboundV47() {
-        throw new UnsupportedOperationException("Not implemented");
+        return new BaseChatMessageServerboundV47();
     }
 
     @Override
@@ -412,7 +423,7 @@ public class UnpooledPlayPacketAllocator implements PlayPacketAllocator {
 
     @Override
     public ClickWindowServerboundV47 getClickWindowServerboundV47() {
-        throw new UnsupportedOperationException("Not implemented");
+        return new BaseClickWindowServerboundV47(dataAllocator);
     }
 
     @Override
@@ -437,7 +448,7 @@ public class UnpooledPlayPacketAllocator implements PlayPacketAllocator {
 
     @Override
     public ClientSettingsServerboundV47 getClientSettingsServerboundV47() {
-        throw new UnsupportedOperationException("Not implemented");
+        return new BaseClientSettingsServerboundV47();
     }
 
     @Override
