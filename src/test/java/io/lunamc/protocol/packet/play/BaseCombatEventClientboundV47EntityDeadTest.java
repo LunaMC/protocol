@@ -16,45 +16,19 @@
 
 package io.lunamc.protocol.packet.play;
 
+import io.lunamc.protocol.packet.AbstractPacketTest;
 import io.lunamc.protocol.packet.Packet;
 
-public interface CombatEventClientboundV47 extends Packet {
-
-    int EVENT_ENTER_COMBAT = 0;
-    int EVENT_END_COMBAT = 1;
-    int EVENT_ENTITY_DEAD = 2;
-
-    int getEvent();
-
-    void setEvent(int event);
-
-    int getDuration();
-
-    void setDuration(int duration);
-
-    int getPlayerId();
-
-    void setPlayerId(int playerId);
-
-    int getEntityId();
-
-    void setEntityId(int entityId);
-
-    String getMessage();
-
-    void setMessage(String message);
+public class BaseCombatEventClientboundV47EntityDeadTest extends AbstractPacketTest {
 
     @Override
-    default void reset() {
-        setEntityId(0);
-        setDuration(0);
-        setPlayerId(0);
-        setEntityId(0);
-        setMessage(null);
-    }
-
-    @Override
-    default Class<? extends Packet> getModelClass() {
-        return CombatEventClientboundV47.class;
+    protected Packet createPacket(boolean content) {
+        BaseCombatEventClientboundV47 packet = new BaseCombatEventClientboundV47();
+        if (content) {
+            packet.setEvent(CombatEventClientboundV47.EVENT_ENTITY_DEAD);
+            packet.setPlayerId(18);
+            packet.setMessage("He passed away :(");
+        }
+        return packet;
     }
 }

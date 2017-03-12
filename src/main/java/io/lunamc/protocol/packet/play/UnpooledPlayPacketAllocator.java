@@ -88,7 +88,7 @@ public class UnpooledPlayPacketAllocator implements PlayPacketAllocator {
 
     @Override
     public CollectItemClientboundV47 getCollectItemClientboundV47() {
-        throw new UnsupportedOperationException("Not implemented");
+        return new BaseCollectItemClientboundV47();
     }
 
     @Override
@@ -333,7 +333,7 @@ public class UnpooledPlayPacketAllocator implements PlayPacketAllocator {
 
     @Override
     public CombatEventClientboundV47 getCombatEventClientboundV47() {
-        throw new UnsupportedOperationException("Not implemented");
+        return new BaseCombatEventClientboundV47();
     }
 
     @Override
@@ -453,7 +453,7 @@ public class UnpooledPlayPacketAllocator implements PlayPacketAllocator {
 
     @Override
     public ClientStatusServerboundV47 getClientStatusServerboundV47() {
-        throw new UnsupportedOperationException("Not implemented");
+        return new BaseClientStatusServerboundV47();
     }
 
     @Override
@@ -478,7 +478,7 @@ public class UnpooledPlayPacketAllocator implements PlayPacketAllocator {
 
     @Override
     public CloseWindowMultiboundV47 getCloseWindowMultiboundV47() {
-        throw new UnsupportedOperationException("Not implemented");
+        return new BaseCloseWindowMultiboundV47();
     }
 
     @Override
