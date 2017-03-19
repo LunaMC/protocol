@@ -118,7 +118,7 @@ public class UnpooledPlayPacketAllocator implements PlayPacketAllocator {
 
     @Override
     public DestroyEntitiesClientboundV47 getDestroyEntitiesClientboundV47() {
-        throw new UnsupportedOperationException("Not implemented");
+        return new BaseDestroyEntitiesClientboundV47();
     }
 
     @Override
@@ -323,7 +323,7 @@ public class UnpooledPlayPacketAllocator implements PlayPacketAllocator {
 
     @Override
     public DisconnectClientboundV47 getDisconnectClientboundV47() {
-        throw new UnsupportedOperationException("Not implemented");
+        return new BaseDisconnectClientboundV47();
     }
 
     @Override
@@ -428,7 +428,7 @@ public class UnpooledPlayPacketAllocator implements PlayPacketAllocator {
 
     @Override
     public CreativeInventoryActionServerboundV47 getCreativeInventoryActionServerboundV47() {
-        throw new UnsupportedOperationException("Not implemented");
+        return new BaseCreativeInventoryActionServerboundV47(dataAllocator);
     }
 
     @Override
@@ -483,7 +483,7 @@ public class UnpooledPlayPacketAllocator implements PlayPacketAllocator {
 
     @Override
     public ConfirmTransactionMultiboundV47 getConfirmTransactionMultiboundV47() {
-        throw new UnsupportedOperationException("Not implemented");
+        return new BaseConfirmTransactionMultiboundV47();
     }
 
     @Override
