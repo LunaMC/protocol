@@ -48,7 +48,7 @@ public class UnpooledPlayPacketAllocator implements PlayPacketAllocator {
 
     @Override
     public EntityEquipmentClientboundV47 getEntityEquipmentClientboundV47() {
-        throw new UnsupportedOperationException("Not implemented");
+        return new BaseEntityEquipmentClientboundV47(dataAllocator);
     }
 
     @Override
@@ -123,7 +123,7 @@ public class UnpooledPlayPacketAllocator implements PlayPacketAllocator {
 
     @Override
     public EntityClientboundV47 getEntityClientboundV47() {
-        throw new UnsupportedOperationException("Not implemented");
+        return new BaseEntityClientboundV47();
     }
 
     @Override
@@ -168,7 +168,7 @@ public class UnpooledPlayPacketAllocator implements PlayPacketAllocator {
 
     @Override
     public EntityEffectClientboundV47 getEntityEffectClientboundV47() {
-        throw new UnsupportedOperationException("Not implemented");
+        return new BaseEntityEffectClientboundV47();
     }
 
     @Override
@@ -223,7 +223,7 @@ public class UnpooledPlayPacketAllocator implements PlayPacketAllocator {
 
     @Override
     public EffectClientboundV47 getEffectClientboundV47() {
-        throw new UnsupportedOperationException("Not implemented");
+        return new BaseEffectClientboundV47();
     }
 
     @Override
@@ -313,7 +313,7 @@ public class UnpooledPlayPacketAllocator implements PlayPacketAllocator {
 
     @Override
     public DisplayScoreboardClientboundV47 getDisplayScoreboardClientboundV47() {
-        throw new UnsupportedOperationException("Not implemented");
+        return new BaseDisplayScoreboardClientboundV47();
     }
 
     @Override
@@ -413,7 +413,7 @@ public class UnpooledPlayPacketAllocator implements PlayPacketAllocator {
 
     @Override
     public EntityActionServerboundV47 getEntityActionServerboundV47() {
-        throw new UnsupportedOperationException("Not implemented");
+        return new BaseEntityActionServerboundV47();
     }
 
     @Override
@@ -433,7 +433,7 @@ public class UnpooledPlayPacketAllocator implements PlayPacketAllocator {
 
     @Override
     public EnchantItemServerboundV47 getEnchantItemServerboundV47() {
-        throw new UnsupportedOperationException("Not implemented");
+        return new BaseEnchantItemServerboundV47();
     }
 
     @Override
