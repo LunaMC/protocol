@@ -133,12 +133,12 @@ public class UnpooledPlayPacketAllocator implements PlayPacketAllocator {
 
     @Override
     public EntityLookClientboundV47 getEntityLookClientboundV47() {
-        throw new UnsupportedOperationException("Not implemented");
+        return new BaseEntityLookClientboundV47();
     }
 
     @Override
     public EntityLookAndRelativeMoveClientboundV47 getEntityLookAndRelativeMoveClientboundV47() {
-        throw new UnsupportedOperationException("Not implemented");
+        return new BaseEntityLookAndRelativeMoveClientboundV47();
     }
 
     @Override
@@ -148,7 +148,7 @@ public class UnpooledPlayPacketAllocator implements PlayPacketAllocator {
 
     @Override
     public EntityHeadLookClientboundV47 getEntityHeadLookClientboundV47() {
-        throw new UnsupportedOperationException("Not implemented");
+        return new BaseEntityHeadLookClientboundV47();
     }
 
     @Override
@@ -163,7 +163,7 @@ public class UnpooledPlayPacketAllocator implements PlayPacketAllocator {
 
     @Override
     public EntityMetadataClientboundV47 getEntityMetadataClientboundV47() {
-        throw new UnsupportedOperationException("Not implemented");
+        return new BaseEntityMetadataClientboundV47(dataAllocator);
     }
 
     @Override
@@ -183,7 +183,7 @@ public class UnpooledPlayPacketAllocator implements PlayPacketAllocator {
 
     @Override
     public EntityPropertiesClientboundV47 getEntityPropertiesClientboundV47() {
-        throw new UnsupportedOperationException("Not implemented");
+        return new BaseEntityPropertiesClientboundV47(dataAllocator);
     }
 
     @Override
