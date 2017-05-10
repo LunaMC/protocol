@@ -22,7 +22,7 @@ import io.netty.buffer.ByteBuf;
 
 import java.util.Objects;
 
-public class BaseCreativeInventoryActionServerboundV47 implements CreativeInventoryActionServerboundV47 {
+class BaseCreativeInventoryActionServerboundV47 implements CreativeInventoryActionServerboundV47 {
 
     private final transient DataAllocator dataAllocator;
     private short slot;

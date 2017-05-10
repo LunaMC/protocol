@@ -23,7 +23,7 @@ import io.netty.buffer.ByteBuf;
 
 import java.util.Objects;
 
-public class BaseEntityEquipmentClientboundV47 implements EntityEquipmentClientboundV47 {
+class BaseEntityEquipmentClientboundV47 implements EntityEquipmentClientboundV47 {
 
     private final transient DataAllocator dataAllocator;
     private int entityId;

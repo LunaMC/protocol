@@ -21,7 +21,7 @@ import io.netty.buffer.ByteBuf;
 
 import java.util.Objects;
 
-public class BaseBlockBreakAnimationClientboundV47 implements BlockBreakAnimationClientboundV47 {
+class BaseBlockBreakAnimationClientboundV47 implements BlockBreakAnimationClientboundV47 {
 
     private int entityId;
     private long location;

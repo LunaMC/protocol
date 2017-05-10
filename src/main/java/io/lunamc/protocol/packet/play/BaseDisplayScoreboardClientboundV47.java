@@ -21,7 +21,7 @@ import io.netty.buffer.ByteBuf;
 
 import java.util.Objects;
 
-public class BaseDisplayScoreboardClientboundV47 implements DisplayScoreboardClientboundV47 {
+class BaseDisplayScoreboardClientboundV47 implements DisplayScoreboardClientboundV47 {
 
     private byte position;
     private String scoreName;

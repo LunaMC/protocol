@@ -21,7 +21,7 @@ import io.netty.buffer.ByteBuf;
 
 import java.util.Objects;
 
-public class BaseClientSettingsServerboundV47 implements ClientSettingsServerboundV47 {
+class BaseClientSettingsServerboundV47 implements ClientSettingsServerboundV47 {
 
     private String locale;
     private byte viewDistance;

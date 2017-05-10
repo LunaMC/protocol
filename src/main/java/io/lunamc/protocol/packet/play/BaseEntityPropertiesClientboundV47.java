@@ -25,7 +25,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class BaseEntityPropertiesClientboundV47 implements EntityPropertiesClientboundV47 {
+class BaseEntityPropertiesClientboundV47 implements EntityPropertiesClientboundV47 {
 
     private final transient DataAllocator dataAllocator;
     private int entityId;

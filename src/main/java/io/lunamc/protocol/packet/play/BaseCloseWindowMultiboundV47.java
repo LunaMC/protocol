@@ -20,7 +20,7 @@ import io.netty.buffer.ByteBuf;
 
 import java.util.Objects;
 
-public class BaseCloseWindowMultiboundV47 implements CloseWindowMultiboundV47 {
+class BaseCloseWindowMultiboundV47 implements CloseWindowMultiboundV47 {
 
     private short windowId;
 

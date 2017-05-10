@@ -21,7 +21,7 @@ import io.netty.buffer.ByteBuf;
 
 import java.util.Objects;
 
-public class BaseBlockChangeClientboundV47 implements BlockChangeClientboundV47 {
+class BaseBlockChangeClientboundV47 implements BlockChangeClientboundV47 {
 
     private long location;
     private int blockId;

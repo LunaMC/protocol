@@ -21,7 +21,7 @@ import io.netty.buffer.ByteBuf;
 
 import java.util.Objects;
 
-public class BaseChatMessageServerboundV47 implements ChatMessageServerboundV47 {
+class BaseChatMessageServerboundV47 implements ChatMessageServerboundV47 {
 
     private String jsonData;
 

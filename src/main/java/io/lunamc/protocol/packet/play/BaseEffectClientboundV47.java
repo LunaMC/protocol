@@ -20,7 +20,7 @@ import io.netty.buffer.ByteBuf;
 
 import java.util.Objects;
 
-public class BaseEffectClientboundV47 implements EffectClientboundV47 {
+class BaseEffectClientboundV47 implements EffectClientboundV47 {
 
     private int effectId;
     private long location;

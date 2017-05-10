@@ -21,7 +21,7 @@ import io.netty.buffer.ByteBuf;
 
 import java.util.Objects;
 
-public class BaseEntityLookClientboundV47 implements EntityLookClientboundV47 {
+class BaseEntityLookClientboundV47 implements EntityLookClientboundV47 {
 
     private int entityId;
     private byte yaw;

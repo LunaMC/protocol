@@ -21,7 +21,7 @@ import io.netty.buffer.ByteBuf;
 
 import java.util.Objects;
 
-public class BaseDisconnectClientboundV47 implements DisconnectClientboundV47 {
+class BaseDisconnectClientboundV47 implements DisconnectClientboundV47 {
 
     private String reason;
 

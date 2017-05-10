@@ -21,7 +21,7 @@ import io.netty.buffer.ByteBuf;
 
 import java.util.Objects;
 
-public class BaseCameraClientboundV47 implements CameraClientboundV47 {
+class BaseCameraClientboundV47 implements CameraClientboundV47 {
 
     private int cameraId;
 

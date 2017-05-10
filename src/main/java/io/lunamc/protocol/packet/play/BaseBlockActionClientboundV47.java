@@ -21,7 +21,7 @@ import io.netty.buffer.ByteBuf;
 
 import java.util.Objects;
 
-public class BaseBlockActionClientboundV47 implements BlockActionClientboundV47 {
+class BaseBlockActionClientboundV47 implements BlockActionClientboundV47 {
 
     private long location;
     private short byte1;

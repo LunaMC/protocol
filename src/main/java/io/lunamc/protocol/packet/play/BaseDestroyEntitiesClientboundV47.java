@@ -21,7 +21,7 @@ import io.netty.buffer.ByteBuf;
 
 import java.util.Arrays;
 
-public class BaseDestroyEntitiesClientboundV47 implements DestroyEntitiesClientboundV47 {
+class BaseDestroyEntitiesClientboundV47 implements DestroyEntitiesClientboundV47 {
 
     private int[] entityIds;
 

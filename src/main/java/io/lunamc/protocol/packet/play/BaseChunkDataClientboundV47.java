@@ -23,7 +23,7 @@ import io.netty.buffer.ByteBuf;
 
 import java.util.Objects;
 
-public class BaseChunkDataClientboundV47 implements ChunkDataClientboundV47 {
+class BaseChunkDataClientboundV47 implements ChunkDataClientboundV47 {
 
     private final transient DataAllocator dataAllocator;
     private int chunkX;

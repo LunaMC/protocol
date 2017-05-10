@@ -16,11 +16,11 @@
 
 package io.lunamc.protocol.packet.play;
 
-public class BaseAnimationServerboundV47 implements AnimationServerboundV47 {
+class BaseAnimationServerboundV47 implements AnimationServerboundV47 {
 
     public static final BaseAnimationServerboundV47 INSTANCE = new BaseAnimationServerboundV47();
 
-    BaseAnimationServerboundV47() {
+    private BaseAnimationServerboundV47() {
     }
 
     @Override

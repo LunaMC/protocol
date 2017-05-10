@@ -21,7 +21,7 @@ import io.netty.buffer.ByteBuf;
 
 import java.util.Objects;
 
-public class BaseCollectItemClientboundV47 implements CollectItemClientboundV47 {
+class BaseCollectItemClientboundV47 implements CollectItemClientboundV47 {
 
     private int collectedEntityId;
     private int collectorEntityId;

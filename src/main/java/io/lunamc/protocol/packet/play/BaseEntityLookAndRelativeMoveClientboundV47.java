@@ -21,7 +21,7 @@ import io.netty.buffer.ByteBuf;
 
 import java.util.Objects;
 
-public class BaseEntityLookAndRelativeMoveClientboundV47 implements EntityLookAndRelativeMoveClientboundV47 {
+class BaseEntityLookAndRelativeMoveClientboundV47 implements EntityLookAndRelativeMoveClientboundV47 {
 
     private int entityId;
     private byte deltaX;

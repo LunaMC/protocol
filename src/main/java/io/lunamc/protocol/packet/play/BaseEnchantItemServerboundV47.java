@@ -20,7 +20,7 @@ import io.netty.buffer.ByteBuf;
 
 import java.util.Objects;
 
-public class BaseEnchantItemServerboundV47 implements EnchantItemServerboundV47 {
+class BaseEnchantItemServerboundV47 implements EnchantItemServerboundV47 {
 
     private byte windowId;
     private byte enchantment;

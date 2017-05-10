@@ -21,7 +21,7 @@ import io.netty.buffer.ByteBuf;
 
 import java.util.Objects;
 
-public class BaseCombatEventClientboundV47 implements CombatEventClientboundV47 {
+class BaseCombatEventClientboundV47 implements CombatEventClientboundV47 {
 
     private int event;
     private int duration;

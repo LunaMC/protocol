@@ -20,7 +20,7 @@ import io.netty.buffer.ByteBuf;
 
 import java.util.Objects;
 
-public class BaseConfirmTransactionMultiboundV47 implements ConfirmTransactionMultiboundV47 {
+class BaseConfirmTransactionMultiboundV47 implements ConfirmTransactionMultiboundV47 {
 
     private byte windowId;
     private short actionNumber;

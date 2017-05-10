@@ -22,7 +22,7 @@ import io.netty.buffer.ByteBuf;
 
 import java.util.Objects;
 
-public class BaseClickWindowServerboundV47 implements ClickWindowServerboundV47 {
+class BaseClickWindowServerboundV47 implements ClickWindowServerboundV47 {
 
     private final transient DataAllocator dataAllocator;
     private short windowId;

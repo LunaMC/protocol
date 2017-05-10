@@ -21,7 +21,7 @@ import io.netty.buffer.ByteBuf;
 
 import java.util.Objects;
 
-public class BaseAnimationClientboundV47 implements AnimationClientboundV47 {
+class BaseAnimationClientboundV47 implements AnimationClientboundV47 {
 
     private int entityId;
     private short animation;

@@ -20,7 +20,7 @@ import io.netty.buffer.ByteBuf;
 
 import java.util.Objects;
 
-public class BaseChangeGameStateClientboundV47 implements ChangeGameStateClientboundV47 {
+class BaseChangeGameStateClientboundV47 implements ChangeGameStateClientboundV47 {
 
     private short reason;
     private float value;

@@ -20,7 +20,7 @@ import io.netty.buffer.ByteBuf;
 
 import java.util.Objects;
 
-public class BaseAttachEntityClientboundV47 implements AttachEntityClientboundV47 {
+class BaseAttachEntityClientboundV47 implements AttachEntityClientboundV47 {
 
     private int entityId;
     private int vehicleId;

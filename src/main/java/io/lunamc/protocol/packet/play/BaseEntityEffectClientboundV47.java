@@ -21,7 +21,7 @@ import io.netty.buffer.ByteBuf;
 
 import java.util.Objects;
 
-public class BaseEntityEffectClientboundV47 implements EntityEffectClientboundV47 {
+class BaseEntityEffectClientboundV47 implements EntityEffectClientboundV47 {
 
     private int entityId;
     private byte effectId;
