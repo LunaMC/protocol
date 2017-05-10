@@ -27,7 +27,7 @@ public class UnpooledPlayPacketAllocator implements PlayPacketAllocator {
 
     private DataAllocator dataAllocator;
 
-    public UnpooledPlayPacketAllocator(DataAllocator dataAllocator) {
+    private UnpooledPlayPacketAllocator(DataAllocator dataAllocator) {
         this.dataAllocator = Objects.requireNonNull(dataAllocator, "dataAllocator must not be null");
     }
 
@@ -113,7 +113,7 @@ public class UnpooledPlayPacketAllocator implements PlayPacketAllocator {
 
     @Override
     public EntityVelocityClientboundV47 getEntityVelocityClientboundV47() {
-        throw new UnsupportedOperationException("Not implemented");
+        return new BaseEntityVelocityClientboundV47();
     }
 
     @Override
@@ -128,7 +128,7 @@ public class UnpooledPlayPacketAllocator implements PlayPacketAllocator {
 
     @Override
     public EntityRelativeMoveClientboundV47 getEntityRelativeMoveClientboundV47() {
-        throw new UnsupportedOperationException("Not implemented");
+        return new BaseEntityRelativeMoveClientboundV47();
     }
 
     @Override
@@ -143,7 +143,7 @@ public class UnpooledPlayPacketAllocator implements PlayPacketAllocator {
 
     @Override
     public EntityTeleportClientboundV47 getEntityTeleportClientboundV47() {
-        throw new UnsupportedOperationException("Not implemented");
+        return new BaseEntityTeleportClientboundV47();
     }
 
     @Override
@@ -153,7 +153,7 @@ public class UnpooledPlayPacketAllocator implements PlayPacketAllocator {
 
     @Override
     public EntityStatusClientboundV47 getEntityStatusClientboundV47() {
-        throw new UnsupportedOperationException("Not implemented");
+        return new BaseEntityStatusClientboundV47();
     }
 
     @Override
@@ -218,7 +218,7 @@ public class UnpooledPlayPacketAllocator implements PlayPacketAllocator {
 
     @Override
     public ExplosionClientboundV47 getExplosionClientboundV47() {
-        throw new UnsupportedOperationException("Not implemented");
+        return new BaseExplosionClientboundV47(dataAllocator);
     }
 
     @Override
