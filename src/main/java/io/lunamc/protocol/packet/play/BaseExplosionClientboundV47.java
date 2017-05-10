@@ -148,6 +148,7 @@ class BaseExplosionClientboundV47 implements ExplosionClientboundV47 {
             record.read(input);
             records.add(record);
         }
+        setRecords(records);
         setPlayerMotionX(input.readFloat());
         setPlayerMotionY(input.readFloat());
         setPlayerMotionZ(input.readFloat());
